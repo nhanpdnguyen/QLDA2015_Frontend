@@ -14,5 +14,11 @@ nav {
 }
 
 .nav-item {
-    margin-right: 25px;
+    margin-right: 40px;
+
+}
+
+.navbar {
+    height: 55px;
+
 }

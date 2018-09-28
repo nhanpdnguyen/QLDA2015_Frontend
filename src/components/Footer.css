@@ -1,0 +1,8 @@
+footer div{
+    min-height: 100px;
+    background: url("/images/Footer-background-01.png");
+    background-size: auto;
+    display: flex;
+    align-items: flex-end;
+    color:red;
+}

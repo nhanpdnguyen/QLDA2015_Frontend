@@ -1,0 +1,20 @@
+.title-box-img {
+    width: 100%;
+    height: auto;
+}
+
+.title-box-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.title-box-content {
+    font-size: 1.75em;
+    display: flex;
+    align-items: center;
+
+}
+
+.title-box-content ul { 
+    width: 100%;
+}
