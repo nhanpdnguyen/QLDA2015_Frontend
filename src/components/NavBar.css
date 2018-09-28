@@ -1,0 +1,18 @@
+.nav-item-image {
+    width: 40px;
+    height: 35px;
+}
+
+.nav-item-text {
+    font-weight: bold;
+    display: inline-block;
+    color: white;
+}
+
+nav {
+    background-color: #cc332f;
+}
+
+.nav-item {
+    margin-right: 25px;
+}
