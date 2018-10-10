@@ -14,8 +14,6 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
-				<Header></Header>
-				<NavBar></NavBar>
 				<Container fluid>
 					<Row>
 						<Col lg="8" md="8" sm="8" xs="8">

@@ -13,11 +13,6 @@ const items = [
     src: '/images/Carousel-01.png',
     altText: '',
     caption: ''
-  },
-  {
-    src: '/images/Carousel-01.png',
-    altText: '',
-    caption: ''
   }
 ];
 
@@ -60,7 +55,7 @@ class Example extends Component {
   render() {
     const { activeIndex } = this.state;
 
-    const slides = items.map((item) => {
+    const slides = items.map((item, index) => {
       return (
         <CarouselItem
           onExiting={this.onExiting}
