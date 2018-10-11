@@ -1,4 +1,5 @@
-header {
-    background-image: linear-gradient(#ecf2c5, #c4e8e5, #c4e8e5);
+.header {
+    background-image: linear-gradient(#ecf2c5, #c4e8cd, #b6d8d5);
     min-height: 80px;
+    font-size: 1.2vw;
 }

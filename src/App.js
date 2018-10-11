@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Home from './views/Home.js';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import './App.css';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>

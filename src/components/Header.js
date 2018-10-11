@@ -11,26 +11,26 @@ export default class Header extends Component {
 	render() {
 		return (
 			<header>
-				<Container fluid>
+				<Container fluid className="header">
 					<Row className="py-2">
 						<Col md="6" className="mr-auto">
-							<Row>
-								<Col md="3" className="text-center pr-0">
+							<Row className="">
+								<Col md="3" className="d-flex align-items-center justify-content-center pr-0">
 									<img className="w-75" src="/images/Logo-01.png" />
 								</Col>
-								<Col md="9" className="mt-2 pl-0">
-									TRUNG TÂM LUYỆN THI ONLINE <br />
-									CANDYLIGHT
+								<Col md="9" className="pl-0 d-flex flex-column justify-content-center">
+									<div>TRUNG TÂM LUYỆN THI CANDYLIGHT</div>
+									<div>CANDYLIGHT</div>
 								</Col>
 							</Row>
 						</Col>
 						<Col md="6">
-							<Row>
-								<Col md={{ size: 2, offset: 6 }} className="pr-0">
+							<Row className="d-flex justify-content-end">
+								<Col md="2" className="d-flex align-items-center justify-content-center pr-0">
 									<img className="w-75 rounded" src="/images/avatar.png" />
 								</Col>
-								<Col md={{ size: 4 }} className="mt-1 pl-0">
-									<div>Nguyễn Thanh Tùng</div>
+								<Col md="4" className="pl-0 d-flex flex-column justify-content-start">
+									<div className="mt-1">Nguyễn Thanh Tùng</div>
 								</Col>
 							</Row>
 						</Col>

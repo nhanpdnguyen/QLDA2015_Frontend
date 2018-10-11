@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import NavBar from '../components/NavBar';
 import Carousel from '../components/Carousel';
 import TitleBox from '../components/TitleBox';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 
 class Home extends Component {
 	constructor(props) {
