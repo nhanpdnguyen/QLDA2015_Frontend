@@ -15,10 +15,9 @@ nav {
 
 .nav-item {
     margin-right: 40px;
-
 }
 
-.navbar {
-    height: 55px;
-
+.menu-content {
+    border: 1px dashed #fff;
+    margin: 2px 0;
 }
