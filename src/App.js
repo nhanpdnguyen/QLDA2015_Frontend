@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Home from './views/Home.js';
 import Header from './components/Header';
-import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>
@@ -27,6 +27,7 @@ class App extends Component {
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>
+					<Footer></Footer>
 				</div>
 			</Router>
 		);

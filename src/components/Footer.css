@@ -1,8 +1,9 @@
-footer div{
-    min-height: 100px;
+footer{
+    min-height: 20vh;
     background: url("/images/Footer-background-01.png");
-    background-size: auto;
-    display: flex;
-    align-items: flex-end;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     color:red;
+    font-size: small;
 }
