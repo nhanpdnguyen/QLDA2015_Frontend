@@ -12,34 +12,29 @@ export default class Header extends Component {
 		return (
 			<header>
 				<Container fluid>
-					<Row>
+					<Row className="py-2">
 						<Col md="6" className="mr-auto">
 							<Row>
-								<Col md="3" className="text-center">
+								<Col md="3" className="text-center pr-0">
 									<img className="w-75" src="/images/Logo-01.png" />
 								</Col>
-								<Col md="9">
-									TRUNG TÂM LUYỆN THI ONLINE <br/>
+								<Col md="9" className="mt-2 pl-0">
+									TRUNG TÂM LUYỆN THI ONLINE <br />
 									CANDYLIGHT
 								</Col>
 							</Row>
 						</Col>
-					</Row>
-					<Row className="d-flex">
-						<Col md="1" className="mr-auto">
-							<img className="img-fluid" src="/images/Logo-01.png" />
+						<Col md="6">
+							<Row>
+								<Col md={{ size: 2, offset: 6 }} className="pr-0">
+									<img className="w-75 rounded" src="/images/avatar.png" />
+								</Col>
+								<Col md={{ size: 4 }} className="mt-1 pl-0">
+									<div>Nguyễn Thanh Tùng</div>
+								</Col>
+							</Row>
 						</Col>
-						<Col md="1" className="float-right">
-							<img className="img-fluid" src="/images/Logo-01.png" />
-							<div>Nguyễn Thanh Tùng</div>
-						</Col>
 					</Row>
-					{/* <div className="d-flex">
-                        <div className="mr-auto">
-                            <img className="img-fluid" src="/images/Logo-01.png" />
-                        </div>
-                        <div className="">Avatar</div>
-                    </div> */}
 				</Container>
 				<NavBar />
 			</header>
