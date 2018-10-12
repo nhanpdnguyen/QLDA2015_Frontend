@@ -68,8 +68,9 @@ class Example extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <img className="d-block w-100" src={item.src} alt={item.altText} />
-
+          <div className="d-flex justify-content-center align-items-center h-100">
+            <img className="d-block w-75" src={item.src} alt={item.altText} />
+          </div>
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
