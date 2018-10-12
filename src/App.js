@@ -20,13 +20,13 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Header isLoggedIn={false}></Header>
-					<Container fluid>
-						<Switch>
-							<Route exact path="/" component={Home} />
-							<Route path="/about" component={HelloWorld} />
-							<Route component={HelloWorld} />
-						</Switch>
+					<Header isLoggedIn={true}></Header>
+					<Container fluid id="main-content-container">
+							<Switch>
+								<Route exact path="/" component={Home} />
+								<Route path="/about" component={HelloWorld} />
+								<Route component={HelloWorld} />
+							</Switch>
 					</Container>
 					<Footer></Footer>
 				</div>
