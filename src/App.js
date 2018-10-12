@@ -20,7 +20,7 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Header></Header>
+					<Header isLoggedIn={false}></Header>
 					<Container fluid>
 						<Switch>
 							<Route exact path="/" component={Home} />
