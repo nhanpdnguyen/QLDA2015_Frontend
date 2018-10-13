@@ -1,22 +1,31 @@
 .title-box {
     font-size: 1.5vw;
+    border: 1.5px dashed indianred;
+    border-radius: 20px;
+}
+
+.title-box div:nth-child(1) {
+    border-radius: 20px 0px 0px 20px;
+    background: white;
 }
 .title-box-img {
-    width: 100%;
+    width: 90%;
     height: auto;
 }
 
 .title-box-header {
-    font-size: 1.1em;
-    font-weight: bold;
+    font-family: 'UTM_Alexander_0';
+    font-size: 1em;
     text-align: center;
 }
 
 .title-box-content {
+    font-family: 'SVN_Newton';
     font-size: 1.3em;
+    border-left: 1.5px dashed indianred;
     display: flex;
     align-items: center;
-
+    border-radius: 0px 20px 20px 0px;
 }
 
 .title-box-content ul { 
@@ -29,7 +38,7 @@
     }
 
     .title-box-header {
-        font-size: 1.3em;
+        font-size: 1.8em;
     }
 
     .title-box-img {

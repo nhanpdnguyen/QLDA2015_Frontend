@@ -4,12 +4,39 @@ import Carousel from '../components/Carousel';
 import TitleBox from '../components/TitleBox';
 import './Home.css';
 
+let titleBoxInfo = [{
+	header: 'Bài học',
+	src: '/images/Main-icon1-01.png',
+	color: 0xd6f6d3
+},
+{
+	header: 'Thi thử',
+	src: '/images/Main-icon2-01.png',
+	color: 0xf5f5cd
+},
+{
+	header: 'Bài tập',
+	src: '/images/Main-icon3-01.png',
+	color: 0xf5d8e1
+},
+{
+	header: 'Trò chơi',
+	src: '/images/Main-icon4-01.png',
+	color: 0xd2f5f5
+},]
+
 class Home extends Component {
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
+		titleBoxInfo = titleBoxInfo.map((item) => {
+			return (<Col key={item.header} md="6">
+				<TitleBox header={item.header} src={item.src} color={item.color}>
+				</TitleBox>
+			</Col>)
+		})
 		return (
 			<Row>
 				<Col md="8">
@@ -17,22 +44,7 @@ class Home extends Component {
 						<Carousel></Carousel>
 					</Row>
 					<Row>
-						<Col md="6">
-							<TitleBox header="Bài học" src="/images/Main-icon1-01.png">
-							</TitleBox>
-						</Col>
-						<Col md="6">
-							<TitleBox header="Thi thử" src="/images/Main-icon2-01.png">
-							</TitleBox>
-						</Col>
-						<Col md="6">
-							<TitleBox header="Trắc nghiệm" src="/images/Main-icon3-01.png">
-							</TitleBox>
-						</Col>
-						<Col md="6">
-							<TitleBox header="Trò chơi" src="/images/Main-icon4-01.png">
-							</TitleBox>
-						</Col>
+						{titleBoxInfo}
 					</Row>
 				</Col>
 				<Col md="4">
