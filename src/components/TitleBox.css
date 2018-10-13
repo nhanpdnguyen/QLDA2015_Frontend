@@ -1,15 +1,19 @@
+.title-box {
+    font-size: 1.5vw;
+}
 .title-box-img {
     width: 100%;
     height: auto;
 }
 
 .title-box-header {
+    font-size: 1.1em;
     font-weight: bold;
     text-align: center;
 }
 
 .title-box-content {
-    font-size: 1.75em;
+    font-size: 1.3em;
     display: flex;
     align-items: center;
 
@@ -18,3 +22,22 @@
 .title-box-content ul { 
     width: 100%;
 }
+
+@media (max-width: 768px) {
+    .title-box {
+        font-size: initial;
+    }
+
+    .title-box-header {
+        font-size: 1.3em;
+    }
+
+    .title-box-img {
+        width: 70%;
+        height: auto;
+    }
+
+    .title-box-content {
+        font-size: 2em;
+    }
+}    

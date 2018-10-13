@@ -17,25 +17,26 @@ class Home extends Component {
 						<Carousel></Carousel>
 					</Row>
 					<Row>
-						<Col lg="6" md="6" sm="6" xs="6">
+						<Col md="6">
 							<TitleBox header="Bài học" src="/images/Main-icon1-01.png">
 							</TitleBox>
 						</Col>
-						<Col lg="6" md="6" sm="6" xs="6">
+						<Col md="6">
 							<TitleBox header="Thi thử" src="/images/Main-icon2-01.png">
 							</TitleBox>
 						</Col>
-						<Col lg="6" md="6" sm="6" xs="6">
+						<Col md="6">
 							<TitleBox header="Trắc nghiệm" src="/images/Main-icon3-01.png">
 							</TitleBox>
 						</Col>
-						<Col lg="6" md="6" sm="6" xs="6">
+						<Col md="6">
 							<TitleBox header="Trò chơi" src="/images/Main-icon4-01.png">
 							</TitleBox>
 						</Col>
 					</Row>
 				</Col>
 				<Col md="4">
+					BẢNG VÀNG
 				</Col>
 			</Row>
 		);
