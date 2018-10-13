@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Row, Col, Container } from 'reactstrap';
-import NavBar from './NavBar';
 import './Header.css';
 
 export default class Header extends Component {
@@ -53,7 +52,6 @@ export default class Header extends Component {
 						</Col>
 					</Row>
 				</Container>
-				<NavBar />
 			</header>
 		)
 	}

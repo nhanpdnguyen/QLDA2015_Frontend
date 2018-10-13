@@ -9,7 +9,7 @@ export default class TitleBox extends Component {
 
 	render() {
 		let titleBoxHeaderStyle = {
-			color: '#' + ((this.props.color & 0xfefef0) >> 1).toString(16)
+			color: '#' + ((this.props.color & 0xfefefd) >> 1).toString(16)
 		}
 
 		let titleBoxContentStyle = {
