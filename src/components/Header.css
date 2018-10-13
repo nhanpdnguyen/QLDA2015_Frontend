@@ -1,4 +1,38 @@
-header {
-    background-image: linear-gradient(#ecf2c5, #c4e8e5, #c4e8e5);
-    min-height: 80px;
+.header {
+	font-size: 1.2vw;
+	background-image: linear-gradient(#ecf2c5, #c4e8cd, #b6d8d5);
+	/* min-height: 80px; */
+}
+
+.my-logo-text {
+	font-family: 'UTM Guanine'
+}
+
+.my-logo-text div:nth-of-type(1) {
+	font-size: 0.75em;
+	color: #5596dc;
+}
+
+#logo-name {
+	font-size: 1.25em;
+	color: #14497a;
+}
+
+.header button {
+	color: #14497a;
+	border-color: #588ab7;
+	font-size: 1.2vw;
+	font-family: 'UVNChimBienNang'
+}
+
+.header button:hover {
+	background-color: #14497a;
+}
+
+/* For mobile screen (<768px) */
+
+@media (max-width: 767.99px) {
+	.header {
+		display: none;
+	}
 }

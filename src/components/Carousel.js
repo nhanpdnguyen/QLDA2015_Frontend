@@ -4,13 +4,19 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  CarouselCaption
+  CarouselCaption,
+  Row
 } from 'reactstrap';
 import './Carousel.css';
 
 const items = [
   {
     src: '/images/Carousel-01.png',
+    altText: '',
+    caption: ''
+  },
+  {
+    src: '/images/avatar.png',
     altText: '',
     caption: ''
   }
@@ -62,7 +68,9 @@ class Example extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <img src={item.src} alt={item.altText} />
+          <div className="d-flex justify-content-center align-items-center h-100">
+            <img className="d-block w-75" src={item.src} alt={item.altText} />
+          </div>
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );

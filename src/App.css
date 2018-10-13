@@ -1,28 +1,27 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'UTM Guanine';
+  src: url('/fonts/UTM_Guanine_0.ttf');
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+@font-face {
+  font-family: 'UVN_ChimBienNang';
+  src: url('/fonts/UVN_ChimBienNang.ttf');
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+@font-face {
+  font-family: 'UTM_Alexander_0';
+  src: url('/fonts/UTM_Alexander_0.ttf');
 }
 
-.App-title {
-  font-size: 1.5em;
+@font-face {
+  font-family: 'SVN_Newton';
+  src: url('/fonts/SVN_Newton.ttf');
 }
 
-.App-intro {
-  font-size: large;
-}
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#main-content-container {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%), url("/images/Background-01.png");
+  width: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }

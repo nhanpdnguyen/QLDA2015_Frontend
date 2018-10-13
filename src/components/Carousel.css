@@ -1,5 +1,16 @@
+.carousel {
+	width: 100%;
+}
+
+.carousel-inner {
+	height: 100%;
+}
+
+.carousel-item {
+	height: 100%;
+}
+
 .carousel-item img {
-    height: 370px;
-    width: 100%;
-    
+	max-width: 100%;
+	max-height: 100%;
 }
