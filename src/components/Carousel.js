@@ -12,12 +12,12 @@ import './Carousel.css';
 const items = [
   {
     src: '/images/Carousel-01.png',
-    altText: '',
+    altText: 'carousel1',
     caption: ''
   },
   {
     src: '/images/avatar.png',
-    altText: '',
+    altText: 'carousel2',
     caption: ''
   }
 ];
@@ -68,9 +68,7 @@ class Example extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <div className="d-flex justify-content-center align-items-center h-100">
-            <img className="d-block w-75" src={item.src} alt={item.altText} />
-          </div>
+          <img className="" src={item.src} alt={item.altText} />
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
