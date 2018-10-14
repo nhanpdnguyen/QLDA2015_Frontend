@@ -16,7 +16,7 @@ const items = [
     caption: ''
   },
   {
-    src: '/images/avatar.png',
+    src: '/images/Footer-background-01.png',
     altText: 'carousel2',
     caption: ''
   }
@@ -68,6 +68,7 @@ class Example extends Component {
           onExited={this.onExited}
           key={item.src}
         >
+          <span className="helper"></span>
           <img className="" src={item.src} alt={item.altText} />
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
