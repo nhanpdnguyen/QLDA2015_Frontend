@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Row, Col, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 export default class Header extends Component {
@@ -24,7 +25,9 @@ export default class Header extends Component {
 		else {
 			Avatar = (
 				<Col md="3" className="d-flex align-items-center justify-content-end">
-					<button className="btn btn-outline-primary">Đăng nhập</button>
+					<Link to="/dang-nhap">
+						<button className="btn btn-outline-primary">Đăng nhập</button>
+					</Link>
 				</Col>
 			)
 		}
