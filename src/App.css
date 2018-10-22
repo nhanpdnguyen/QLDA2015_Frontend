@@ -26,3 +26,9 @@
   background-repeat: no-repeat;
   min-height: 80vh;
 }
+
+@media (max-width: 768px) {
+  #main-content-container {
+    min-height: 50vh;
+  }
+}

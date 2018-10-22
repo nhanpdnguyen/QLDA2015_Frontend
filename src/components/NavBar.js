@@ -11,6 +11,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './NavBar.css';
 
 export default class NavBar extends Component {
@@ -47,8 +48,12 @@ export default class NavBar extends Component {
                   <div className="nav-item-text ml-2 mt-2">Bài học</div>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Toán</DropdownItem>
-                  <DropdownItem>Tiếng Việt</DropdownItem>
+                  <DropdownItem>
+                    <Link to="/bai-hoc/toan">Toán</Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link to="/bai-hoc/tieng-viet">Tiếng Việt</Link>
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
 

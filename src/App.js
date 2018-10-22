@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 // views
 import Home from './views/Home.js';
 import DangNhap from './views/DangNhap';
+import BaiHoc from './views/BaiHoc';
 // css
 import './App.css';
 
@@ -28,6 +29,7 @@ class App extends Component {
 							<Switch>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/dang-nhap" component={DangNhap} />
+								<Route path="/bai-hoc/:monhoc(toan|tieng-viet)" component={BaiHoc} />
 								<Route component={HelloWorld} />
 							</Switch>
 					</Container>
