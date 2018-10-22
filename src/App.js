@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Home from './views/Home.js';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// components
 import Header from './components/Header';
 import Footer from './components/Footer';
-import NavBar from './components/NavBar'
+import NavBar from './components/NavBar';
+// views
+import Home from './views/Home.js';
+import DangNhap from './views/DangNhap';
+// css
 import './App.css';
 
 const HelloWorld = function (props) {
@@ -12,21 +16,18 @@ const HelloWorld = function (props) {
 }
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-
-	}
 
 	render() {
 		return (
 			<Router>
 				<div>
-					<Header isLoggedIn={true}></Header>
+					<Header isLoggedIn={false}></Header>
 					<NavBar></NavBar>
-					<Container fluid id="main-content-container">
+					<Container fluid id="main-content-container" className="d-flex align-items-center">
+					{/* Row bọc ngoài cùng của 1 view cần phải xài thêm class flex-md-grow-1 */}
 							<Switch>
 								<Route exact path="/" component={Home} />
-								<Route path="/about" component={HelloWorld} />
+								<Route exact path="/dang-nhap" component={DangNhap} />
 								<Route component={HelloWorld} />
 							</Switch>
 					</Container>

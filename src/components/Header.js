@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Row, Col, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 export default class Header extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		let Avatar;
@@ -13,10 +11,10 @@ export default class Header extends Component {
 			Avatar = (
 				<Fragment>
 					<Col md="2" className="d-flex align-items-center justify-content-center pr-0">
-						<img className="w-75 rounded" src="/images/avatar.png" />
+						<img className="w-75 rounded" alt="" src="/images/avatar.png" />
 					</Col>
 					<Col md="4" className="d-flex flex-column justify-content-start pl-0">
-						<div className="mt-1">Nguyễn Thanh Tùng</div>
+						<div className="mt-1" alt="">Nguyễn Thanh Tùng</div>
 					</Col>
 				</Fragment>
 			)
@@ -24,7 +22,9 @@ export default class Header extends Component {
 		else {
 			Avatar = (
 				<Col md="3" className="d-flex align-items-center justify-content-end">
-					<button className="btn btn-outline-primary">Đăng nhập</button>
+					<Link to="/dang-nhap">
+						<button className="btn btn-outline-primary">Đăng nhập</button>
+					</Link>
 				</Col>
 			)
 		}
@@ -36,7 +36,7 @@ export default class Header extends Component {
 						<Col md="6" className="mr-auto">
 							<Row className="">
 								<Col md="3" className="d-flex align-items-center justify-content-center pr-0">
-									<img className="w-75" src="/images/Logo-01.png" />
+									<img className="w-75" alt="" src="/images/Logo-01.png" />
 								</Col>
 								<Col md="9" className="my-logo-text d-flex flex-column justify-content-center pl-0">
 									<div>TRUNG TÂM LUYỆN THI ONLINE</div>

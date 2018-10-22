@@ -1,0 +1,17 @@
+.dang-nhap-container{
+  border: 1px solid indianred;
+  background: #fcfce7;
+  border-radius: 15px;
+}
+
+.fb-google-container button img {
+  width: 3vw;
+  height: 3vw;
+}
+
+@media (max-width: 768px) {
+  .fb-google-container button img {
+    width: 100%;
+    height: auto;
+  }
+}

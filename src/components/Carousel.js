@@ -4,8 +4,7 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  CarouselCaption,
-  Row
+  CarouselCaption
 } from 'reactstrap';
 import './Carousel.css';
 

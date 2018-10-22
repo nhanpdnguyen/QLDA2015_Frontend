@@ -1,0 +1,9 @@
+.facebook-logo-container {
+  background: #3d5a98;
+}
+
+.facebook-logo-container+div {
+  background: #3d5a98cc;
+  color: white;
+  font-weight: bold;
+}
