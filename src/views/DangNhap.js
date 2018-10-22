@@ -3,6 +3,10 @@ import { Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './DangNhap.css';
 
+import GoogleLoginButton from '../components/GoogleLoginButton';
+import FacebookLoginButton from '../components/FacebookLoginButton';
+import LoginForm from '../components/LoginForm';
+
 export default class DangNhap extends Component {
 
   render() {
@@ -18,25 +22,7 @@ export default class DangNhap extends Component {
           <div className="dang-nhap-container py-4 my-3">
             <Row>
               <Col>
-                <form>
-                  <div className="form-row justify-content-center">
-                    <div className="form-group col-9">
-                      <label>Tên đăng nhập</label>
-                      <input type="text" className="form-control" />
-                    </div>
-                  </div>
-                  <div className="form-row justify-content-center">
-                    <div className="form-group col-9">
-                      <label>Mật khẩu</label>
-                      <input type="password" className="form-control" />
-                    </div>
-                  </div>
-                  <div className="form-row justify-content-center">
-                    <div className="form-group col-9 col-md-4">
-                      <button type="submit" className="btn btn-block dang-nhap-btn">Đăng nhập</button>
-                    </div>
-                  </div>
-                </form>
+                <LoginForm />
               </Col>
             </Row>
             <Row>
@@ -52,32 +38,13 @@ export default class DangNhap extends Component {
         <Col md="5" className="d-flex align-items-center">
           <Row className="flex-grow-1 justify-content-center fb-google-container">
             <Col xs="9" className="form-group">
-              <button className="btn btn-block py-0">
-                <Row>
-                  <Col xs="2" className="pr-0 google-logo-container">
-                    <img src="./images/logo_google.png" alt="logo" />
-                  </Col>
-                  <Col xs="10" className="d-flex justify-content-center align-items-center">
-                    <div>Đăng nhập bằng Google</div>
-                  </Col>
-                </Row>
-              </button>
+              <GoogleLoginButton />
             </Col>
             <Col xs="9" className="form-group">
-              <button className="btn btn-block py-0">
-                <Row>
-                  <Col xs="2" className="pr-0 facebook-logo-container">
-                    <img src="./images/logo_facebook.png" alt="logo" />
-                  </Col>
-                  <Col xs="10" className="d-flex justify-content-center align-items-center">
-                    <div>Đăng nhập bằng Facebook</div>
-                  </Col>
-                </Row>
-              </button>
+              <FacebookLoginButton />
             </Col>
           </Row>
         </Col>
-
       </Row>
     )
   }

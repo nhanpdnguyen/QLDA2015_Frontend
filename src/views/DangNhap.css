@@ -4,34 +4,9 @@
   border-radius: 15px;
 }
 
-.dang-nhap-btn {
-  color: white;
-  font-weight: bold;
-  background-color: #cc332f;
-}
 .fb-google-container button img {
   width: 3vw;
   height: 3vw;
-}
-
-.google-logo-container {
-  background: #dc4a38;
-}
-
-.google-logo-container+div {
-  background: #dc4a38d1;
-  color: white;
-  font-weight: bold;
-}
-
-.facebook-logo-container {
-  background: #3d5a98;
-}
-
-.facebook-logo-container+div {
-  background: #3d5a98cc;
-  color: white;
-  font-weight: bold;
 }
 
 @media (max-width: 768px) {

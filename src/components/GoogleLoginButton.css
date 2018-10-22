@@ -1,0 +1,9 @@
+.google-logo-container {
+  background: #dc4a38;
+}
+
+.google-logo-container+div {
+  background: #dc4a38d1;
+  color: white;
+  font-weight: bold;
+}
