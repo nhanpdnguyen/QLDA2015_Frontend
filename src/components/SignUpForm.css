@@ -1,0 +1,13 @@
+.form-field{
+    border: 1px solid indianred;
+    background: #fff6b8;
+    border-radius: 5px;
+  }
+
+  label{
+    color: #838383
+  }
+
+  .form-group{
+    margin-bottom: 0.5rem
+  }
