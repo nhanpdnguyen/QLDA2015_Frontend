@@ -25,6 +25,9 @@ export default class Header extends Component {
 					<Link to="/dang-nhap">
 						<button className="btn btn-outline-primary">Đăng nhập</button>
 					</Link>
+					<Link to="/dang-ky">
+						<button className="ml-2 btn btn-outline-primary">Đăng ký</button>
+					</Link>
 				</Col>
 			)
 		}

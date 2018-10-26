@@ -1,0 +1,10 @@
+.main-dialog{
+    background: #fcfce7;
+    border: 1px solid #d43333;
+    border-radius: 15px;
+}
+
+.subHeader{
+    color: #cd8840;
+    font-weight: bold;
+}
