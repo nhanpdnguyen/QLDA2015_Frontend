@@ -7,17 +7,7 @@ import './UpdateProfile.css';
 /**props: cityOpt, rankOpt */
 
 export default class UpdateProfile extends Component {
-  state = {
-    selectedOption: null,
-  }
-
-  handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
-  }
-
   render() {
-    const { selectedOption } = this.state;
     return (
       <Row className="flex-md-grow-1 my-4 mx-auto py-4 px-2 justify-content-center bg-white">
         {/* Update container*/}
@@ -58,7 +48,7 @@ export default class UpdateProfile extends Component {
                 <div className="form-group row justify-content-center ">
                   <label className="col-sm-4 col-form-label">Học lực:</label>
                   <div className="form-group col-sm-8">
-                    <select value={this.state.value} onChange={this.handleChange} className="form-control form-field">
+                    <select className="form-control form-field">
                       <option value="G">Giỏi</option>
                       <option value="K">Khá</option>
                       <option value="TB">Trung Bình</option>
