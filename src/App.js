@@ -5,12 +5,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
-// views
-import Home from './views/Home.js';
-import DangNhap from './views/DangNhap';
-import BaiHoc from './views/BaiHoc';
-import DangKy from './views/DangKy'
-import UpdateProfile from './views/UpdateProfile'
+// containers
+import Home from './containers/Home.js';
+import DangNhap from './containers/DangNhap';
+import BaiHoc from './containers/BaiHoc';
+import DangKy from './containers/DangKy'
+import UpdateProfile from './containers/UpdateProfile'
 // css
 import './App.css';
 
