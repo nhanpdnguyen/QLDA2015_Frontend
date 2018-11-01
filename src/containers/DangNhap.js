@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from "react-redux";
+
 import './DangNhap.css';
 
 import GoogleLoginButton from '../components/GoogleLoginButton';
 import FacebookLoginButton from '../components/FacebookLoginButton';
 import LoginForm from '../components/LoginForm';
+import { signIn } from '../actions';
 
-export default class DangNhap extends Component {
+class DangNhap extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSignIn = this.handleSignIn.bind(this);
+  }
+
+  handleSignIn(userName, password) {
+    console.log('signInn');
+    this.props.dispatch(signIn(userName, password));
+  }
 
   render() {
+    if (this.props.isLoggedIn) return <Redirect to='/'></Redirect>
     return (
       <Row className="flex-md-grow-1 my-4 justify-content-center">
         <Col xs="12" md="6" className="d-flex justify-content-center align-content-center align-self-center">
@@ -22,7 +35,7 @@ export default class DangNhap extends Component {
           <div className="dang-nhap-container py-4 my-3">
             <Row>
               <Col>
-                <LoginForm />
+                <LoginForm signIn={this.handleSignIn}/>
               </Col>
             </Row>
             <Row>
@@ -49,3 +62,11 @@ export default class DangNhap extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.auth.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(DangNhap);
