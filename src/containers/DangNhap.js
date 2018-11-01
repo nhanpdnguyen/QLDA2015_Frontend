@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
+import { signIn } from '../actions';
 
 import './DangNhap.css';
 
 import GoogleLoginButton from '../components/GoogleLoginButton';
 import FacebookLoginButton from '../components/FacebookLoginButton';
 import LoginForm from '../components/LoginForm';
-import { signIn } from '../actions';
 
 class DangNhap extends Component {
   constructor(props) {

@@ -1,25 +1,43 @@
-import { SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS, SIGN_UP_SUCCESS } from "../actions/actionTypes";
+import { SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS, SIGN_UP_SUCCESS, SIGN_IN_FAIL, SIGN_UP_FAIL } from "../actions/actionTypes";
 
 let initialState = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  accessToken: null
 }
 export default function (state = initialState, action) {
   switch (action.type) {
     case SIGN_IN_SUCCESS: {
-      console.log('sign in successfully');
-      state = {...state, isLoggedIn: true}
+      console.log('reducer: sign in successfully');
+      console.log('accessToken: ', action.accessToken);
+      state = {
+        ...state,
+        isLoggedIn: true,
+        accessToken: action.accessToken
+      }
       return state;
-      break;
+    }
+    case SIGN_IN_FAIL: {
+      console.log('reducer: sign in fail ' + action.errMessage);
+      return state;
     }
     case SIGN_OUT_SUCCESS: {
       console.log('sign out successfully');
-      break;
+      return state;
     }
     case SIGN_UP_SUCCESS: {
-      console.log('sign up successfully');
-      break;
+      console.log('reducer: sign up successfully');
+      console.log('accessToken: ', action.accessToken);
+      state = {
+        ...state,
+        isLoggedIn: true,
+        accessToken: action.accessToken
+      }
+      return state;
+    }
+    case SIGN_UP_FAIL: {
+      console.log('reducer: sign up fail ' + action.errMessage);
+      return state;
     }
     default: return state;
   }
-
 }
