@@ -1,27 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import { Row, Col, Container, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledDropdown } from 'reactstrap';
+import { Row, Col, Container, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledDropdown } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
 export default class Header extends Component {
-	// constructor(props) {
-	// 	super(props);
-
-	// 	this.toggle = this.toggle.bind(this);
-	// 	this.state = {
-	// 		dropdownOpen: false
-	// 	};
-	// }
-
-	// toggle() {
-	// 	this.setState({
-	// 		dropdownOpen: !this.state.dropdownOpen
-	// 	});
-	// }
-
 	render() {
 		let Avatar;
-		if (!this.props.isLoggedIn) { //CHANGE THIS CHANGE THISCHANGE THISCHANGE THISCHANGE THISCHANGE THIS
+		if (this.props.isLoggedIn) { 
 			Avatar = (
 				<Fragment>
 					<Col md="2" className="d-flex align-items-center justify-content-center pr-0">
@@ -29,13 +14,12 @@ export default class Header extends Component {
 					</Col>
 					<Col md="5" className="d-flex justify-content-start pl-0">
 						<div className="mt-1" alt="">Nguyễn Thanh Tùng</div>
-						<div className="tai-khoan-dropdown mt-1 ml-1">
+						<div className="tai-khoan-dropdown mt-1 ml-2">
 							<UncontrolledDropdown>
 								<DropdownToggle caret color="info"></DropdownToggle>
 								<DropdownMenu right>
-									<DropdownItem>Thông tin tài khoản</DropdownItem>
-									<DropdownItem divider />
-									<DropdownItem>Đăng xuất</DropdownItem>
+									<DropdownItem><Link to="/cap-nhat-tai-khoan">Thông tin tài khoản</Link></DropdownItem>
+									<DropdownItem onClick={this.props.signOut}>Đăng xuất</DropdownItem>
 								</DropdownMenu>
 							</UncontrolledDropdown>
 						</div>
@@ -47,10 +31,10 @@ export default class Header extends Component {
 			Avatar = (
 				<Col md="3" className="d-flex align-items-center justify-content-end ">
 					<Link to="/dang-nhap">
-						<button className="btn btn-outline-primary dang-nhap-btn">Đăng nhập</button>
+						<button className="btn btn-outline-primary dang-nhap-header-btn">Đăng nhập</button>
 					</Link>
 					<Link to="/dang-ky">
-						<button className="ml-2 btn btn-outline-primary dang-ky-btn">Đăng ký</button>
+						<button className="ml-2 btn btn-outline-primary dang-ky-header-btn">Đăng ký</button>
 					</Link>
 				</Col>
 			)

@@ -18,15 +18,20 @@
 	color: #14497a;
 }
 
-.dang-nhap-btn, .dang-ky-btn {
+.dang-nhap-header-btn, .dang-ky-header-btn {
 	color: #14497a;
 	border-color: #588ab7;
 	font-size: 1.2vw;
 	font-family: 'UVN_ChimBienNang'
 }
 
-.dang-ky-btn:hover, .dang-nhap-btn:hover {
+.dang-ky-header-btn:hover, .dang-nhap-header-btn:hover {
 	background-color: #14497a;
+}
+
+.header a {
+	text-decoration: none;
+	color: #14497a
 }
 
 .tai-khoan-dropdown button.btn {
@@ -35,7 +40,8 @@
 }
 
 .dropdown-menu button.dropdown-item {
-	font-size: 1.2vw
+	font-size: 1.2vw;
+	color: #14497a
 }
 
 /* For mobile screen (<768px) */

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { REQUESTING, REQUEST_SUCCESS, REQUEST_FAIL, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_UP_SUCCESS, SIGN_UP_FAIL } from './actionTypes';
-import { GET, POST, PUT, NORMAL_SIGN_IN, FACEBOOK_SIGN_IN, GOOGLE_SIGN_IN, NORMAL_SIGN_UP, FACEBOOK_SIGN_UP, GOOGLE_SIGN_UP } from "../constants";
+import { REQUESTING, REQUEST_SUCCESS, REQUEST_FAIL, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_UP_SUCCESS, SIGN_UP_FAIL, SIGN_OUT_SUCCESS } from './actionTypes';
+import { GET, POST, PUT, NORMAL_SIGN_IN, FACEBOOK_SIGN_IN, GOOGLE_SIGN_IN, NORMAL_SIGN_UP, FACEBOOK_SIGN_UP, GOOGLE_SIGN_UP, NORMAL_SIGN_OUT, FACEBOOK_SIGN_OUT, GOOGLE_SIGN_OUT } from "../constants";
 
 //URL const
 const BASE_URL = 'http://103.114.107.16:8001/api';
@@ -144,7 +144,29 @@ export const signUp = function (firstName, userName, password, rePassword, email
       case GOOGLE_SIGN_UP: {
         break;
       }
-      default: throw new Error('Unknown sign in method');
+      default: throw new Error('Unknown sign up method');
+    }
+  }
+}
+
+export const signOutSuccess = function () {
+  return {
+    type: SIGN_OUT_SUCCESS
+  }
+}
+
+export const signOut = function(method = NORMAL_SIGN_OUT) {
+  return (dispatch) => {
+    switch(method) {
+      case NORMAL_SIGN_OUT: {
+        dispatch(requesting());
+        dispatch(signOutSuccess());
+        break;
+      }
+      case FACEBOOK_SIGN_OUT:
+      case GOOGLE_SIGN_OUT:
+      break;
+      default: throw new Error('Unknow sign out method');
     }
   }
 }
