@@ -12,6 +12,7 @@ import DangNhap from './containers/DangNhap';
 import BaiHoc from './containers/BaiHoc';
 import DangKy from './containers/DangKy';
 import UpdateProfile from './containers/UpdateProfile';
+import CheckAuthenticated from "./containers/CheckAuthenticated";
 // css
 import './App.css';
 
@@ -48,8 +49,7 @@ class App extends Component {
 							<Route exact path="/dang-nhap" component={DangNhap} />
 							<Route path="/bai-hoc/:monhoc(toan|tieng-viet)" component={BaiHoc} />
 							<Route exact path="/dang-ky" component={DangKy} />
-							<Route exact path="/cap-nhat-tai-khoan"
-								render={() => <UpdateProfile cityOpt={cityOpt} rankOpt={rankOpt} />} />
+							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfile)} />
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>

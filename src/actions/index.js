@@ -47,6 +47,7 @@ export const requestApi = function (method, url, data) {
 }
 
 export const signInSuccess = function (accessToken) {
+  localStorage.setItem('accessToken', accessToken);
   return ({
     type: SIGN_IN_SUCCESS,
     accessToken: accessToken
@@ -97,6 +98,7 @@ export const signIn = function (userName, password, method = NORMAL_SIGN_IN) {
 }
 
 export const signUpSuccess = function (accessToken) {
+  localStorage.setItem('accessToken', accessToken);
   return ({
     type: SIGN_UP_SUCCESS,
     accessToken: accessToken
@@ -150,6 +152,7 @@ export const signUp = function (firstName, userName, password, rePassword, email
 }
 
 export const signOutSuccess = function () {
+  localStorage.removeItem('accessToken');
   return {
     type: SIGN_OUT_SUCCESS
   }
