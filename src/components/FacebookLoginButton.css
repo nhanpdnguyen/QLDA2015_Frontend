@@ -7,3 +7,11 @@
   color: white;
   font-weight: bold;
 }
+
+.facebook-login-button {
+  background: transparent;
+  font-size: 1.6vw;
+  font-weight: bold;
+  color: white;
+  border: none;
+}

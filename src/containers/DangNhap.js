@@ -9,16 +9,27 @@ import './DangNhap.css';
 import GoogleLoginButton from '../components/GoogleLoginButton';
 import FacebookLoginButton from '../components/FacebookLoginButton';
 import LoginForm from '../components/LoginForm';
+import GoogleLogin, { GoogleLogout } from 'react-google-login';
 
 class DangNhap extends Component {
   constructor(props) {
     super(props);
     this.handleSignIn = this.handleSignIn.bind(this);
-  }
+    this.signInSuccessCallback = this.signInSuccessCallback.bind(this);
+    this.signInFailCallback = this.signInFailCallback.bind(this);
+    }
 
   handleSignIn(userName, password) {
     console.log('signInn');
     this.props.dispatch(signIn(userName, password));
+  }
+
+  signInSuccessCallback(response) {
+    console.log(response);
+  }
+
+  signInFailCallback(err) {
+    console.log(err);
   }
 
   render() {
@@ -51,10 +62,15 @@ class DangNhap extends Component {
         <Col md="5" className="d-flex align-items-center">
           <Row className="flex-grow-1 justify-content-center fb-google-container">
             <Col xs="9" className="form-group">
-              <GoogleLoginButton />
+              <GoogleLoginButton 
+              signInSuccessCallback={this.signInSuccessCallback}
+              signInFailCallback={this.signInFailCallback}
+              />
             </Col>
             <Col xs="9" className="form-group">
-              <FacebookLoginButton />
+              <FacebookLoginButton 
+              signInSuccessCallback={this.signInSuccessCallback}
+              />
             </Col>
           </Row>
         </Col>
