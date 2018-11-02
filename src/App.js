@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 // components
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
@@ -33,6 +34,11 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
+					{this.props.isRequesting ?
+						<div className="spinner-container d-flex justify-content-center align-items-center">
+							<div className="spinner"></div>
+						</div> : null
+					}
 					<HeaderContainer></HeaderContainer>
 					<NavBar></NavBar>
 					<Container fluid id="main-content-container" className="d-flex align-items-center">
@@ -54,4 +60,10 @@ class App extends Component {
 	}
 }
 
-export default App;
+function mapStateToProps(state) {
+	return {
+		isRequesting: state.isRequesting
+	}
+}
+
+export default connect(mapStateToProps)(App);

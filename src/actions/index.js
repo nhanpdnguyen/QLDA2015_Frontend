@@ -65,15 +65,17 @@ export const signIn = function (userName, password, method = NORMAL_SIGN_IN) {
     switch (method) {
       case NORMAL_SIGN_IN: {
         let data = {
-          username: userName,
-          password: password
+          userName: userName,
+          passWord: password
         }
         dispatch(requestApi(POST, BASE_URL + '/account', data)).then(result => {
           console.log(result.data.success);
           if (result.data.success) dispatch(signInSuccess(result.data.value.access_token));
           else dispatch(signInFail('Tên hoặc mật khẩu không hợp lệ'));
         }, err => {
-          switch (err.response.status) {
+          console.log(err.response)
+          let status = err.response && err.response.status;
+          switch (status) { 
             case 401: {
               dispatch(signInFail('Sai tên hoặc mật khẩu'));
               break;
@@ -113,9 +115,9 @@ export const signUp = function (firstName, userName, password, rePassword, email
     switch (method) {
       case NORMAL_SIGN_UP: {
         let data = {
-          username: userName,
-          password: password,
-          rePassword: rePassword,
+          userName: userName,
+          passWord: password,
+          rePassWord: rePassword,
           //TESTING PURPOSE
           email: 'abc@test.com'
         }
@@ -124,7 +126,9 @@ export const signUp = function (firstName, userName, password, rePassword, email
           if (result.data.success) dispatch(signUpSuccess(result.data.value.access_token));
           else dispatch(signUpFail(result.data.message));
         }, err => {
-          switch (err.response.status) {
+          console.log(err.response)
+          let status = err.response && err.response.status;
+          switch (status) {
             case 401: {
               dispatch(signUpFail('Tên đăng nhập đã tồn tại'));
               break;
