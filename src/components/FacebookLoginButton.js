@@ -15,7 +15,7 @@ export default class FacebookLoginButton extends Component {
           <Col xs="10" className="d-flex justify-content-center align-items-center">
             <FacebookLogin 
             appId="1422720417858064"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
             textButton="Đăng nhập với Facebook"
             cssClass="facebook-login-button"

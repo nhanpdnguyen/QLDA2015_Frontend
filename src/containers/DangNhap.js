@@ -9,23 +9,32 @@ import './DangNhap.css';
 import GoogleLoginButton from '../components/GoogleLoginButton';
 import FacebookLoginButton from '../components/FacebookLoginButton';
 import LoginForm from '../components/LoginForm';
-import GoogleLogin, { GoogleLogout } from 'react-google-login';
+import { GOOGLE_SIGN_IN, FACEBOOK_SIGN_IN } from '../constants';
 
 class DangNhap extends Component {
   constructor(props) {
     super(props);
     this.handleSignIn = this.handleSignIn.bind(this);
-    this.signInSuccessCallback = this.signInSuccessCallback.bind(this);
+    this.signInGoogleSuccessCallback = this.signInGoogleSuccessCallback.bind(this);
+    this.signInFacebookSuccessCallback = this.signInFacebookSuccessCallback.bind(this);
     this.signInFailCallback = this.signInFailCallback.bind(this);
     }
 
   handleSignIn(userName, password) {
     console.log('signInn');
-    this.props.dispatch(signIn(userName, password));
+    this.props.dispatch(signIn(userName, password, null));
   }
 
-  signInSuccessCallback(response) {
-    console.log(response);
+  signInGoogleSuccessCallback(response) {
+    console.log(response.accessToken);
+    let accessTokenFromGoogle = response.accessToken;
+    this.props.dispatch(signIn(null, null, accessTokenFromGoogle, GOOGLE_SIGN_IN));
+  }
+
+  signInFacebookSuccessCallback(response) {
+    console.log(response.accessToken);
+    let accessTokenFromFacebook = response.accessToken;
+    this.props.dispatch(signIn(null, null, accessTokenFromFacebook, FACEBOOK_SIGN_IN));
   }
 
   signInFailCallback(err) {
@@ -63,13 +72,13 @@ class DangNhap extends Component {
           <Row className="flex-grow-1 justify-content-center fb-google-container">
             <Col xs="9" className="form-group">
               <GoogleLoginButton 
-              signInSuccessCallback={this.signInSuccessCallback}
+              signInSuccessCallback={this.signInGoogleSuccessCallback}
               signInFailCallback={this.signInFailCallback}
               />
             </Col>
             <Col xs="9" className="form-group">
               <FacebookLoginButton 
-              signInSuccessCallback={this.signInSuccessCallback}
+              signInSuccessCallback={this.signInFacebookSuccessCallback}
               />
             </Col>
           </Row>

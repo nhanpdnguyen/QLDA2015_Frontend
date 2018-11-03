@@ -3,7 +3,20 @@ import { Row, Col } from 'reactstrap';
 
 import './UpdateProfile.css';
 
-/**props: cityOpt, rankOpt */
+const cityOpt = [
+  { value: "HCM", label: "TP.Hồ Chí Minh" },
+  { value: "Hải Phòng", label: "Hải Phòng" },
+  { value: "Ninh Thuận", label: "Ninh Thuận" },
+  { value: "Nha Trang", label: "Nha Trang" },
+  { value: "Cà Mau", label: "Cà Mau" },
+  { value: "HN", label: "Hà Nội" }
+]
+const rankOpt = [
+  { value: "G", label: "Giỏi" },
+  { value: "K", label: "Khá" },
+  { value: "TB", label: "Trung Bình" },
+  { value: "Y", label: "Yếu" }
+]
 
 export default class UpdateProfile extends Component {
   render() {
@@ -35,7 +48,12 @@ export default class UpdateProfile extends Component {
                 <div className="form-group row justify-content-center ">
                   <label className="col-sm-4 col-form-label">Tỉnh/Thành phố:</label>
                   <div className="form-group col-sm-8">
-                    <input type="text" className="form-control form-field" />
+                    <select className="form-control form-field">
+                      <option></option>
+                      {cityOpt.map((item) => {
+                        return <option key={item.value} value={item.value}>{item.label}</option>
+                      })}
+                    </select>
                   </div>
                 </div>
                 <div className="form-group row justify-content-center ">
@@ -48,10 +66,10 @@ export default class UpdateProfile extends Component {
                   <label className="col-sm-4 col-form-label">Học lực:</label>
                   <div className="form-group col-sm-8">
                     <select className="form-control form-field">
-                      <option value="G">Giỏi</option>
-                      <option value="K">Khá</option>
-                      <option value="TB">Trung Bình</option>
-                      <option value="Y">Yếu</option>
+                      <option></option>
+                      {rankOpt.map((item) => {
+                        return <option key={item.value} value={item.value}>{item.label}</option>
+                      })}
                     </select>
                   </div>
                 </div>
@@ -76,7 +94,12 @@ export default class UpdateProfile extends Component {
                 <div className="form-group row justify-content-center ">
                   <label className="col-sm-4 col-form-label">Tỉnh/Thành phố:</label>
                   <div className="form-group col-sm-8">
-                    <input type="text" className="form-control form-field" />
+                    <select className="form-control form-field">
+                      <option></option>
+                      {cityOpt.map((item) => {
+                        return <option key={item.value} value={item.value}>{item.label}</option>
+                      })}
+                    </select>
                   </div>
                 </div>
                 <div className="form-group row justify-content-center ">
@@ -97,8 +120,8 @@ export default class UpdateProfile extends Component {
         </Col>
         <Col md="1"></Col>
 
-          <button type="submit" className="col-3 mt-3 mr-3 btn btn-block dang-nhap-btn">Cập nhật</button>
-          <button type="submit" className="col-3 mt-3 btn btn-block dang-nhap-btn">Để sau</button>
+        <button type="submit" className="col-3 mt-3 mr-3 btn btn-block dang-nhap-btn">Cập nhật</button>
+        <button type="submit" className="col-3 mt-3 btn btn-block dang-nhap-btn">Để sau</button>
 
       </Row>
 

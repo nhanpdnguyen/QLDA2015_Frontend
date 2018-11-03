@@ -20,15 +20,6 @@ const HelloWorld = function (props) {
 	return <div>Hello world</div>
 }
 
-const cityOpt = [{ value: "HCM", label: "tp.Hồ Chí Minh" },
-{ value: "Hải Phòng", label: "Hải Phòng" },
-{ value: "Ninh Thuận", label: "Ninh Thuận" },
-{ value: "Nha Trang", label: "Nha Trang" },
-{ value: "Cà Mau", label: "Cà Mau" },
-{ value: "HN", label: "Hà Nội" }
-]
-const rankOpt = [{ value: "G", label: "Giỏi" }, { value: "K", label: "Khá" }, { value: "TB", label: "Trung Bình" }, { value: "Y", label: "Yếu" }]
-
 class App extends Component {
 
 	render() {
