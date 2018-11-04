@@ -4,13 +4,13 @@
   border-radius: 15px;
 }
 
-.fb-google-container button img {
+.fb-google-container img {
   width: 3vw;
   height: 3vw;
 }
 
 @media (max-width: 768px) {
-  .fb-google-container button img {
+  .fb-google-container img {
     width: 100%;
     height: auto;
   }

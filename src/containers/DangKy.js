@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { signUp } from '../actions';
+
 import './DangKy.css';
 
 import SignUpForm from '../components/SignUpForm';
+import { NORMAL_SIGN_UP } from '../constants';
 
-export default class DangKy extends Component {
+class DangKy extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSignUp = this.handleSignUp.bind(this);
+  }
+
+  handleSignUp(firstName, userName, password, rePassword, email) {
+    this.props.dispatch(signUp(firstName, userName, password, rePassword, 'abc@test.com', NORMAL_SIGN_UP));
+  }
 
   render() {
     return (
@@ -24,7 +36,7 @@ export default class DangKy extends Component {
 
           <div className="dang-ky-container py-4 my-3">
             <Col>
-              <SignUpForm></SignUpForm>
+              <SignUpForm signUp={this.handleSignUp}></SignUpForm>
             </Col>
             <Col className="row justify-content-center">
               Nếu bạn đã là thành viên, &nbsp; <Link to="/dang-nhap">bấm vào đây để đăng nhập</Link>
@@ -35,3 +47,11 @@ export default class DangKy extends Component {
     )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    isLoggedIn: state.isLoggedIn
+  }
+} 
+
+export default connect(mapStateToProps)(DangKy);

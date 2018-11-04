@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
+import FacebookLogin from 'react-facebook-login';
 
 import './FacebookLoginButton.css';
 
 export default class FacebookLoginButton extends Component {
   render() {
     return (
-      <button className="btn btn-block py-0">
+      <div className="btn btn-block py-0">
         <Row>
           <Col xs="2" className="pr-0 facebook-logo-container">
-            <img src="./images/logo_facebook.png" alt="logo" />
+            <img className="mt-2" src="./images/logo_facebook.png" alt="logo" />
           </Col>
           <Col xs="10" className="d-flex justify-content-center align-items-center">
-            <div>Đăng nhập bằng Facebook</div>
+            <FacebookLogin 
+            appId="1422720417858064"
+            autoLoad={false}
+            fields="name,email,picture"
+            textButton="Đăng nhập với Facebook"
+            cssClass="facebook-login-button"
+            callback={this.props.signInSuccessCallback}/>
           </Col>
         </Row>
-      </button>
+      </div>
     )
   }
 }

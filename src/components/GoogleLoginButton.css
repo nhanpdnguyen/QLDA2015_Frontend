@@ -1,5 +1,6 @@
 .google-logo-container {
   background: #dc4a38;
+  overflow: hidden;
 }
 
 .google-logo-container+div {
