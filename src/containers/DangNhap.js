@@ -21,18 +21,15 @@ class DangNhap extends Component {
     }
 
   handleSignIn(userName, password) {
-    console.log('signInn');
     this.props.dispatch(signIn(userName, password, null));
   }
 
   signInGoogleSuccessCallback(response) {
-    console.log(response.accessToken);
     let accessTokenFromGoogle = response.accessToken;
     this.props.dispatch(signIn(null, null, accessTokenFromGoogle, GOOGLE_SIGN_IN));
   }
 
   signInFacebookSuccessCallback(response) {
-    console.log(response.accessToken);
     let accessTokenFromFacebook = response.accessToken;
     this.props.dispatch(signIn(null, null, accessTokenFromFacebook, FACEBOOK_SIGN_IN));
   }

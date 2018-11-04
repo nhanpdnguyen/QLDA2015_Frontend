@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 // components
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
+
 // containers
 import HeaderContainer from './containers/HeaderContainer';
 import Home from './containers/Home.js';
 import DangNhap from './containers/DangNhap';
 import BaiHoc from './containers/BaiHoc';
 import DangKy from './containers/DangKy';
-import UpdateProfile from './containers/UpdateProfile';
+import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
 // css
 import './App.css';
@@ -40,7 +41,7 @@ class App extends Component {
 							<Route exact path="/dang-nhap" component={DangNhap} />
 							<Route path="/bai-hoc/:monhoc(toan|tieng-viet)" component={BaiHoc} />
 							<Route exact path="/dang-ky" component={DangKy} />
-							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfile)} />
+							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>

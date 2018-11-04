@@ -5,7 +5,9 @@ import Header from '../components/Header';
 import { NORMAL_SIGN_OUT } from "../constants";
 
 const mapStateToProps = (state) => ({
-  isLoggedIn: state.auth.isLoggedIn
+  isLoggedIn: state.auth.isLoggedIn,
+  firstName: state.profile.firstName,
+  lastName: state.profile.lastName
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

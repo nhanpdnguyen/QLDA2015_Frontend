@@ -1,4 +1,5 @@
 import auth from "./authReducer";
+import profile from './profileReducer';
 import { combineReducers } from "redux";
 import { REQUESTING } from "../actions/actionTypes";
 
@@ -11,5 +12,5 @@ const isRequesting = function (state = false, action) {
   }
 }
 
-const rootReducer = combineReducers({ isRequesting, auth });
+const rootReducer = combineReducers({ isRequesting, auth, profile });
 export default rootReducer;

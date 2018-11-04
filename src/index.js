@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import rootReducer from './reducers';
-import { signInSuccess } from './actions';
+import { signInSuccess, getUserProfile } from './actions';
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
@@ -16,6 +16,7 @@ const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 const accessToken = localStorage.getItem('accessToken');
 if (accessToken) {
   store.dispatch(signInSuccess(accessToken));
+  store.dispatch(getUserProfile());
 }
 
 ReactDOM.render(

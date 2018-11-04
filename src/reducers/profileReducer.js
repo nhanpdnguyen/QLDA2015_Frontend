@@ -1,24 +1,27 @@
-import { SIGN_IN_SUCCESS } from "../actions/actionTypes";
+import { RECEIVE_PROFILE } from "../actions/actionTypes";
 
 let initalState = {
-  userId: null,
-  userName: null,
+  userId: '',
+  userName: '',
   pointReward: 0,
-  firstName: null,
-  lastName: null,
-  region: null,
-  school: null,
-  capacity: null,
-  firstNameParent: null,
-  lastNameParent: null,
-  emailParent: null,
-  phoneParent: null,
-  regionParent: null
+  firstName: '',
+  lastName: '',
+  region: '',
+  school: '',
+  capacity: '',
+  firstNameParent: '',
+  lastNameParent: '',
+  emailParent: '',
+  phoneParent: '',
+  regionParent: ''
 }
 
 export default function (state = initalState, action) {
+  //console.log(action.profile)
   switch (action.type) {
-
+    case RECEIVE_PROFILE: {
+      return action.profile
+    }
     default: return state
   }
 }

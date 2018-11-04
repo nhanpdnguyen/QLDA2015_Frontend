@@ -14,3 +14,4 @@ export const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 export const SIGN_OUT_SUCCESS = 'SIGN_OUT_SUCCESS';
 export const SIGN_OUT_FAIL = 'SIGN_OUT_FAIL';
 
+export const RECEIVE_PROFILE = 'RECEIVE_PROFILE';
