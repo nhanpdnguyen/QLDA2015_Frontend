@@ -43,7 +43,7 @@ class DangNhap extends Component {
     return (
       <Row className="flex-md-grow-1 my-4 justify-content-center">
         <Col xs="12" md="6" className="d-flex justify-content-center align-content-center align-self-center">
-          <div>Đăng nhập</div>
+          <div className="dang-nhap-title">Đăng nhập</div>
         </Col>
         <Col md="5">
         </Col>

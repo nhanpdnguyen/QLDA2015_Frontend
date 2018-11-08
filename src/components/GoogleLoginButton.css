@@ -8,3 +8,18 @@
   color: white;
   font-weight: bold;
 }
+
+.google-login-button {
+  background: transparent;
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1.5vw;
+  border: none
+}
+
+@media(max-width: 768px) {
+  .google-login-button {
+  font-size: initial
+  }
+}

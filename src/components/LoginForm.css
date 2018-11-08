@@ -2,4 +2,19 @@
   color: white;
   font-weight: bold;
   background-color: #cc332f;
+  font-size: 1.3vw;
+}
+
+.login-form input {
+  height: 5vh;
+}
+
+@media(max-width: 768px) {
+  .dang-nhap-btn {
+  font-size: initial
+  }
+
+  .login-form input {
+    height: initial;
+  }
 }

@@ -51,6 +51,8 @@ html {
   background-repeat: no-repeat;
 }
 
-@media (max-width: 768px) {
-  #main-content-container {}
+@media(max-width: 768px) {
+  * {
+  font-size: initial
+  }
 }

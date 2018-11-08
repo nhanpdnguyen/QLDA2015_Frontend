@@ -28,7 +28,7 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="login-form" onSubmit={this.handleSubmit}>
         <div className="form-row justify-content-center">
           <div className="form-group col-9">
             <label htmlFor="userName">Tên đăng nhập</label>

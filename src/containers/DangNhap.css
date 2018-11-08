@@ -2,6 +2,14 @@
   border: 1px solid indianred;
   background: #fcfce7;
   border-radius: 15px;
+  font-size: 1.5vw;
+}
+
+.dang-nhap-title {
+  font-family: 'UVN_ChimBienNang';
+  text-transform: uppercase;
+  font-size: 2.5vw;
+  color: #cc332f;
 }
 
 .fb-google-container img {
@@ -13,5 +21,13 @@
   .fb-google-container img {
     width: 100%;
     height: auto;
+  }
+
+  .dang-nhap-title {
+    font-size: xx-large;
+  }
+
+  .dang-nhap-container {
+    font-size: initial
   }
 }

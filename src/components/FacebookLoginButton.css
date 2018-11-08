@@ -10,8 +10,14 @@
 
 .facebook-login-button {
   background: transparent;
-  font-size: 1.6vw;
+  font-size: 1.5vw;
   font-weight: bold;
   color: white;
   border: none;
+}
+
+@media(max-width: 768px) {
+  .facebook-login-button {
+  font-size: initial
+  }
 }

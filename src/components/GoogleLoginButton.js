@@ -16,14 +16,7 @@ export default class GoogleLoginButton extends Component {
             <GoogleLogin
               clientId="659342906206-r8fkbfldoporimfkqr43m5gchijk5qnu.apps.googleusercontent.com"
               buttonText="Đăng nhập với Google"
-              style={{
-                background: "transparent",
-                color: "white",
-                fontFamily: "inherit",
-                fontWeight: "bold",
-                fontSize: "1.6vw",
-                border: "none"
-              }}
+              className="google-login-button"
               onSuccess={this.props.signInSuccessCallback}
               onFailure={this.props.signInFailCallback}
             />
