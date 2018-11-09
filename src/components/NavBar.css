@@ -16,7 +16,7 @@ nav {
 
 .navbar-brand img {
     width: 67px;
-}   
+}
 
 .navbar-brand a {
     text-decoration: none;
@@ -40,3 +40,8 @@ nav {
     margin: 2px 0;
 }
 
+@media(max-width: 768px) {
+    nav {
+        font-size: initial;
+    }
+}

@@ -46,14 +46,14 @@ export default class NavBar extends Component {
             <Nav className="mx-auto" navbar>
               {
                 this.props.isLoggedIn ?
-                  <NavItem>
+                  <NavItem className="d-md-none">
                     <NavLink href="/cap-nhat-tai-khoan">
                       <img className="nav-item-image" alt="Trang chủ" src="/images/avatar.png" />
                       <div className="nav-item-text ml-2 mt-2">{this.props.firstName + ' ' + this.props.lastName}</div>
                     </NavLink>
                   </NavItem>
                   :
-                  <NavItem>
+                  <NavItem className="d-md-none">
                     <NavLink href="/dang-nhap">
                       <img className="nav-item-image" alt="Đăng nhập" src="" />
                       <div className="nav-item-text ml-2 mt-2">Đăng nhập</div>
@@ -120,7 +120,7 @@ export default class NavBar extends Component {
 
               {
                 this.props.isLoggedIn ?
-                  <NavItem>
+                  <NavItem className="d-md-none">
                     <NavLink href="#" onClick={this.props.signOut}>
                       <img className="nav-item-image" alt="Đăng xuất" src="" />
                       <div className="nav-item-text ml-2 mt-2">Đăng xuất</div>
