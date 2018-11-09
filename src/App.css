@@ -40,8 +40,13 @@ html {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 #main-content-container {
@@ -49,10 +54,12 @@ html {
   width: 100%;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  padding-bottom: 3vh;
+  padding-top: 2vh;
 }
 
 @media(max-width: 768px) {
   * {
-  font-size: initial
+    font-size: initial;
   }
 }
