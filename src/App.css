@@ -59,7 +59,7 @@ html {
 }
 
 @media(max-width: 768px) {
-  * {
+  /* * {
     font-size: initial;
-  }
+  } */
 }

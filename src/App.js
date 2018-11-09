@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 // components
 import Footer from './components/Footer';
-import NavBar from './components/NavBar';
 
 // containers
 import HeaderContainer from './containers/HeaderContainer';
@@ -16,6 +15,7 @@ import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
 // css
 import './App.css';
+import NavBarContainer from './containers/NavBarContainer';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>
@@ -33,7 +33,7 @@ class App extends Component {
 						</div> : null
 					}
 					<HeaderContainer></HeaderContainer>
-					<NavBar></NavBar>
+					<NavBarContainer></NavBarContainer>
 					<Container fluid id="main-content-container" className="d-flex align-items-center">
 						{/* Row bọc ngoài cùng của 1 view cần phải xài thêm class flex-md-grow-1 */}
 						<Switch>
