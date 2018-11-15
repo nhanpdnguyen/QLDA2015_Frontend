@@ -16,6 +16,7 @@ import CheckAuthenticated from "./containers/CheckAuthenticated";
 // css
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
+import TestGame from './components/TestGame';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>
@@ -42,6 +43,7 @@ class App extends Component {
 							<Route path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHoc} />
 							<Route exact path="/dang-ky" component={DangKy} />
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
+							<Route exact path="/testgame" component={TestGame}/>
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>
