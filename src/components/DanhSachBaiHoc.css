@@ -16,22 +16,34 @@
   border-radius: 15px;
 }
 
+.ds-bai-hoc-title {
+  font-family: 'UTM_Alexander_0';
+  font-size: 5vw;
+}
+
+.ds-bai-hoc-chuyen-de-title {
+  font-family: 'UTM_Alexander_0';
+  font-size: 2vw;
+}
+
 /* Toán */
 .ds-bai-hoc-title-container.toan {
   background: rgba(108, 117, 125, 0.11);
   border-radius: 15px;
 }
 
-.ds-bai-hoc-title.toan {
-  font-family: 'UTM_Alexander_0';
-  font-size: 6vw;
+.toan {
   color: #1ba7c6;
 }
 
-.ds-bai-hoc-chuyen-de-title.toan {
-  font-family: 'UTM_Alexander_0';
-  font-size: 2vw;
-  color: #1ba7c6;
+/* Tiếng việt */
+.ds-bai-hoc-title-container.tieng-viet {
+  background: rgba(49, 190, 104, 0.14);
+  border-radius: 15px;
+}
+
+.tieng-viet {
+  color: #18c618;
 }
 
 @media (max-width: 768px) {
@@ -39,11 +51,11 @@
     border-left: none;
   }
 
-  .ds-bai-hoc-chuyen-de-title.toan, .ds-bai-hoc-container li {
+  .ds-bai-hoc-chuyen-de-title, .ds-bai-hoc-container li {
     font-size: initial;
   }
 
-  .ds-bai-hoc-title.toan {
-    font-size: xx-large;
+  .ds-bai-hoc-title {
+    font-size: x-large;
   }
 }
