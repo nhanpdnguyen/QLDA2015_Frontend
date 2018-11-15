@@ -185,17 +185,10 @@ export const signUpFail = function (errMessage) {
   })
 }
 
-export const signUp = function (firstName, userName, password, rePassword, email, method = NORMAL_SIGN_UP) {
+export const signUp = function (data, method = NORMAL_SIGN_UP) {
   return (dispatch) => {
     switch (method) {
       case NORMAL_SIGN_UP: {
-        let data = {
-          userName: userName,
-          passWord: password,
-          rePassWord: rePassword,
-          //TESTING PURPOSE
-          email: 'abc@test.com'
-        }
         dispatch(requestApi(PUT, BASE_URL + '/account', data)).then(result => {
           console.log(result);
           if (result.data.success) dispatch(signUpSuccess(result.data.value.access_token));

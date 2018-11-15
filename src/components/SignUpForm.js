@@ -8,8 +8,9 @@ export default class SignUpForm extends Component {
     this.state = {
       firstName: '',
       userName: '',
-      password: '',
-      rePassword: ''
+      email: '',
+      passWord: '',
+      rePassWord: ''
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,7 +27,7 @@ export default class SignUpForm extends Component {
     e.preventDefault();
     console.log(this.state);
     let data = this.state;
-    this.props.signUp(null, data.userName, data.password, data.rePassword);
+    this.props.signUp(data);
   }
 
   render() {
@@ -47,16 +48,23 @@ export default class SignUpForm extends Component {
           </div>
         </div>
         <div className="form-group row justify-content-center ">
-          <label htmlFor="password" className="col-sm-4 col-form-label">Mật khẩu:</label>
+          <label htmlFor="email" className="col-sm-4 col-form-label">Email:</label>
           <div className="form-group col-sm-8">
-            <input name="password" type="password" required
+            <input name="email" type="text" required 
             className="form-control form-field" onChange={this.handleInputChange}/>
           </div>
         </div>
         <div className="form-group row justify-content-center ">
-          <label htmlFor="rePassword" className="col-sm-4 col-form-label">Nhập lại mật khẩu:</label>
+          <label htmlFor="passWord" className="col-sm-4 col-form-label">Mật khẩu:</label>
           <div className="form-group col-sm-8">
-            <input name="rePassword" type="text" required
+            <input name="passWord" type="password" required
+            className="form-control form-field" onChange={this.handleInputChange}/>
+          </div>
+        </div>
+        <div className="form-group row justify-content-center ">
+          <label htmlFor="rePassWord" className="col-sm-4 col-form-label">Nhập lại mật khẩu:</label>
+          <div className="form-group col-sm-8">
+            <input name="rePassWord" type="password" required
             className="form-control form-field" onChange={this.handleInputChange}/>
           </div>
         </div>

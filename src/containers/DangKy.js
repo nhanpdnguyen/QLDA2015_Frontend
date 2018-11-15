@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 import { signUp } from '../actions';
 
@@ -15,11 +15,13 @@ class DangKy extends Component {
     this.handleSignUp = this.handleSignUp.bind(this);
   }
 
-  handleSignUp(firstName, userName, password, rePassword, email) {
-    this.props.dispatch(signUp(firstName, userName, password, rePassword, 'abc@test.com', NORMAL_SIGN_UP));
+  handleSignUp(data) {
+    this.props.dispatch(signUp(data, NORMAL_SIGN_UP));
   }
 
   render() {
+    console.log(this.props.isLoggedIn)
+    if (this.props.isLoggedIn) return <Redirect to="/"/>
     return (
       <Row className="flex-md-grow-1 my-4 mx-auto py-2 px-2 justify-content-center bg-white">
         <Col xs="12" md="6" className="d-flex justify-content-center align-content-center align-self-center">
@@ -50,7 +52,7 @@ class DangKy extends Component {
 
 function mapStateToProps (state) {
   return {
-    isLoggedIn: state.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn
   }
 } 
 
