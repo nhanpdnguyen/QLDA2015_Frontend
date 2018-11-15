@@ -192,7 +192,12 @@ export const signUp = function (data, method = NORMAL_SIGN_UP) {
       case NORMAL_SIGN_UP: {
         dispatch(requestApi(PUT, ACCOUNT_API_BASE_URL + '/account', data)).then(result => {
           console.log(result);
-          if (result.data.success) dispatch(signUpSuccess(result.data.value.access_token));
+          if (result.data.success) {
+            //set token
+            dispatch(signUpSuccess(result.data.value.access_token));
+            //get profile
+            dispatch(getUserProfile());
+          }
           else dispatch(signUpFail(result.data.message));
         }, err => {
           console.log(err.response)
