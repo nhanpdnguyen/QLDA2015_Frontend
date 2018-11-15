@@ -22,7 +22,7 @@ export default class UpdateProfile extends Component {
   constructor(props) {
     super(props);
 
-    //destructuring needed property
+    //destructuring needed properties
     this.state = (({
       firstName, lastName, region, school, capacity,
       firstNameParent, lastNameParent, emailParent, phoneParent, regionParent

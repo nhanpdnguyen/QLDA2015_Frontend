@@ -12,8 +12,9 @@ import {
   NORMAL_SIGN_OUT, FACEBOOK_SIGN_OUT, GOOGLE_SIGN_OUT
 } from "../constants";
 
-//URL const
-const BASE_URL = 'http://103.114.107.16:8001/api';
+import config from '../config';
+
+const ACCOUNT_API_BASE_URL = config.ACCOUNT_API_BASE_URL;
 
 //REQUEST
 export const requesting = function () {
@@ -88,7 +89,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           userName: userName,
           passWord: password
         }
-        dispatch(requestApi(POST, BASE_URL + '/account', data)).then(result => {
+        dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account', data)).then(result => {
           console.log(result.data.success);
           if (result.data.success) {
             //set token
@@ -115,7 +116,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           let data = {
             access_token: accessToken
           }
-          dispatch(requestApi(POST, BASE_URL + '/account_facebook', data)).then(result => {
+          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account_facebook', data)).then(result => {
             if (result.data.success) {
               //set token
               dispatch(signInSuccess(result.data.value.access_token));
@@ -142,7 +143,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           let data = {
             access_token: accessToken
           }
-          dispatch(requestApi(POST, BASE_URL + '/account_google', data)).then(result => {
+          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account_google', data)).then(result => {
             if (result.data.success) {
               //set token
               dispatch(signInSuccess(result.data.value.access_token));
@@ -189,7 +190,7 @@ export const signUp = function (data, method = NORMAL_SIGN_UP) {
   return (dispatch) => {
     switch (method) {
       case NORMAL_SIGN_UP: {
-        dispatch(requestApi(PUT, BASE_URL + '/account', data)).then(result => {
+        dispatch(requestApi(PUT, ACCOUNT_API_BASE_URL + '/account', data)).then(result => {
           console.log(result);
           if (result.data.success) dispatch(signUpSuccess(result.data.value.access_token));
           else dispatch(signUpFail(result.data.message));
@@ -256,7 +257,7 @@ export const receiveProfile = function (profile) {
 
 export const getUserProfile = function () {
   return (dispatch) => {
-    dispatch(requestApi(GET, BASE_URL + '/account/profile')).then(result => {
+    dispatch(requestApi(GET, ACCOUNT_API_BASE_URL + '/account/profile')).then(result => {
       console.log(result)
       if (result.data.success) dispatch(receiveProfile(result.data.profile));
       else dispatch(requestFail('Something went wrong, try again'));
@@ -276,7 +277,7 @@ export const getUserProfile = function () {
 
 export const updateUserProfile = function (profile) {
   return (dispatch) => {
-    dispatch(requestApi(POST, BASE_URL + '/account/profile', profile)).then(result => {
+    dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account/profile', profile)).then(result => {
       console.log(result);
       if (result.data.success) dispatch(receiveProfile(result.data.profile));
       else dispatch(requestFail('Something went wrong, try again'));
