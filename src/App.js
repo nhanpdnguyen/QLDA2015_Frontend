@@ -9,7 +9,8 @@ import Footer from './components/Footer';
 import HeaderContainer from './containers/HeaderContainer';
 import Home from './containers/Home.js';
 import DangNhap from './containers/DangNhap';
-import DanhSachBaiHoc from './components/DanhSachBaiHoc';
+import DanhSachBaiHocContainer from './containers/DanhSachBaiHocContainer';
+import ChiTietBaiHoc from './components/ChiTietBaiHoc';
 import DangKy from './containers/DangKy';
 import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
@@ -39,7 +40,8 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route exact path="/dang-nhap" component={DangNhap} />
-							<Route path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHoc} />
+							<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
+							<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={ChiTietBaiHoc} />
 							<Route exact path="/dang-ky" component={DangKy} />
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 							<Route component={HelloWorld} />

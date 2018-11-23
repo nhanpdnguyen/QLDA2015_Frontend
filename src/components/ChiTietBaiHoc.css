@@ -1,0 +1,34 @@
+#noi-dung-bai-hoc {
+  background: #ffffffab;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.4vw;
+}
+
+#noi-dung-bai-hoc span:not(h1, h2, h3) {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#noi-dung-bai-hoc h1,
+#noi-dung-bai-hoc h2,
+#noi-dung-bai-hoc h3 {
+  font-family: 'UTM_Alexander_0';
+  padding-bottom: 2vh;
+}
+
+@media (max-width: 768px) {
+  #noi-dung-bai-hoc {
+    font-size: initial;
+  }
+
+  #noi-dung-bai-hoc h1,
+  #noi-dung-bai-hoc h2,
+  #noi-dung-bai-hoc h3 {
+    font-family: 'UTM_Alexander_0';
+    padding-bottom: initial;
+  }
+
+  #noi-dung-bai-hoc ul {
+    padding-left: 0;
+  }
+}

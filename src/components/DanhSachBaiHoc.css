@@ -16,6 +16,11 @@
   border-radius: 15px;
 }
 
+.ds-bai-hoc-content-container a {
+  text-decoration: none;
+  color: initial
+}
+
 .ds-bai-hoc-title {
   font-family: 'UTM_Alexander_0';
   font-size: 5vw;

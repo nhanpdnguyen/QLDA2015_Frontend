@@ -56,6 +56,7 @@ html {
   background-repeat: no-repeat;
   padding-bottom: 3vh;
   padding-top: 2vh;
+  min-height: 80vh;
 }
 
 @media(max-width: 768px) {
