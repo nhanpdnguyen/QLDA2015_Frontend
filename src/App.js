@@ -19,6 +19,7 @@ import FillChoice from "./components/FillChoice";
 // css
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
+import TopStudier from './components/TopStudier';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>
@@ -47,6 +48,7 @@ class App extends Component {
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 							<Route path="/bai-tap/test" component={MuitipleChoice}/>
 							<Route path="/bai-tap-2/test" component={FillChoice}/>
+							<Route path="/bang-vang/test" component={TopStudier}/>
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>
