@@ -12,29 +12,34 @@ class Home extends Component {
 		this.titleBoxInfo = [{
 			header: 'Bài học',
 			src: '/images/Main-icon1-01.png',
-			color: 0xd6f6d3
+			color: 0xd6f6d3,
+			baseLink: '/bai-hoc'
 		},
 		{
 			header: 'Thi thử',
 			src: '/images/Main-icon2-01.png',
-			color: 0xf5f5cd
+			color: 0xf5f5cd,
+			baseLink: '/thi-thu'
 		},
 		{
 			header: 'Bài tập',
 			src: '/images/Main-icon3-01.png',
-			color: 0xf5d8e1
+			color: 0xf5d8e1,
+			baseLink: '/bai-tap'
 		},
 		{
 			header: 'Trò chơi',
 			src: '/images/Main-icon4-01.png',
-			color: 0xd2f5f5
+			color: 0xd2f5f5,
+			baseLink: '/tro-choi'
 		},]
 	}
 
 	render() {
 		let titleBoxInfo = this.titleBoxInfo.map((item) => {
 			return (<Col key={item.header} md="6">
-				<TitleBox header={item.header} src={item.src} color={item.color}>
+				<TitleBox header={item.header} src={item.src} 
+				color={item.color} baseLink={item.baseLink}>
 				</TitleBox>
 			</Col>)
 		})

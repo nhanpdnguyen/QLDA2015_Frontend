@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './TitleBox.css';
 
 export default class TitleBox extends Component {
@@ -21,8 +22,8 @@ export default class TitleBox extends Component {
 				</Col>
 				<Col xs="6" md="8" className="title-box-content d-flex align-items-center" style={titleBoxContentStyle}>
 					<ul className="m-0">
-						<li>Toán</li>
-						<li>Tiếng Việt</li>
+						<li><Link to={this.props.baseLink + '/toan'}>Toán</Link></li>
+						<li><Link to={this.props.baseLink + '/tieng-viet'}>Tiếng Việt</Link></li>
 					</ul>
 				</Col>
 			</Row>
