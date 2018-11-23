@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from "reactstrap";
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import './DanhSachBaiHoc.css';
@@ -32,7 +33,7 @@ const createDsBaiHoc = function (monHoc, dsBaiHoc) {
                   <ul>
                     {topic.lessons.map(lesson => {
                       return (
-                        <li key={lesson._id}>{lesson.title}</li>
+                        <li key={lesson._id}><Link to={`/bai-hoc/${monHoc}/${lesson._id}`}>{lesson.title}</Link></li>
                       )
                     })}
                   </ul>
@@ -49,7 +50,7 @@ const createDsBaiHoc = function (monHoc, dsBaiHoc) {
                   <ul>
                     {topic.lessons.map(lesson => {
                       return (
-                        <li key={lesson._id}>{lesson.title}</li>
+                        <li key={lesson._id}><Link to={`/bai-hoc/${monHoc}/${lesson._id}`}>{lesson.title}</Link></li>
                       )
                     })}
                   </ul>
