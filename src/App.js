@@ -13,6 +13,7 @@ import DanhSachBaiHoc from './components/DanhSachBaiHoc';
 import DangKy from './containers/DangKy';
 import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
+import MuitipleChoice from "./components/MultipleChoice";
 // css
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
@@ -42,6 +43,7 @@ class App extends Component {
 							<Route path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHoc} />
 							<Route exact path="/dang-ky" component={DangKy} />
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
+							<Route path="/bai-tap/test" component={MuitipleChoice}/>
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>
