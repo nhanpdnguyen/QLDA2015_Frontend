@@ -3,6 +3,7 @@ import { Row, Col } from 'reactstrap';
 import Carousel from '../components/Carousel';
 import TitleBox from '../components/TitleBox';
 import './Home.css';
+import TopStudier from '../components/TopStudier';
 
 class Home extends Component {
 
@@ -48,7 +49,7 @@ class Home extends Component {
 					</Row>
 				</Col>
 				<Col md="4">
-					BẢNG VÀNG
+					<TopStudier/>
 				</Col>
 			</Row>
 		);
