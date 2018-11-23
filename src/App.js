@@ -14,6 +14,8 @@ import DangKy from './containers/DangKy';
 import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
 import MuitipleChoice from "./components/MultipleChoice";
+import FillChoice from "./components/FillChoice";
+
 // css
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
@@ -44,6 +46,7 @@ class App extends Component {
 							<Route exact path="/dang-ky" component={DangKy} />
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 							<Route path="/bai-tap/test" component={MuitipleChoice}/>
+							<Route path="/bai-tap-2/test" component={FillChoice}/>
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>
