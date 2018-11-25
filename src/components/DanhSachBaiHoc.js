@@ -6,6 +6,8 @@ import _ from 'lodash';
 import './DanhSachBaiHoc.css';
 
 const createDsBaiHoc = function (monHoc, dsBaiHoc) {
+  if (!dsBaiHoc) return null;
+
   //chia danh sách các topic ra làm 2 phần
   const topicsLength = dsBaiHoc.topics.length;
   let [dsBaiHocLeft, dsBaiHocRight] = _.chunk(dsBaiHoc.topics, _.ceil(topicsLength / 2, 0));
@@ -64,6 +66,19 @@ const createDsBaiHoc = function (monHoc, dsBaiHoc) {
 }
 
 export default class DanhSachBaiHoc extends Component {
+  constructor(props) {
+    super(props)
+    this.props.getLessonList(this.props.monHoc);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    //update lại dsBaiHoc khi chuyển route
+    if (this.props.monHoc !== nextProps.monHoc) {
+      this.props.getLessonList(nextProps.monHoc)
+    }
+    return true;
+  }
+
   render() {
     const { monHoc, dsBaiHoc } = this.props;
     return (

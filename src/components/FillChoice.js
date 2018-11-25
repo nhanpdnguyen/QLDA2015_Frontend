@@ -19,7 +19,6 @@ export default class FillChoice extends Component {
     render() {
         var stringQuestion = "10 + 49 + 121 - 88 x 3 = ?";
         var typeQuestion = "Điền vào chỗ trống: ";
-        var answer = "";
         return (
             <Row className="flex-md-grow-1">
                 <Col>
