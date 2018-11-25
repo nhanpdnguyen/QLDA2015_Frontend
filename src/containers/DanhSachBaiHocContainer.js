@@ -13,7 +13,7 @@ const mapStateToProps = function (state, ownProps) {
   }
 }
 
-const mapDispatchToProps = function (dispatch, ownProps) {
+const mapDispatchToProps = function (dispatch) {
   return {
     getLessonList: (monHoc) => {
       switch (monHoc) {
