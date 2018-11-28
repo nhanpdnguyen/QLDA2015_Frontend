@@ -1,0 +1,11 @@
+.exercise-question-container {
+  background: #ffffffab;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.4vw;
+}
+
+.exercise-question-container #exercise-content {
+  border: none;
+  font-size: 2vw;
+}
