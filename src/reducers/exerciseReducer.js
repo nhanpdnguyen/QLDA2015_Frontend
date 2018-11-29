@@ -1,5 +1,5 @@
 import { RECEIVE_EXERCISE_LIST, RECEIVE_EXERCISE, CHANGE_USER_ANSWER_IN_EXERCISE } from "../actions/actionTypes";
-import { CHOICE } from "../constants";
+import { CHOICE, FILL } from "../constants";
 
 const initialState = {
   currentExerciseList: [{
@@ -25,8 +25,14 @@ const initialState = {
       ansD: "câu D",
     },
     userAnswer: ''
+  },
+  {
+    _id: '12347',
+    type: FILL,
+    content: "{\"ops\":[{\"insert\":\"\u0110i\u1EC1n v\u00E0o ch\u1ED7 tr\u1ED1ng: 1 + 1 = ...\\n\"}]}",
+    userAnswer: ''
   }],
-  currentExerciseIndex: 1
+  currentExerciseIndex: 2
 }
 
 export default function (state = initialState, action) {

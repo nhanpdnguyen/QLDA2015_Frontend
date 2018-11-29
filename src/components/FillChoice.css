@@ -1,36 +1,3 @@
-.overall{
-    width: 100%;
-    background-image: linear-gradient(#ecf2c5db, #c4e8e575, #c4e8e5cc);
-    background-size: cover;
-    border-radius: 15px;
-    padding: 3em;
-  }
-  
-  .question{
-    font-size: 2vw;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2em; 
-  }
-  
-  .fill {
-    font-size: 2vw;
-    display: flex;
-    justify-content: center;
-  }
-  .answer{
-    margin: 30px;
-    display: inline;
-  }
-  
-  .answer-button{
-    display: flex;
-    justify-content: center;
-  }
-  .button-submit-answer{
-    font-size: 1vw;
-  }
-
-  .string-question{
-      display: inline;
-  }
+#fill-choice-question {
+  border: none;
+}

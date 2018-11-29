@@ -43,7 +43,7 @@ export default class MuitipleChoice extends Component {
               return (
                 <Col key={key} xs="12" md="6">
                   <Row className="align-items-start">
-                    <Col xs="1" className="p-0 mt-1 text-center">
+                    <Col xs="1" className="p-0 text-center">
                       <input type="radio" name="answer"
                         value={key} checked={isChecked}
                         onChange={this.handleInputChange} />
