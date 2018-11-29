@@ -6,6 +6,7 @@ import { Row, Col } from "reactstrap";
 
 import './ExerciseQuestionContainer.css';
 import { CHOICE, FILL } from "../constants";
+import { changeUserAnswerInExercise } from "../actions";
 
 const mapStateToProps = function (state, ownProps) {
   return {
@@ -15,21 +16,25 @@ const mapStateToProps = function (state, ownProps) {
 
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-
+    changeUserAnswer: (userAnswer) => {
+      dispatch(changeUserAnswerInExercise(userAnswer));
+    }
   }
 }
 
 class ExerciseQuestionContainer extends Component {
   render() {
-    let exercise = null;
+    let exerciseToDisplay = null;
+    let exerciseIndex = this.props.currentExerciseIndex;
+    let currentExercise = this.props.currentExerciseList[exerciseIndex];
 
-    switch (this.props.currentExercise.type) {
+    switch (currentExercise.type) {
       case CHOICE: {
-        exercise = <MultipleChoice {...this.props.currentExercise} />;
+        exerciseToDisplay = <MultipleChoice {...currentExercise} changeUserAnswer={this.props.changeUserAnswer} />;
         break;
       }
       case FILL: {
-        exercise = <FillChoice {...this.props.currentExercise} />;
+        exerciseToDisplay = <FillChoice {...currentExercise} changeUserAnswer={this.props.changeUserAnswer} />;
         break;
       }
       default: break;
@@ -37,8 +42,8 @@ class ExerciseQuestionContainer extends Component {
 
     return (
       <Row className="flex-md-grow-1 justify-content-center">
-        <Col md="10" className="exercise-question-container">
-          {exercise}
+        <Col md="10" className="exercise-question-container py-2">
+          {exerciseToDisplay}
         </Col>
       </Row>
     )

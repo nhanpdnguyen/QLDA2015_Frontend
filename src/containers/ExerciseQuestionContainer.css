@@ -2,10 +2,23 @@
   background: #ffffffab;
   border: none;
   border-radius: 15px;
-  font-size: 1.4vw;
 }
 
-.exercise-question-container #exercise-content {
+.exercise-question-container #multiple-choice-question {
   border: none;
   font-size: 2vw;
+}
+
+.exercise-question-container .multiple-choice-answers {
+  font-size: 1.5vw;
+}
+
+@media (max-width: 768px) {
+  .exercise-question-container #multiple-choice-question {
+    font-size: initial;
+  }
+
+  .exercise-question-container .multiple-choice-answers {
+    font-size: initial;
+  }
 }

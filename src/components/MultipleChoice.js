@@ -5,7 +5,7 @@ import './MultipleChoice.css';
 
 export default class MuitipleChoice extends Component {
   componentDidMount() {
-    this.quill = new Quill('#exercise-content', {
+    this.quill = new Quill('#multiple-choice-question', {
       modules: {
         toolbar: false,
       },
@@ -27,21 +27,21 @@ export default class MuitipleChoice extends Component {
   }
 
   handleInputChange = (e) => {
-    alert(e.target.value);
+    this.props.changeUserAnswer(e.target.value);
   }
 
   render() {
     return (
       <Row className="justify-content-center">
         <Col xs="12">
-          <div id="exercise-content"></div>
+          <div id="multiple-choice-question"></div>
         </Col>
         <Col xs="10" md="7">
-          <Row>
-            {Object.keys(this.props.answers).map((key, index) => {
+          <Row className="multiple-choice-answers">
+            {Object.keys(this.props.answers).map((key) => {
               let isChecked = this.props.userAnswer === key;
               return (
-                <Col key={key} xs="12">
+                <Col key={key} xs="12" md="6">
                   <Row className="align-items-start">
                     <Col xs="1" className="p-0 mt-1 text-center">
                       <input type="radio" name="answer"
