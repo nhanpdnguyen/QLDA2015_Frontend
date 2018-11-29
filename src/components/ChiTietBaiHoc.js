@@ -22,7 +22,6 @@ export default class ChiTietBaiHoc extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    console.log(nextProps)
     if (nextProps.baiHoc) {
       const content = nextProps.baiHoc.content || null;
       this.quill.setContents(JSON.parse(content));

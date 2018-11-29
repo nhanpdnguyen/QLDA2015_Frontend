@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   REQUESTING, REQUEST_SUCCESS, REQUEST_FAIL,
   SIGN_IN_SUCCESS, SIGN_IN_FAIL,
-  SIGN_UP_SUCCESS, SIGN_UP_FAIL, SIGN_OUT_SUCCESS, RECEIVE_PROFILE, RECEIVE_LESSON, RECEIVE_LESSON_LIST
+  SIGN_UP_SUCCESS, SIGN_UP_FAIL, SIGN_OUT_SUCCESS, RECEIVE_PROFILE, RECEIVE_LESSON, RECEIVE_LESSON_LIST, CHANGE_USER_ANSWER_IN_EXERCISE
 } from './actionTypes';
 
 import {
@@ -350,5 +350,13 @@ export const receiveLesson = function (lesson) {
   return {
     type: RECEIVE_LESSON,
     lesson
+  }
+}
+
+//EXERCISE 
+export const changeUserAnswerInExercise = function (userAnswer) {
+  return {
+    type: CHANGE_USER_ANSWER_IN_EXERCISE,
+    userAnswer
   }
 }

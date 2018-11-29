@@ -18,3 +18,7 @@ export const NORMAL_SIGN_UP = 'NORMAL_SIGN_UP';
 export const NORMAL_SIGN_OUT = 'NORMAL_SIGN_OUT';
 export const FACEBOOK_SIGN_OUT = 'FACEBOOK_SIGN_OUT';
 export const GOOGLE_SIGN_OUT = 'GOOGLE_SIGN_OUT';
+
+//exercise types
+export const CHOICE = 'choice';
+export const FILL = 'fill';
