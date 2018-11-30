@@ -2,7 +2,8 @@ import {messageConstant} from '../constants/messageConstant.js';
 
 const initalState = {
     message: '',
-    listMessages: []
+    listMessages: [],
+    isOpen: true
 }
 
 export default function messageReducer(state=initalState, actions){
@@ -16,6 +17,11 @@ export default function messageReducer(state=initalState, actions){
             return {
                 ...state,
                 listMessages: actions.payload.listMessages
+            }
+        case messageConstant.MINIATURE_CHAT_BOX:
+            return {
+                ...state,
+                isOpen: actions.payload.isOpen
             }
         default:
             return state;

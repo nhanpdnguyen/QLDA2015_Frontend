@@ -14,7 +14,14 @@ const actionSetListMessages = (payload) => ({
     }
 })
 
+const actionMinitureChatBox = (payload) => ({
+    type: messageConstant.MINIATURE_CHAT_BOX,
+    payload: {
+        isOpen: payload.isOpen
+    }
+})
 export const messageAction = {
     actionSetMessage,
-    actionSetListMessages
+    actionSetListMessages,
+    actionMinitureChatBox
 }

@@ -1,0 +1,58 @@
+.menu-bar{
+    display: flex;
+    overflow: hidden;
+    width: 65px;background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    flex-shrink: 0;
+}
+
+.menus{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-app{
+    position: relative;
+}
+
+.icon-app>img{
+    width:55px;
+    height: 55px;
+    border-radius: 50%;
+    margin: 20px 6px;
+}
+
+.action-creategroup>img{
+    width:67px;
+    height: 67px;
+    border-radius: 50%;
+    margin: 30px 0 0 0;
+}
+
+.action-creategroup>img:hover{
+    background: rgba(241, 241, 241, 0.274);
+}
+.action-logout>img{
+    width:55px;
+    height: 55px;
+    border-radius: 50%;
+    margin: 820px 6px 0 6px;
+}
+
+.action-logout>img:hover{
+    background: rgba(241, 241, 241, 0.274);
+}
+
+.me-online{
+    width: 18px;
+    height: 18px;
+    display: block;
+    position: absolute;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    background: rgb(25, 255, 17);
+    border-radius: 50%;
+    right: 4px;
+    bottom: 27px;
+}

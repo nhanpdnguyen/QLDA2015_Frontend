@@ -17,7 +17,7 @@ import CheckAuthenticated from "./containers/CheckAuthenticated";
 import MuitipleChoice from "./components/MultipleChoice";
 import FillChoice from "./components/FillChoice";
 import Game from './components/Game';
-
+import TeacherChatBox from './containers/teacher-chat-page/TeacherChatBoxPage.js'
 // css
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
@@ -31,6 +31,16 @@ const HelloWorld = function (props) {
 class App extends Component {
 
 	render() {
+		const isTeacher = false;
+		// if(isTeacher){
+		// 	return(
+		// 		<Router>
+		// 			<Switch>
+		// 			<Route path="/teacher-chat-box" component={TeacherChatBox}/>
+		// 			</Switch>
+		// 		</Router>
+		// 	)
+		// } 
 		return (
 			<Router>
 				<div>
