@@ -1,0 +1,49 @@
+.container-chatbox{
+    height: 60vh;
+    width: 100%;
+    position: fixed;
+    bottom: 2vh;
+    font-size: 1vw; 
+}
+
+.box-shadow{
+    height: 100%;
+    box-shadow: 4px 7px 7px rgba(124, 124, 124, 0.911);
+    display: flex !important;
+    flex-direction: column !important;
+    background: white;
+}
+
+.title-chatbox{
+    background: red;
+    width: 100%;
+    height: 5vh;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.4em;
+}
+
+.name-title{
+    width: 100%;
+    margin-left: 1.35vw; 
+    color: white;
+    font-family: 'UTM_Alexander_0';
+}
+
+.icon-min{
+    width: 100%;
+    text-align: end;
+    margin-right: 1.35vw; 
+}
+
+.content-message{
+    background: white;
+    width: 100%;
+    height: 48vh;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    background: rgb(240, 240, 240);
+    overflow: hidden;
+}

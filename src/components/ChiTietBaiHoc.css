@@ -13,7 +13,18 @@
 #noi-dung-bai-hoc h2,
 #noi-dung-bai-hoc h3 {
   font-family: 'UTM_Alexander_0';
-  padding-bottom: 2vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.breadcrumb-container {
+  font-family: 'UTM_Alexander_0';
+  font-size: 2vw;
+}
+
+.breadcrumb-container a {
+  text-decoration: none;
+  color: inherit
 }
 
 @media (max-width: 768px) {
@@ -25,10 +36,14 @@
   #noi-dung-bai-hoc h2,
   #noi-dung-bai-hoc h3 {
     font-family: 'UTM_Alexander_0';
-    padding-bottom: initial;
   }
 
   #noi-dung-bai-hoc ul {
     padding-left: 0;
+  }
+
+
+  .breadcrumb-container {
+    font-size: initial;
   }
 }

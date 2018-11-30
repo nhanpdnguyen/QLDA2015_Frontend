@@ -10,7 +10,7 @@ import HeaderContainer from './containers/HeaderContainer';
 import Home from './containers/Home.js';
 import DangNhap from './containers/DangNhap';
 import DanhSachBaiHocContainer from './containers/DanhSachBaiHocContainer';
-import ChiTietBaiHoc from './components/ChiTietBaiHoc';
+import ChiTietBaiHocContainer from './containers/ChiTietBaiHocContainer';
 import DangKy from './containers/DangKy';
 import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
@@ -22,6 +22,7 @@ import Game from './components/Game';
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
 import TopStudier from './components/TopStudier';
+import ChatBox from './containers/ChatBox';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>
@@ -46,17 +47,18 @@ class App extends Component {
 							<Route exact path="/" component={Home} />
 							<Route exact path="/dang-nhap" component={DangNhap} />
 							<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
-							<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={ChiTietBaiHoc} />
+							<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={ChiTietBaiHocContainer} />
 							<Route exact path="/dang-ky" component={DangKy} />
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
-							<Route path="/tro-choi" component={Game}/>
-							<Route path="/bai-tap/test" component={MuitipleChoice}/>
-							<Route path="/bai-tap-2/test" component={FillChoice}/>
-							<Route path="/bang-vang/test" component={TopStudier}/>
+							<Route path="/tro-choi" component={Game} />
+							<Route path="/bai-tap/test" component={MuitipleChoice} />
+							<Route path="/bai-tap-2/test" component={FillChoice} />
+							<Route path="/bang-vang/test" component={TopStudier} />
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>
 					<Footer></Footer>
+					<ChatBox className="chatbox"></ChatBox>
 				</div>
 			</Router>
 		);
