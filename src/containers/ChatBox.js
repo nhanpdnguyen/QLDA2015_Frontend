@@ -3,6 +3,7 @@ import './ChatBox.css';
 import MessageInput from './MessageInput.js';
 import iconLine from '../resources/icons8-horizontal-line-26.png';
 import MessageContainer from './MessageContainer.js';
+
 class ChatBox extends React.Component{
     render(){
         return(
