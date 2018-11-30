@@ -1,46 +1,59 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
+import Quill from 'quill';
 import './MultipleChoice.css';
 
 export default class MuitipleChoice extends Component {
+  componentDidMount() {
+    this.quill = new Quill('#multiple-choice-question', {
+      modules: {
+        toolbar: false,
+      },
+      readOnly: true,
+      theme: 'snow'
+    });
+
+    //set question contents
+    let rawQuestionContent = this.props.content;
+    this.quill.setContents(JSON.parse(rawQuestionContent));
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.content && nextProps.content !== this.props.content) {
+      let rawQuestionContent = nextProps.content;
+      this.quill.setContents(JSON.parse(rawQuestionContent));
+    }
+    return true;
+  }
+
+  handleInputChange = (e) => {
+    this.props.changeUserAnswer(e.target.value);
+  }
+
   render() {
     return (
-      <Row className="flex-md-grow-1">
-        <Col>
-          <div className="overall">
-            <Row>
-              <Col>
-                <div className="question">
-                  Bạn Tùng có đẹp trai hay không? Điều gì đã khiến cho bạn Tùng đẹp trai như vậy?
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div className="multiple">
-                  <form>
-                    <div className="row">
-                      <div className="col-xs-6">
-                        <div className="answer"><input type="radio" name="answer" />Tùng đẹp trai nhất</div>
-                        <div className="answer"><input type="radio" name="answer" />Tùng đẹp trai nhì </div>
-                      </div>
-                      <div className="col-xs-6">
-                        <div className="answer"><input type="radio" name="answer" />Tùng đẹp trai nhất</div>
-                        <div className="answer"><input type="radio" name="answer" />Xin dừng cuộc chơi</div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div className="answer-button justify-content-center">
-                  <button type="submit" className="button-submit-answer btn btn-success">Answer</button>
-                </div>
-              </Col>
-            </Row>
-          </div>
+      <Row className="justify-content-center">
+        <Col xs="12">
+          <div id="multiple-choice-question"></div>
+        </Col>
+        <Col xs="10" md="7">
+          <Row className="multiple-choice-answers">
+            {Object.keys(this.props.answers).map((key) => {
+              let isChecked = this.props.userAnswer === key;
+              return (
+                <Col key={key} xs="12" md="6">
+                  <Row className="align-items-start">
+                    <Col xs="1" className="p-0 text-center">
+                      <input type="radio" name="answer"
+                        value={key} checked={isChecked}
+                        onChange={this.handleInputChange} />
+                    </Col>
+                    <Col>{this.props.answers[key]}</Col>
+                  </Row>
+                </Col>
+              )
+            })}
+          </Row>
         </Col>
       </Row>
     )

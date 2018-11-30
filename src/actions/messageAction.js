@@ -1,8 +1,8 @@
-import {messageConstant} from '../constants/messageConstant.js';
+import { messageConstant } from '../constants/messageConstant.js';
 
 const actionSetMessage = (payload) => ({
     type: messageConstant.SET_NEW_MESSAGE,
-    payload:{
+    payload: {
         message: payload.message
     }
 })
