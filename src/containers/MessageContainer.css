@@ -1,0 +1,7 @@
+.message-container{
+    background: white;
+    margin: 0.5vw;
+    overflow-y: auto;
+    height: 100%;
+    border-radius: 1vw; 
+}

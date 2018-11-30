@@ -1,0 +1,56 @@
+.line-me{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+}
+
+.message-me{
+    display: flex !important;
+    flex-direction: column !important;
+    background: rgba(255, 40, 40, 0.699);
+    margin: 0.5vw;
+    overflow: hidden;
+    border-radius: 7px;
+    object-fit: cover;
+    max-width: 15vw;
+    padding: 0.5vw; 
+}
+
+.line-admin{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+}
+
+.message-admin{
+    display: flex !important;
+    flex-direction: column !important;
+    background: rgba(228, 228, 228, 0.719);
+    margin: 0.5vw;
+    overflow: hidden;
+    border-radius: 7px;
+    object-fit: cover;
+    max-width: 15vw;
+    padding: 0.5vw; 
+
+}
+
+.content-message-chat{
+    word-wrap: break-word;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1vw;
+    color: black;
+}
+
+.time-create-message{
+    margin-top: 0.2vh;
+    font-size: 0.7vw;
+    color: rgb(97, 97, 97);
+}
+
+.name-author{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.8vw;
+    margin-bottom: 0.2vh;
+    color: black;
+}
