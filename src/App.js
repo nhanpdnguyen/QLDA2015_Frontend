@@ -22,6 +22,7 @@ import Game from './components/Game';
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
 import TopStudier from './components/TopStudier';
+import ChatBox from './containers/ChatBox';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>
@@ -57,6 +58,7 @@ class App extends Component {
 						</Switch>
 					</Container>
 					<Footer></Footer>
+					<ChatBox className="chatbox"></ChatBox>
 				</div>
 			</Router>
 		);
