@@ -1,0 +1,46 @@
+.container-input-message{
+    flex-grow: 1;
+    display: flex !important;
+    flex-direction: row !important;
+    height: 6vh;;
+    width: 100%;
+}
+
+.text-input{
+    height: 100%;
+    flex-grow: 1;
+    /* border-top: 0.05vw solid rgb(200, 200, 200); */
+}
+
+.constainer-button-send{
+    height: 100%;
+    width: 3vw;
+    border: 0;
+}
+
+.text-input>textarea{
+    height: 100%;
+    width: 100%;
+    padding: 1vh;
+    border: 0;
+}
+
+.constainer-button-send>button{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-family: 'UTM_Alexander_0';
+    font-size: 2vh;
+    background: red;
+    color: white;   
+    border: 0;
+}
+
+button:hover {
+    background-color: #ff6363 !important;
+}
+
+button:active {
+    background-color: #df0000 !important;
+}
