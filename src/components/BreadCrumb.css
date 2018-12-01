@@ -7,3 +7,11 @@
   text-decoration: none;
   color: inherit
 }
+
+@media(max-width: 768px) {
+
+  .breadcrumb-container {
+    font-size: 1.2rem;
+  }
+
+}

@@ -40,7 +40,7 @@ export default class ChiTietBaiHoc extends Component {
       currentText: baiHoc && baiHoc.title
     }
     return (
-      <Row className="flex-md-grow-1 align-self-start w-100">
+      <Row className="flex-md-grow-1 align-self-start">
         <Col md="8">
           <Row className="justify-content-center">
             <Col className={`text-center ds-bai-hoc-title ${monHoc}`}>{monHocText}</Col>

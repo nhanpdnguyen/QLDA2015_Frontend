@@ -15,15 +15,25 @@
   font-size: 1.5vw;
 }
 
+.bai-tap-title {
+  font-family: 'UTM_Alexander_0';
+  font-size: 5vw;
+  color: #F15A24;
+}
+
 @media (max-width: 768px) {
 
   .exercise-question-container #multiple-choice-question,
   .exercise-question-container #fill-choice-question {
-    font-size: 1.2em;
+    font-size: 1.1rem;
   }
 
   .exercise-question-container .multiple-choice-answers,
   .exercise-question-container label {
     font-size: initial;
+  }
+
+  .bai-tap-title {
+    font-size: 2rem;
   }
 }

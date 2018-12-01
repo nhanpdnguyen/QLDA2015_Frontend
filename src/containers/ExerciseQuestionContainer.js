@@ -1,5 +1,6 @@
 import MultipleChoice from "../components/MultipleChoice";
 import FillChoice from "../components/FillChoice";
+import BreadCrumb from "../components/BreadCrumb";
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { Row, Col } from "reactstrap";
@@ -40,8 +41,23 @@ class ExerciseQuestionContainer extends Component {
       default: break;
     }
 
+    const breadCrumbProps = {
+      baseText: 'Bài tập Toán',
+      additionalClasses: 'toan',
+      baseUrl: '/bai-tap/toan/',
+      currentText: 'Test'
+    }
+
     return (
       <Row className="flex-grow-1 justify-content-center">
+        <Col xs="12">
+          <Row className="justify-content-center">
+            <Col className={`text-center bai-tap-title`}>Bài tập</Col>
+          </Row>
+        </Col>
+        <Col xs="10">
+          <BreadCrumb {...breadCrumbProps} />
+        </Col>
         <Col xs="10" className="exercise-question-container py-2">
           {exerciseToDisplay}
         </Col>

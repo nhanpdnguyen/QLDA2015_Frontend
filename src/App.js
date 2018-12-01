@@ -41,7 +41,7 @@ class App extends Component {
 					}
 					<HeaderContainer></HeaderContainer>
 					<NavBarContainer></NavBarContainer>
-					<Container fluid id="main-content-container" className="d-flex align-items-center">
+					<Container fluid id="main-content-container" className="d-flex align-items-start">
 						{/* Row bọc ngoài cùng của 1 view cần phải xài thêm class flex-md-grow-1 */}
 						<Switch>
 							<Route exact path="/" component={Home} />

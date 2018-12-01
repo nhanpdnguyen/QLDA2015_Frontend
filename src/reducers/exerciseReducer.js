@@ -32,7 +32,7 @@ const initialState = {
     content: "{\"ops\":[{\"insert\":\"\u0110i\u1EC1n v\u00E0o ch\u1ED7 tr\u1ED1ng: 1 + 1 = ...\\n\"}]}",
     userAnswer: ''
   }],
-  currentExerciseIndex: 2
+  currentExerciseIndex: 1
 }
 
 export default function (state = initialState, action) {
