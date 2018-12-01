@@ -9,7 +9,7 @@ class ChatBox extends React.Component{
         return(
             <div className="container-fluid">
                 <div className="row justify-content-end">
-                    <div className="col-3 container-chatbox">
+                    <div className="col-3 container-chatbox d-none d-md-block">
                         <div className="box-shadow">
                             <div className="title-chatbox">
                                 <div className="name-title">Chat box</div>

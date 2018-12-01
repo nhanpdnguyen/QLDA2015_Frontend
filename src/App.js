@@ -51,8 +51,7 @@ class App extends Component {
 							<Route exact path="/dang-ky" component={DangKy} />
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 							<Route path="/tro-choi" component={Game} />
-							<Route path="/bai-tap/test" component={ExerciseQuestionContainer} />
-							<Route path="/bai-tap-2/test" component={FillChoice} />
+							<Route path="/bai-tap/:monhoc(toan|tieng-viet)/test" component={ExerciseQuestionContainer} />
 							<Route path="/bang-vang/test" component={TopStudier} />
 							<Route component={HelloWorld} />
 						</Switch>

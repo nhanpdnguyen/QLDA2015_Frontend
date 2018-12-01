@@ -41,8 +41,8 @@ class ExerciseQuestionContainer extends Component {
     }
 
     return (
-      <Row className="flex-md-grow-1 justify-content-center">
-        <Col md="10" className="exercise-question-container py-2">
+      <Row className="flex-grow-1 justify-content-center">
+        <Col xs="10" className="exercise-question-container py-2">
           {exerciseToDisplay}
         </Col>
       </Row>

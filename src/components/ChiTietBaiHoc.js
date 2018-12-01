@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import BreadCrumb from './BreadCrumb';
 import Quill from 'quill';
 
 import './ChiTietBaiHoc.css';
@@ -33,19 +33,19 @@ export default class ChiTietBaiHoc extends Component {
     const { monHoc, baiHoc } = this.props;
     const isToan = monHoc === 'toan';
     const monHocText = isToan ? "Toán" : "Tiếng Việt";
+    const breadCrumbProps = {
+      additionalClasses: isToan ? 'toan' : 'tieng-viet',
+      baseUrl: isToan ? '/bai-hoc/toan' : '/bai-hoc/tieng-viet',
+      baseText: isToan ? "Bài học Toán" : "Bài học Tiếng Việt",
+      currentText: baiHoc && baiHoc.title
+    }
     return (
       <Row className="flex-md-grow-1 align-self-start w-100">
         <Col md="8">
           <Row className="justify-content-center">
             <Col className={`text-center ds-bai-hoc-title ${monHoc}`}>{monHocText}</Col>
           </Row>
-          <Row>
-            <Col className={`breadcrumb-container ml-3 my-2 ${monHoc}`}>
-              <Link to={isToan ? "/bai-hoc/toan" : "/bai-hoc/tieng-viet"}>{"Bài học " + monHocText}</Link>
-              <span> → </span>
-              <span>{baiHoc && baiHoc.title}</span>
-            </Col>
-          </Row>
+          <BreadCrumb {...breadCrumbProps}/>
           <Row>
             <Col xs="12">
               <div id="noi-dung-bai-hoc" className="p-md-3" />
