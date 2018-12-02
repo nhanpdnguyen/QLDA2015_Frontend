@@ -14,7 +14,6 @@ import ChiTietBaiHocContainer from './containers/ChiTietBaiHocContainer';
 import DangKy from './containers/DangKy';
 import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
-import FillChoice from "./components/FillChoice";
 import Game from './components/Game';
 import ExerciseQuestionContainer from './containers/ExerciseQuestionContainer';
 

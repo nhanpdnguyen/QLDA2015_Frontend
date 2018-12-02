@@ -60,6 +60,17 @@ class ExerciseQuestionContainer extends Component {
         </Col>
         <Col xs="10" className="exercise-question-container py-2">
           {exerciseToDisplay}
+          <Row className="justify-content-center mt-3">
+            {/* <Col xs="2" md="1" className="text-center pl-0">
+              <button className="btn btn-info p-1 w-100">🡰</button>
+            </Col> */}
+            <Col xs="2" className="text-center px-0">
+              <button className="btn answer-btn p-1 w-100">Trả lời</button>
+            </Col>
+            {/* <Col xs="2" md="1" className="text-center pr-0">
+              <button className="btn btn-info p-1 w-100">🡲</button>
+            </Col> */}
+          </Row>
         </Col>
       </Row>
     )
