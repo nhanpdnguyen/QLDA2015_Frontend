@@ -21,6 +21,12 @@
   color: #F15A24;
 }
 
+.exercise-question-container .current-exercise-number {
+  padding-left: 15px;
+  color: darkslategray;
+  font-size: 1.2vw;
+}
+
 .exercise-question-container .answer-btn {
   font-size: 1.5vw;
   font-weight: bold;
@@ -46,6 +52,10 @@
 
   .bai-tap-title {
     font-size: 2rem;
+  }
+
+  .exercise-question-container .current-exercise-number {
+    font-size: 0.8rem;
   }
 
   .exercise-question-container .answer-btn {

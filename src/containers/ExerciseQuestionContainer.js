@@ -3,7 +3,7 @@ import FillChoice from "../components/FillChoice";
 import BreadCrumb from "../components/BreadCrumb";
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 import './ExerciseQuestionContainer.css';
 import { CHOICE, FILL } from "../constants";
@@ -55,11 +55,23 @@ class ExerciseQuestionContainer extends Component {
             <Col className={`text-center bai-tap-title`}>Bài tập</Col>
           </Row>
         </Col>
+
         <Col xs="10">
           <BreadCrumb {...breadCrumbProps} />
         </Col>
+
         <Col xs="10" className="exercise-question-container py-2">
+          {/* Current exercise number/total */}
+          <Row className="justify-content-center">
+            <Col xs="12">
+              <div className="current-exercise-number">Câu 1/12</div>
+            </Col>
+          </Row>
+
+          {/* Exercise */}
           {exerciseToDisplay}
+
+          {/* Answer button */}
           <Row className="justify-content-center mt-3">
             {/* <Col xs="2" md="1" className="text-center pl-0">
               <button className="btn btn-info p-1 w-100">🡰</button>
@@ -71,7 +83,20 @@ class ExerciseQuestionContainer extends Component {
               <button className="btn btn-info p-1 w-100">🡲</button>
             </Col> */}
           </Row>
+
         </Col>
+
+        {/* Modal */}
+        <Modal id="exercise-modal" isOpen={true} backdrop={false} centered={true}>
+          <ModalHeader></ModalHeader>
+          <ModalBody>
+            <div>Câu trả lời của bạn chưa đúng</div>
+            <div>Gợi ý: Abasdbsadas</div>
+          </ModalBody>
+          <ModalFooter className="justify-content-center">
+            <button className="btn modal-btn">Thử lại</button>
+          </ModalFooter>
+        </Modal>
       </Row>
     )
   }
