@@ -34,13 +34,11 @@ export default class NavBar extends Component {
       <div>
         <Navbar light expand="md">
           <NavbarToggler onClick={this.toggle} />
-          <NavbarBrand className="m-auto d-md-none">
-            <Link to="/">
-              <div className="my-logo-text d-flex flex-column justify-content-center align-items-center pl-0">
-                <div>TRUNG TÂM LUYỆN THI ONLINE</div>
-                <div id="logo-name">CANDYLIGHT</div>
-              </div>
-            </Link>
+          <NavbarBrand href="/" className="m-auto d-md-none">
+            <div className="my-logo-text d-flex flex-column justify-content-center align-items-center pl-0">
+              <div>TRUNG TÂM LUYỆN THI ONLINE</div>
+              <div id="logo-name">CANDYLIGHT</div>
+            </div>
           </NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar className="menu-content">
             <Nav className="mx-auto" navbar>
