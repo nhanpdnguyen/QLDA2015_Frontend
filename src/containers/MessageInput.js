@@ -39,11 +39,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-<<<<<<< HEAD
     actionSetMessage: (payload) => dispatch(messageActions.actionSetMessage(payload)),
-=======
-    actionSetMessage: (payload) => dispatch(messageAction.actionSetMessage(payload)),
->>>>>>> 966d11190e61da42c3297b36841421c985a24c9b
 })
 
 export default connect(mapStateToProps, mapDispatchToProps) (MessageInput);

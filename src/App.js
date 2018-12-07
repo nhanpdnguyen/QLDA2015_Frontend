@@ -16,6 +16,7 @@ import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
 import FillChoice from "./components/FillChoice";
 import Game from './components/Game';
+import ExerciseQuestionContainer from './containers/ExerciseQuestionContainer';
 import TeacherChatBox from './containers/teacher-chat-page/TeacherChatBoxPage.js'
 // css
 import './App.css';
