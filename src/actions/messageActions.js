@@ -1,8 +1,8 @@
-import { messageConstant } from '../constants/messageConstant.js';
+import {messageConstant} from '../constants/messageConstant.js';
 
 const actionSetMessage = (payload) => ({
     type: messageConstant.SET_NEW_MESSAGE,
-    payload: {
+    payload:{
         message: payload.message
     }
 })
@@ -14,14 +14,15 @@ const actionSetListMessages = (payload) => ({
     }
 })
 
-const actionMinitureChatBox = (payload) => ({
-    type: messageConstant.MINIATURE_CHAT_BOX,
-    payload: {
+const actionMiniatureChatBox = (payload) => ({
+    type: messageConstant.MINIATURE_CHATBOX,
+    payload:{
         isOpen: payload.isOpen
     }
 })
-export const messageAction = {
+
+export const messageActions = {
     actionSetMessage,
     actionSetListMessages,
-    actionMinitureChatBox
+    actionMiniatureChatBox
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {messageAction} from '../actions/messageAction.js';
+import {messageActions} from '../actions/messageActions.js';
 import './MessageInput.css';
 
 class MessageInput extends React.Component{
@@ -39,7 +39,11 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+<<<<<<< HEAD
+    actionSetMessage: (payload) => dispatch(messageActions.actionSetMessage(payload)),
+=======
     actionSetMessage: (payload) => dispatch(messageAction.actionSetMessage(payload)),
+>>>>>>> 966d11190e61da42c3297b36841421c985a24c9b
 })
 
 export default connect(mapStateToProps, mapDispatchToProps) (MessageInput);

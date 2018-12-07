@@ -14,6 +14,10 @@ class MessageContainer extends React.Component{
         this.scrollMessageToBottom();
     }
     
+    componentDidMount(){
+        this.scrollMessageToBottom();
+    }
+    
     render(){
         const date = new Date();
         const message = {

@@ -1,56 +1,51 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Quill from 'quill';
 import { Row, Col } from 'reactstrap';
 import './FillChoice.css';
+
 export default class FillChoice extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            answer: ''
-        }
-        this.handleInputChange = this.handleInputChange.bind(this);
-    }
+  componentDidMount() {
+    this.quill = new Quill('#fill-choice-question', {
+      modules: {
+        toolbar: false,
+      },
+      readOnly: true,
+      theme: 'snow'
+    });
 
-    handleInputChange = function (e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+    //set question contents
+    let rawQuestionContent = this.props.content;
+    this.quill.setContents(JSON.parse(rawQuestionContent));
+  }
 
-    render() {
-        var stringQuestion = "10 + 49 + 121 - 88 x 3 = ?";
-        var typeQuestion = "Điền vào chỗ trống: ";
-        return (
-            <Row className="flex-md-grow-1">
-                <Col>
-                    <div className="overall">
-                        <Row>
-                            <Col>
-                                <div className="question">
-                                    {typeQuestion}{stringQuestion}
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <div className="form-group row justify-content-center ">
-                                    <label htmlFor="inputPassword3" classname="col-sm-5 col-form-label">Câu trả lời: </label>
-                                    <div className="col-sm-3">
-                                        <input type="text" className="form-control col-form-label-sm" name="answer"
-                                            value={this.state.answer} onChange={this.handleInputChange} />
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <div className="answer-button justify-content-center">
-                                    <button type="submit" className="button-submit-answer btn btn-success">Answer</button>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </Col>
-            </Row>
-        )
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.content && nextProps.content !== this.props.content) {
+      let rawQuestionContent = nextProps.content;
+      this.quill.setContents(JSON.parse(rawQuestionContent));
     }
+    return true;
+  }
+
+  handleInputChange = (e) => {
+    this.props.changeUserAnswer(e.target.value);
+  }
+
+  render() {
+    return (
+      <Row className="justify-content-center">
+        <Col xs="12">
+          <div id="fill-choice-question"></div>
+        </Col>
+        <Col xs="10" md="7">
+          <div className="form-group form-row">
+            <label className="col-4 col-md-3 col-form-label text-dark">Câu trả lời: </label>
+            <div className="col-7">
+              <input type="text" className="form-control h-100"
+                value={this.props.userAnswer} onChange={this.handleInputChange} />
+            </div>
+          </div>
+        </Col>
+      </Row>
+    )
+  }
 }

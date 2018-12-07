@@ -23,6 +23,11 @@ export default function messageReducer(state=initalState, actions){
                 ...state,
                 isOpen: actions.payload.isOpen
             }
+        case messageConstant.MINIATURE_CHATBOX:
+            return{
+                ...state,
+                isOpen: actions.payload.isOpen
+            }
         default:
             return state;
     }   
