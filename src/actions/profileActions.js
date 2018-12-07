@@ -8,6 +8,7 @@ import {
 
 import config from '../config';
 import { requestApi, requestFail } from './requestActions';
+import { signOut } from './accountActions';
 const ACCOUNT_API_BASE_URL = config.ACCOUNT_API_BASE_URL;
 
 //USER PROFILE
@@ -27,8 +28,10 @@ export const getUserProfile = function () {
       console.log(err.response)
       let status = err.response && err.response.status;
       switch (status) {
-        case 401: {
+        case 401: 
+        case 403: {
           dispatch(requestFail('Not authorized'));
+          dispatch(signOut());
           break;
         }
         default: dispatch(requestFail('Something went wrong, try again'))

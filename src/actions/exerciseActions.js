@@ -1,5 +1,5 @@
 import {
-  CHANGE_USER_ANSWER_IN_EXERCISE, RECEIVE_EXERCISE_LIST, GO_TO_NEXT_QUESTION
+  CHANGE_USER_ANSWER_IN_EXERCISE, RECEIVE_EXERCISE_LIST, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER
 } from './actionTypes';
 
 import config from '../config';
@@ -42,6 +42,12 @@ export const receiveExerciseList = function (data) {
   }
 }
 
+export const noUserAnswerFound = function () {
+  return {
+    type: NO_USER_ANSWER_FOUND_IN_EXCERCISE
+  }
+}
+
 export const answerExerciseQuestion = function () {
   return (dispatch, getState) => {
     let state = getState().exercise;
@@ -51,8 +57,12 @@ export const answerExerciseQuestion = function () {
       typeQuestion: currentExercise.type,
       answer: currentExercise.userAnswer
     }
-    dispatch(requestApi(POST, EXERCISE_API_BASE_URL + `/answer/${state.session}/${questionId}`, data)).then(result => {
 
+    //if user has not answered yet, display error
+    if (!data.answer) return dispatch(noUserAnswerFound());
+
+    dispatch(requestApi(POST, EXERCISE_API_BASE_URL + `/answer/${state.session}/${questionId}`, data)).then(result => {
+      dispatch(receiveAnswerInExercise(result.data));
     }, err => {
       console.log(err.response)
       let status = err.response && err.response.status;
@@ -67,12 +77,76 @@ export const answerExerciseQuestion = function () {
   }
 }
 
+export const receiveAnswerInExercise = function (data) {
+  return (dispatch, getState) => {
+    let { result, record } = data;
+    dispatch(userHadCorrectAnswer(result));
+
+    const state = getState();
+    const { answerTryCount, currentExerciseList, currentQuestionIndex } = state.exercise;
+
+    record = [record].map((record) => {
+      let recordLabel = record.slice(3);
+      //special case: answer incorrectly 2 times
+      if (['A', 'B', 'C', 'D'].includes(recordLabel)) {
+        return recordLabel + '. ' +
+          currentExerciseList[currentQuestionIndex].answers[record];
+      }
+      return record
+    })
+    console.log(record);
+
+    //open modal with the right content
+    let modalData = {};
+    switch (result) {
+      case true:
+        modalData.buttonContent = 'Đã hiểu';
+        modalData.content = `Chúc mừng bạn đã trả lời đúng$$Giải thích: ${record}$$Nhấn nút "Đã hiểu" để tiếp tục`;
+        break;
+      case false:
+        if (answerTryCount === 1) {
+          modalData.buttonContent = 'Tiếp tục';
+          modalData.content = `Câu trả lời chưa đúng, bạn được chọn lại 1 lần nữa$$Gợi ý: ${record}`
+        }
+        else if (answerTryCount === 2) {
+          modalData.buttonContent = 'Đã hiểu';
+          modalData.content = `Câu trả lời đúng của câu hỏi này là: ${record}$$Nhấn nút "Đã hiểu"để tiếp tục`;
+        }
+        break;
+      default: return dispatch(requestFail('Unknown error'))
+    }
+    dispatch(openExerciseModal(modalData));
+  }
+}
+
+export const userHadCorrectAnswer = function (data = false) {
+  return {
+    type: USER_HAD_CORRECT_ANSWER,
+    data
+  }
+}
+
+export const openExerciseModal = function (modalData) {
+  return {
+    type: OPEN_EXERCISE_MODAL,
+    modalData: modalData
+  }
+}
+
+export const closeExerciseModal = function () {
+  return {
+    type: CLOSE_EXERCISE_MODAL
+  }
+}
+
 export const goToNextQuestionIfPossible = function () {
   return (dispatch, getState) => {
     let state = getState().exercise;
     //the end of question list
-    if ((state.currentExerciseList.length - 1) === state.currentQuestionIndex) dispatch(getExerciseResult());
-    else dispatch(goToNextQuestion());
+    if ((state.currentExerciseList.length - 1) === state.currentQuestionIndex) return dispatch(getExerciseResult());
+
+    if ((state.userHadCorrectAnswer && state.answerTryCount === 1) ||
+      (state.answerTryCount === 2)) return dispatch(goToNextQuestion());
   }
 }
 

@@ -48,7 +48,7 @@ export default class MuitipleChoice extends Component {
                         value={key} checked={isChecked}
                         onChange={this.handleInputChange} />
                     </Col>
-                    <Col>{this.props.answers[key]}</Col>
+                    <Col className="pl-1">{key.slice(3) + '. ' + this.props.answers[key]}</Col>
                   </Row>
                 </Col>
               )

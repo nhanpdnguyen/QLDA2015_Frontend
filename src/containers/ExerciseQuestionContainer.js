@@ -7,7 +7,7 @@ import { Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap
 
 import './ExerciseQuestionContainer.css';
 import { CHOICE, FILL } from "../constants";
-import { changeUserAnswerInExercise, goToNextQuestionIfPossible } from "../actions";
+import { changeUserAnswerInExercise, goToNextQuestionIfPossible, answerExerciseQuestion, closeExerciseModal } from "../actions";
 
 const mapStateToProps = function (state, ownProps) {
   return {
@@ -20,7 +20,11 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     changeUserAnswer: (userAnswer) => {
       dispatch(changeUserAnswerInExercise(userAnswer));
     },
-    nextPls: () => {
+    answer: () => {
+      dispatch(answerExerciseQuestion());
+    },
+    goToNextQuestionIfPossible: () => {
+      dispatch(closeExerciseModal());
       dispatch(goToNextQuestionIfPossible());
     }
   }
@@ -83,7 +87,7 @@ class ExerciseQuestionContainer extends Component {
           {/* Answer button */}
           <Row className="justify-content-center mt-3">
             <Col xs="2" className="text-center px-0">
-              <button onClick={this.props.nextPls} className="btn answer-btn p-1 w-100">Trả lời</button>
+              <button onClick={this.props.answer} className="btn answer-btn p-1 w-100">Trả lời</button>
             </Col>
           </Row>
 
@@ -100,7 +104,7 @@ class ExerciseQuestionContainer extends Component {
             }
           </ModalBody>
           <ModalFooter className="justify-content-center">
-            <button className="btn modal-btn">{this.props.modal.buttonContent}</button>
+            <button onClick={this.props.goToNextQuestionIfPossible} className="btn modal-btn">{this.props.modal.buttonContent}</button>
           </ModalFooter>
         </Modal>
       </Row>
