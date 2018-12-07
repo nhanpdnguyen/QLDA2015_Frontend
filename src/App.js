@@ -54,6 +54,7 @@ class App extends Component {
 							<Route path="/bai-tap/test" component={ExerciseQuestionContainer} />
 							<Route path="/bai-tap-2/test" component={FillChoice} />
 							<Route path="/bang-vang/test" component={TopStudier} />
+							<Route exact path="/teacher-chat-box" component={CheckAuthenticated(HelloWorld)} />
 							<Route component={HelloWorld} />
 						</Switch>
 					</Container>

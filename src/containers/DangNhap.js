@@ -18,7 +18,7 @@ class DangNhap extends Component {
     this.signInGoogleSuccessCallback = this.signInGoogleSuccessCallback.bind(this);
     this.signInFacebookSuccessCallback = this.signInFacebookSuccessCallback.bind(this);
     this.signInFailCallback = this.signInFailCallback.bind(this);
-    }
+  }
 
   handleSignIn(userName, password) {
     this.props.dispatch(signIn(userName, password, null));
@@ -39,6 +39,7 @@ class DangNhap extends Component {
   }
 
   render() {
+    if (this.props.isLoggedIn && this.props.userName === 'gvtuvan') return <Redirect to='/teacher-chat-box' />
     if (this.props.isLoggedIn) return <Redirect to='/'></Redirect>
     return (
       <Row className="flex-md-grow-1 my-4 justify-content-center">
@@ -52,30 +53,30 @@ class DangNhap extends Component {
           <div className="dang-nhap-container py-4 my-3">
             <Row>
               <Col>
-                <LoginForm signIn={this.handleSignIn}/>
+                <LoginForm signIn={this.handleSignIn} />
               </Col>
             </Row>
             <Row>
-            <Col xs="12" className="d-flex justify-content-center">
-              <Link to="/quen-mat-khau">Quên mật khẩu</Link>
-              <span>&nbsp;|&nbsp;</span>
-              <Link to="/dang-ky">Đăng ký tài khoản mới</Link>
-            </Col>
-          </Row>
+              <Col xs="12" className="d-flex justify-content-center">
+                <Link to="/quen-mat-khau">Quên mật khẩu</Link>
+                <span>&nbsp;|&nbsp;</span>
+                <Link to="/dang-ky">Đăng ký tài khoản mới</Link>
+              </Col>
+            </Row>
           </div>
         </Col>
         {/* Đăng nhập qua FB, Google */}
         <Col md="5" className="d-flex align-items-center">
           <Row className="flex-grow-1 justify-content-center fb-google-container">
             <Col xs="9" className="form-group">
-              <GoogleLoginButton 
-              signInSuccessCallback={this.signInGoogleSuccessCallback}
-              signInFailCallback={this.signInFailCallback}
+              <GoogleLoginButton
+                signInSuccessCallback={this.signInGoogleSuccessCallback}
+                signInFailCallback={this.signInFailCallback}
               />
             </Col>
             <Col xs="9" className="form-group">
-              <FacebookLoginButton 
-              signInSuccessCallback={this.signInFacebookSuccessCallback}
+              <FacebookLoginButton
+                signInSuccessCallback={this.signInFacebookSuccessCallback}
               />
             </Col>
           </Row>
@@ -87,7 +88,8 @@ class DangNhap extends Component {
 
 function mapStateToProps(state) {
   return {
-    isLoggedIn: state.auth.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn,
+    userName: state.profile.userName
   }
 }
 
