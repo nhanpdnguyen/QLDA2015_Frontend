@@ -22,3 +22,4 @@ export const GOOGLE_SIGN_OUT = 'GOOGLE_SIGN_OUT';
 //exercise types
 export const CHOICE = 'choice';
 export const FILL = 'fill';
+

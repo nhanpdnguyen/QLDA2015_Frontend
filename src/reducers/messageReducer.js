@@ -18,11 +18,14 @@ export default function messageReducer(state=initalState, actions){
                 ...state,
                 listMessages: actions.payload.listMessages
             }
+<<<<<<< HEAD
         case messageConstant.MINIATURE_CHATBOX:
             return{
                 ...state,
                 isOpen: actions.payload.isOpen
             }
+=======
+>>>>>>> 966d11190e61da42c3297b36841421c985a24c9b
         default:
             return state;
     }   
