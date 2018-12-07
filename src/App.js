@@ -31,47 +31,48 @@ const HelloWorld = function (props) {
 class App extends Component {
 
 	render() {
-		const isTeacher = false;
-		// if(isTeacher){
-		// 	return(
-		// 		<Router>
-		// 			<Switch>
-		// 			<Route path="/teacher-chat-box" component={TeacherChatBox}/>
-		// 			</Switch>
-		// 		</Router>
-		// 	)
-		// } 
-		return (
-			<Router>
-				<div>
-					{this.props.isRequesting ?
-						<div className="spinner-container d-flex justify-content-center align-items-center">
-							<div className="spinner"></div>
-						</div> : null
-					}
-					<HeaderContainer></HeaderContainer>
-					<NavBarContainer></NavBarContainer>
-					<Container fluid id="main-content-container" className="d-flex align-items-center">
-						{/* Row bọc ngoài cùng của 1 view cần phải xài thêm class flex-md-grow-1 */}
-						<Switch>
-							<Route exact path="/" component={Home} />
-							<Route exact path="/dang-nhap" component={DangNhap} />
-							<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
-							<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={ChiTietBaiHocContainer} />
-							<Route exact path="/dang-ky" component={DangKy} />
-							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
-							<Route path="/tro-choi" component={Game} />
-							<Route path="/bai-tap/test" component={MuitipleChoice} />
-							<Route path="/bai-tap-2/test" component={FillChoice} />
-							<Route path="/bang-vang/test" component={TopStudier} />
-							<Route component={HelloWorld} />
-						</Switch>
-					</Container>
-					<Footer></Footer>
-					<ChatBox className="chatbox"></ChatBox>
-				</div>
-			</Router>
-		);
+		const isTeacher = true;
+		if(isTeacher){
+			return(
+				<Router>
+					<Switch>
+					<Route path="/teacher-chat-box" component={TeacherChatBox}/>
+					</Switch>
+				</Router>
+			);
+		} else if(!isTeacher){
+			return (
+				<Router>
+					<div>
+						{this.props.isRequesting ?
+							<div className="spinner-container d-flex justify-content-center align-items-center">
+								<div className="spinner"></div>
+							</div> : null
+						}
+						<HeaderContainer></HeaderContainer>
+						<NavBarContainer></NavBarContainer>
+						<Container fluid id="main-content-container" className="d-flex align-items-center">
+							{/* Row bọc ngoài cùng của 1 view cần phải xài thêm class flex-md-grow-1 */}
+							<Switch>
+								<Route exact path="/" component={Home} />
+								<Route exact path="/dang-nhap" component={DangNhap} />
+								<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
+								<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={ChiTietBaiHocContainer} />
+								<Route exact path="/dang-ky" component={DangKy} />
+								<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
+								<Route path="/tro-choi" component={Game} />
+								<Route path="/bai-tap/test" component={MuitipleChoice} />
+								<Route path="/bai-tap-2/test" component={FillChoice} />
+								<Route path="/bang-vang/test" component={TopStudier} />
+								<Route component={HelloWorld} />
+							</Switch>
+						</Container>
+						<Footer></Footer>
+						<ChatBox className="chatbox"></ChatBox>
+					</div>
+				</Router>
+			);
+		}
 	}
 }
 

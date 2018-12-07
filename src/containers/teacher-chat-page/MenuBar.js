@@ -32,7 +32,7 @@ class MenuBar extends React.Component {
                     </div>
 
                     <div className="action-logout">
-                        <img src= "/images/iconLogOut.png" alt="avatar"onClick={this.onLogoutApp}/>
+                        <img src= "/images/iconlogout.png" alt="avatar" onClick={this.onLogoutApp}/>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,11 @@
 import React from 'react';
 import './TeacherChatBoxPage.css';
 import MenuBar from './MenuBar.js';
-
+import HeaderLeft from './HeaderLeft.js';
+import HeaderContent from './HeaderContent.js';
+import SiderbarLeft from './SiderbarLeft.js';
+import MainMessageContent from './MainMessageContent.js';
+import MessageInput from './MessageInput.js';
 class TeacherChatBoxPage extends React.Component{
     constructor(props){
         super(props);
@@ -35,6 +39,20 @@ class TeacherChatBoxPage extends React.Component{
         return(
             <div style={style} className="page-message">
                 <MenuBar></MenuBar>
+                <div className="page-wrapper">
+                    <div className="header-message">
+                        <HeaderLeft></HeaderLeft>
+                        <HeaderContent></HeaderContent>
+                    </div>
+                    <div className="main-message">
+                        <SiderbarLeft></SiderbarLeft>
+                        <div className="main-content">
+                            <MainMessageContent></MainMessageContent>
+                            <MessageInput></MessageInput>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         )
     }
