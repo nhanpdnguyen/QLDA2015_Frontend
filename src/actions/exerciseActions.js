@@ -1,5 +1,5 @@
 import {
-  CHANGE_USER_ANSWER_IN_EXERCISE, RECEIVE_EXERCISE_LIST, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER
+  CHANGE_USER_ANSWER_IN_EXERCISE, RECEIVE_EXERCISE_LIST, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER, RECEIVE_TOPIC_NAME
 } from './actionTypes';
 
 import config from '../config';
@@ -7,8 +7,36 @@ import { requestApi, requestFail } from './requestActions';
 import { GET, POST } from '../constants';
 
 const EXERCISE_API_BASE_URL = config.EXERCISE_API_BASE_URL;
+const LEARNING_API_BASE_URL = config.LEARNING_API_BASE_URL;
 
 //EXERCISE 
+export const getTopicName = function (topicId) {
+  return (dispatch) => {
+    dispatch(requestApi(GET, LEARNING_API_BASE_URL + '/topics/' + topicId)).then(result => {
+      if (result.data.success) dispatch(receiveTopicName(result.data.value));
+      else dispatch(requestFail('Something went wrong, try again'));
+    }, err => {
+      console.log(err.response)
+      let status = err.response && err.response.status;
+      switch (status) {
+        case 401: {
+          dispatch(requestFail('Not authorized'));
+          break;
+        }
+        default: dispatch(requestFail('Something went wrong, try again'))
+      }
+    })
+  }
+}
+
+export const receiveTopicName = function (data) {
+  console.log(data)
+  return {
+    type: RECEIVE_TOPIC_NAME,
+    topicName: data.name
+  }
+}
+
 export const changeUserAnswerInExercise = function (userAnswer) {
   return {
     type: CHANGE_USER_ANSWER_IN_EXERCISE,
@@ -94,7 +122,6 @@ export const receiveAnswerInExercise = function (data) {
       }
       return record
     })
-    console.log(record);
 
     //open modal with the right content
     let modalData = {};

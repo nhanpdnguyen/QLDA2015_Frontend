@@ -22,6 +22,7 @@ export const requestSuccess = function (result) {
 }
 
 export const requestFail = function (err) {
+  //alert('Có lỗi xảy ra, hãy thử tải lại trang T_T');
   return ({
     type: REQUEST_FAIL,
     err: err

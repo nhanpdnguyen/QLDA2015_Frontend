@@ -7,15 +7,19 @@ import { Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap
 
 import './ExerciseQuestionContainer.css';
 import { CHOICE, FILL } from "../constants";
-import { changeUserAnswerInExercise, goToNextQuestionIfPossible, answerExerciseQuestion, closeExerciseModal } from "../actions";
+import { changeUserAnswerInExercise, goToNextQuestionIfPossible, answerExerciseQuestion, closeExerciseModal, getExerciseListByTopicId, getTopicName } from "../actions";
 
 const mapStateToProps = function (state, ownProps) {
+  const { monhoc: monHoc, topicId } = ownProps.match.params;
   return {
+    monHoc,
+    topicId,
     ...state.exercise
   }
 }
 
 const mapDispatchToProps = function (dispatch, ownProps) {
+  const { topicId } = ownProps.match.params;
   return {
     changeUserAnswer: (userAnswer) => {
       dispatch(changeUserAnswerInExercise(userAnswer));
@@ -26,11 +30,20 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     goToNextQuestionIfPossible: () => {
       dispatch(closeExerciseModal());
       dispatch(goToNextQuestionIfPossible());
+    },
+    getExerciseList: () => {
+      dispatch(getTopicName(topicId))
+      dispatch(getExerciseListByTopicId(topicId));
     }
   }
 }
 
 class ExerciseQuestionContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.props.getExerciseList();
+  }
+
   render() {
     let exerciseToDisplay = null;
     let questionIndex = this.props.currentQuestionIndex;
@@ -49,11 +62,13 @@ class ExerciseQuestionContainer extends Component {
       default: break;
     }
 
+    console.log(this.props.monHoc);
+
     const breadCrumbProps = {
-      baseText: 'Bài tập Toán',
-      additionalClasses: 'toan',
-      baseUrl: '/bai-tap/toan/',
-      currentText: 'Test'
+      baseText: this.props.monHoc === 'toan' ? 'Bài tập Toán' : 'Bài tập Tiếng Việt',
+      additionalClasses: this.props.monHoc === 'toan' ? 'toan' : 'tieng-viet',
+      baseUrl: '/bai-tap/' + this.props.monHoc,
+      currentText: this.props.topicName
     }
 
     return (

@@ -14,6 +14,7 @@ import ChiTietBaiHocContainer from './containers/ChiTietBaiHocContainer';
 import DangKy from './containers/DangKy';
 import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
+import ExerciseListContainer from './containers/ExerciseListContainer';
 import Game from './components/Game';
 import ExerciseQuestionContainer from './containers/ExerciseQuestionContainer';
 
@@ -50,7 +51,8 @@ class App extends Component {
 							<Route exact path="/dang-ky" component={DangKy} />
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 							<Route path="/tro-choi" component={Game} />
-							<Route path="/bai-tap/:monhoc(toan|tieng-viet)/test" component={ExerciseQuestionContainer} />
+							<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
+							<Route path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
 							<Route path="/bang-vang/test" component={TopStudier} />
 							<Route component={HelloWorld} />
 						</Switch>

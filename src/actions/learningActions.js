@@ -14,7 +14,7 @@ const LEARNING_API_BASE_URL = config.LEARNING_API_BASE_URL;
 //LEARNING
 export const getLessonListByCategory = function (categoryId) {
   return (dispatch) => {
-    dispatch(requestApi(GET, LEARNING_API_BASE_URL + '/categorys/' + categoryId)).then(result => {
+    dispatch(requestApi(GET, LEARNING_API_BASE_URL + '/categories/' + categoryId)).then(result => {
       if (result.data.success) dispatch(receiveLessonList(result.data.value));
       else dispatch(requestFail('Something went wrong, try again'));
     }, err => {

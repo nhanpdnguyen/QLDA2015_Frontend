@@ -1,4 +1,4 @@
-import { RECEIVE_EXERCISE_LIST, CHANGE_USER_ANSWER_IN_EXERCISE, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER } from "../actions/actionTypes";
+import { RECEIVE_EXERCISE_LIST, CHANGE_USER_ANSWER_IN_EXERCISE, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER, RECEIVE_TOPIC_NAME } from "../actions/actionTypes";
 import { CHOICE, FILL } from "../constants";
 
 const initialState = {
@@ -35,7 +35,7 @@ const initialState = {
     },
     userAnswer: ''
   }],
-  currentQuestionIndex: 0,
+  currentQuestionIndex: 1,
   answerTryCount: 0, //number of answer tries in 1 question
   userHadCorrectAnswer: false,
   modal: {
@@ -50,8 +50,15 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case RECEIVE_TOPIC_NAME: {
+      return {
+        ...state,
+        topicName: action.topicName
+      }
+    }
     case RECEIVE_EXERCISE_LIST:
       return {
+        ...state,
         session: action.data.session,
         currentExerciseList: action.data.listQuestions,
         currentQuestionIndex: 0
