@@ -32,13 +32,13 @@ export default class FillChoice extends Component {
 
   render() {
     return (
-      <Row className="justify-content-center">
+      <Row className={"justify-content-center " + this.props.className}>
         <Col xs="12">
           <div id="fill-choice-question"></div>
         </Col>
         <Col xs="10" md="7">
           <div className="form-group form-row">
-            <label className="col-4 col-md-3 col-form-label text-dark">Câu trả lời: </label>
+            <label className="col-5 col-md-3 col-form-label text-dark">Câu trả lời: </label>
             <div className="col-7">
               <input type="text" className="form-control h-100"
                 value={this.props.userAnswer} onChange={this.handleInputChange} />

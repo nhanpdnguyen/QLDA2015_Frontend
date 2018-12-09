@@ -23,6 +23,7 @@ import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
 import TopStudier from './components/TopStudier';
 import ChatBox from './containers/ChatBox';
+import ThiThuContainer from './containers/ThiThuContainer';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>
@@ -52,7 +53,8 @@ class App extends Component {
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 							<Route path="/tro-choi" component={Game} />
 							<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
-							<Route path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
+							<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
+							<Route exact path="/thi-thu/:monhoc(toan|tieng-viet)/:dethi" component={ThiThuContainer} />
 							<Route path="/bang-vang/test" component={TopStudier} />
 							<Route exact path="/teacher-chat-box" component={CheckAuthenticated(HelloWorld)} />
 							<Route component={HelloWorld} />

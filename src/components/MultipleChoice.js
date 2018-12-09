@@ -32,7 +32,7 @@ export default class MuitipleChoice extends Component {
 
   render() {
     return (
-      <Row className="justify-content-center">
+      <Row className={"justify-content-center " + this.props.className}>
         <Col xs="12">
           <div id="multiple-choice-question"></div>
         </Col>
