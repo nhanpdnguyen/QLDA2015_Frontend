@@ -1,4 +1,4 @@
-import { RECEIVE_EXERCISE_LIST, CHANGE_USER_ANSWER_IN_EXERCISE, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER, RECEIVE_TOPIC_NAME } from "../actions/actionTypes";
+import { RECEIVE_EXERCISE_LIST, CHANGE_USER_ANSWER_IN_EXERCISE, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER, RECEIVE_TOPIC_NAME, RECEIVE_EXERCISE_RESULT } from "../actions/actionTypes";
 import { CHOICE, FILL } from "../constants";
 
 const initialState = {
@@ -45,6 +45,9 @@ const initialState = {
   },
   error: {
     hasNotAnswer: false
+  },
+  result: {
+
   }
 }
 
@@ -132,6 +135,13 @@ export default function (state = initialState, action) {
         //reset the try times and userHadCorrectAnswer
         answerTryCount: 0,
         userHadCorrectAnswer: false
+      }
+    }
+
+    case RECEIVE_EXERCISE_RESULT: {
+      return {
+        ...state,
+        result: action.exerciseResult
       }
     }
 

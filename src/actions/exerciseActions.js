@@ -1,5 +1,5 @@
 import {
-  CHANGE_USER_ANSWER_IN_EXERCISE, RECEIVE_EXERCISE_LIST, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER, RECEIVE_TOPIC_NAME
+  CHANGE_USER_ANSWER_IN_EXERCISE, RECEIVE_EXERCISE_LIST, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER, RECEIVE_TOPIC_NAME, RECEIVE_EXERCISE_RESULT
 } from './actionTypes';
 
 import config from '../config';
@@ -184,7 +184,27 @@ export const goToNextQuestion = function () {
 }
 
 export const getExerciseResult = function () {
-  return {
+  return (dispatch, getState) => {
+    let state = getState().exercise;
+    dispatch(requestApi(GET, EXERCISE_API_BASE_URL + `/result_exercise/${state.session}`)).then(result => {
+      dispatch(receiveExerciseResult(result.data));
+    }, err => {
+      console.log(err.response)
+      let status = err.response && err.response.status;
+      switch (status) {
+        case 401: {
+          dispatch(requestFail('Not authorized'));
+          break;
+        }
+        default: dispatch(requestFail('Something went wrong, try again'))
+      }
+    })
+  }
+}
 
+export const receiveExerciseResult = function (exerciseResult) {
+  return {
+    type: RECEIVE_EXERCISE_RESULT,
+    exerciseResult
   }
 }
