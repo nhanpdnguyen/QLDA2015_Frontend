@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import DanhSachBaiHoc from "../components/DanhSachBaiHoc";
+import ExerciseList from "../components/ExerciseList";
 import { getLessonListByCategory } from '../actions';
 import { toanCategoryId, tiengVietCategoryId } from '../constants';
 
@@ -25,4 +25,4 @@ const mapDispatchToProps = function (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DanhSachBaiHoc);
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseList);

@@ -14,7 +14,7 @@ import ChiTietBaiHocContainer from './containers/ChiTietBaiHocContainer';
 import DangKy from './containers/DangKy';
 import UpdateProfileContainer from './containers/UpdateProfileContainer';
 import CheckAuthenticated from "./containers/CheckAuthenticated";
-import FillChoice from "./components/FillChoice";
+import ExerciseListContainer from './containers/ExerciseListContainer';
 import Game from './components/Game';
 import ExerciseQuestionContainer from './containers/ExerciseQuestionContainer';
 
@@ -41,7 +41,7 @@ class App extends Component {
 					}
 					<HeaderContainer></HeaderContainer>
 					<NavBarContainer></NavBarContainer>
-					<Container fluid id="main-content-container" className="d-flex align-items-center">
+					<Container fluid id="main-content-container" className="d-flex align-items-start">
 						{/* Row bọc ngoài cùng của 1 view cần phải xài thêm class flex-md-grow-1 */}
 						<Switch>
 							<Route exact path="/" component={Home} />
@@ -51,8 +51,8 @@ class App extends Component {
 							<Route exact path="/dang-ky" component={DangKy} />
 							<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 							<Route path="/tro-choi" component={Game} />
-							<Route path="/bai-tap/test" component={ExerciseQuestionContainer} />
-							<Route path="/bai-tap-2/test" component={FillChoice} />
+							<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
+							<Route path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
 							<Route path="/bang-vang/test" component={TopStudier} />
 							<Route exact path="/teacher-chat-box" component={CheckAuthenticated(HelloWorld)} />
 							<Route component={HelloWorld} />
