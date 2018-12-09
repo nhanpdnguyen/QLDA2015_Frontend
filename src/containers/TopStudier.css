@@ -12,21 +12,15 @@
 }
 
 .leaderboard {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 285px;
-    height: 308px;
     background: linear-gradient(to bottom, #cc332f, #cc332f);
     border-radius: 10px;
     box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
 }
 
 .leaderboard h1 {
-    font-size: 18px;
+    font-size: 1.7vw;
     color: #fff;
-    padding: 12px 13px 18px;
+    padding: 2vw 13px 2vw;
     justify-content: center;
 }
 
@@ -49,7 +43,7 @@
     z-index: 1;
     font-size: 14px;
     counter-increment: leaderboard;
-    padding: 18px 10px 18px 50px;
+    padding: 1.8vw 1.0vw 1.8vw 5.0vw;
     cursor: pointer;
     backface-visibility: hidden;
     transform: translateZ(0) scale(1, 1);
@@ -58,7 +52,7 @@
 
 .leaderboard ol li small {
     color: #ba4741;
-    font-size: 12px;
+    font-size: 1.2vw;
 }
 
 .leaderboard ol li::before {
@@ -77,6 +71,7 @@
 }
 
 .leaderboard ol li mark {
+    font-size: 1.3vw;
     position: absolute;
     z-index: 2;
     top: 0;
