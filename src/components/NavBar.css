@@ -9,6 +9,20 @@
     color: white;
 }
 
+.dropdown-menu button.dropdown-item {
+    font-size: 1.1vw;
+    text-decoration: none
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+}
+
+.dropdown-menu button.dropdown-item:hover {
+    background: #14497a;
+    color: white;
+}
+
 nav {
     background-color: #cc332f;
     font-size: 1.2vw;
@@ -42,6 +56,10 @@ nav {
 
 @media(max-width: 768px) {
     nav {
-        font-size: initial;
+        font-size: 1rem;
+    }
+
+    .dropdown-menu button.dropdown-item {
+        font-size: 1rem;
     }
 }

@@ -53,7 +53,7 @@ export default class NavBar extends Component {
                   :
                   <NavItem className="d-md-none">
                     <NavLink href="/dang-nhap">
-                      <img className="nav-item-image" alt="Đăng nhập" src="" />
+                      <img className="nav-item-image" alt="Đăng nhập" src="/images/Nav-icon6-01.png" />
                       <div className="nav-item-text ml-2 mt-2">Đăng nhập</div>
                     </NavLink>
                   </NavItem>
@@ -72,12 +72,12 @@ export default class NavBar extends Component {
                   <div className="nav-item-text ml-2 mt-2">Bài học</div>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    <Link to="/bai-hoc/toan">Toán</Link>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <Link to="/bai-hoc/tieng-viet">Tiếng Việt</Link>
-                  </DropdownItem>
+                  <Link to="/bai-hoc/toan">
+                    <DropdownItem>Toán</DropdownItem>
+                  </Link>
+                  <Link to="/bai-hoc/tieng-viet">
+                    <DropdownItem>Tiếng Việt</DropdownItem>
+                  </Link>
                 </DropdownMenu>
               </UncontrolledDropdown>
 
@@ -87,8 +87,12 @@ export default class NavBar extends Component {
                   <div className="nav-item-text ml-2 mt-2">Bài tập</div>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Toán</DropdownItem>
-                  <DropdownItem>Tiếng Việt</DropdownItem>
+                  <Link to="/bai-tap/toan">
+                    <DropdownItem>Toán</DropdownItem>
+                  </Link>
+                  <Link to="/bai-tap/tieng-viet">
+                    <DropdownItem>Tiếng Việt</DropdownItem>
+                  </Link>
                 </DropdownMenu>
               </UncontrolledDropdown>
 
@@ -102,17 +106,18 @@ export default class NavBar extends Component {
                   <DropdownItem>Tiếng Việt</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-
+              
+              <NavItem>
+                <NavLink href="/">
+                  <img className="nav-item-image" alt="Trang chủ" src="/images/Nav-icon7.png" />
+                  <div className="nav-item-text ml-2 mt-2">Đổi thưởng</div>
+                </NavLink>
+              </NavItem>
+              
               <NavItem>
                 <NavLink href="/">
                   <img className="nav-item-image" alt="Trang chủ" src="/images/Nav-icon5-01.png" />
                   <div className="nav-item-text ml-2 mt-2">Giới thiệu</div>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/">
-                  <img className="nav-item-image" alt="Trang chủ" src="/images/Nav-icon6-01.png" />
-                  <div className="nav-item-text ml-2 mt-2">Liên hệ</div>
                 </NavLink>
               </NavItem>
 
