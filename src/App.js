@@ -21,7 +21,6 @@ import ExerciseQuestionContainer from './containers/ExerciseQuestionContainer';
 // css
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
-import TopStudier from './components/TopStudier';
 import ChatBox from './containers/ChatBox';
 
 const HelloWorld = function (props) {
@@ -53,7 +52,6 @@ class App extends Component {
 							<Route path="/tro-choi" component={Game} />
 							<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
 							<Route path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
-							<Route path="/bang-vang/test" component={TopStudier} />
 							<Route exact path="/teacher-chat-box" component={CheckAuthenticated(HelloWorld)} />
 							<Route component={HelloWorld} />
 						</Switch>
