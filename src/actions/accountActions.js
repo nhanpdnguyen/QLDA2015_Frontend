@@ -40,7 +40,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           userName: userName,
           passWord: password
         }
-        dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account', data)).then(result => {
+        dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/', data)).then(result => {
           console.log(result.data.success);
           if (result.data.success) {
             //set token
@@ -67,7 +67,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           let data = {
             access_token: accessToken
           }
-          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account_facebook', data)).then(result => {
+          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/facebook', data)).then(result => {
             if (result.data.success) {
               //set token
               dispatch(signInSuccess(result.data.value.access_token));
@@ -94,7 +94,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           let data = {
             access_token: accessToken
           }
-          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account_google', data)).then(result => {
+          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/google', data)).then(result => {
             if (result.data.success) {
               //set token
               dispatch(signInSuccess(result.data.value.access_token));
