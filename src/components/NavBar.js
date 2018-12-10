@@ -41,7 +41,7 @@ export default class NavBar extends Component {
             </div>
           </NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar className="menu-content">
-            <Nav className="mx-auto" navbar>
+            <Nav className="mx-auto justify-content-around" navbar>
               {
                 this.props.isLoggedIn ?
                   <NavItem className="d-md-none">
