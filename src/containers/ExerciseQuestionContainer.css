@@ -15,10 +15,26 @@
   font-size: 1.5vw;
 }
 
+.ket-qua-bai-tap-container {
+  background: white;
+  border-radius: 15px;
+}
+
 .bai-tap-title {
   font-family: 'UTM_Alexander_0';
   font-size: 5vw;
   color: #F15A24;
+}
+
+.ket-qua-bai-tap-container .title {
+  font-family: 'UTM_Alexander_0';
+  font-size: 2.5vw;
+  color: #CC332F;
+}
+
+.ket-qua-bai-tap-container .detail {
+  font-family: 'Tahoma';
+  font-size: 1.5vw;
 }
 
 .exercise-question-container .current-exercise-number {
@@ -52,6 +68,14 @@
 
   .bai-tap-title {
     font-size: 2rem;
+  }
+
+  .ket-qua-bai-tap-container .title {
+    font-size: 1.5rem
+  }
+
+  .ket-qua-bai-tap-container .detail {
+    font-size: 1rem;
   }
 
   .exercise-question-container .current-exercise-number {
