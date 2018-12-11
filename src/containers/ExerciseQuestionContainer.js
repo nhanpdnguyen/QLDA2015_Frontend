@@ -8,6 +8,7 @@ import { Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap
 import './ExerciseQuestionContainer.css';
 import { CHOICE, FILL } from "../constants";
 import { changeUserAnswerInExercise, goToNextQuestionIfPossible, answerExerciseQuestion, closeExerciseModal, getExerciseListByTopicId, getTopicName } from "../actions";
+import NotFound from "../components/NotFound";
 
 const mapStateToProps = function (state, ownProps) {
   const { monhoc: monHoc, topicId } = ownProps.match.params;
@@ -59,7 +60,7 @@ class ExerciseQuestionContainer extends Component {
         exerciseToDisplay = <FillChoice {...currentExercise} changeUserAnswer={this.props.changeUserAnswer} />;
         break;
       }
-      default: break;
+      default: return <NotFound />;
     }
 
     console.log(this.props.monHoc);

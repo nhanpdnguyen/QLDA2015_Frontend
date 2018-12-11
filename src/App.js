@@ -23,6 +23,7 @@ import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
 import ChatBox from './containers/ChatBox';
 import ExerciseResultContainer from './containers/ExerciseResultContainer';
+import NotFound from './components/NotFound';
 
 const HelloWorld = function (props) {
 	return <div>Hello world</div>
@@ -55,7 +56,7 @@ class App extends Component {
 							<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
 							<Route exact path="/bai-tap/ket-qua" component={ExerciseResultContainer} />
 							<Route exact path="/teacher-chat-box" component={CheckAuthenticated(HelloWorld)} />
-							<Route component={HelloWorld} />
+							<Route component={NotFound} />
 						</Switch>
 					</Container>
 					<Footer></Footer>
