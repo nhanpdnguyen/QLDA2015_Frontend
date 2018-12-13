@@ -18,20 +18,26 @@
 	color: #14497a;
 }
 
-.dang-nhap-header-btn, .dang-ky-header-btn {
+.dang-nhap-header-btn,
+.dang-ky-header-btn {
 	color: #14497a;
 	border-color: #588ab7;
 	font-size: 1.2vw;
 	font-family: 'UVN_ChimBienNang'
 }
 
-.dang-ky-header-btn:hover, .dang-nhap-header-btn:hover {
+.dang-ky-header-btn:hover,
+.dang-nhap-header-btn:hover {
 	background-color: #14497a;
 }
 
 .header a {
 	text-decoration: none;
 	color: #14497a
+}
+
+.header a:hover {
+	color: white;
 }
 
 .tai-khoan-dropdown button.btn {

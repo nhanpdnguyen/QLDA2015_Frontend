@@ -4,6 +4,15 @@
     position: fixed;
     bottom: 2vh;
     font-size: 1vw; 
+    z-index: 10;
+}
+
+.container-chatbox-mini{
+    height: 5vh;
+    width: 100%;
+    position: fixed;
+    bottom: 2vh;
+    font-size: 1vw; 
 }
 
 .box-shadow{
@@ -37,6 +46,9 @@
     margin-right: 1.35vw; 
 }
 
+.icon-min>img{
+    
+}
 .content-message{
     background: white;
     width: 100%;
@@ -46,4 +58,12 @@
     overflow: hidden !important;
     background: rgb(240, 240, 240);
     overflow: hidden;
+}
+
+.container-chatbox-miniture{
+    height: 5vh;
+    width: 100%;
+    position: fixed;
+    bottom: 2vh;
+    font-size: 1vw; 
 }

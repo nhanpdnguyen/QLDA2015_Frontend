@@ -7,7 +7,9 @@ import {
   POST, PUT,
   NORMAL_SIGN_IN, FACEBOOK_SIGN_IN, GOOGLE_SIGN_IN,
   NORMAL_SIGN_UP,
-  NORMAL_SIGN_OUT, FACEBOOK_SIGN_OUT, GOOGLE_SIGN_OUT
+  NORMAL_SIGN_OUT, FACEBOOK_SIGN_OUT, GOOGLE_SIGN_OUT,
+  SET_SIGNUP_FALSE,
+  RESET_PROFILE
 } from "../constants";
 
 import config from '../config';
@@ -40,7 +42,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           userName: userName,
           passWord: password
         }
-        dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account', data)).then(result => {
+        dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/', data)).then(result => {
           console.log(result.data.success);
           if (result.data.success) {
             //set token
@@ -67,7 +69,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           let data = {
             access_token: accessToken
           }
-          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account_facebook', data)).then(result => {
+          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/facebook', data)).then(result => {
             if (result.data.success) {
               //set token
               dispatch(signInSuccess(result.data.value.access_token));
@@ -94,7 +96,7 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           let data = {
             access_token: accessToken
           }
-          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account_google', data)).then(result => {
+          dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/google', data)).then(result => {
             if (result.data.success) {
               //set token
               dispatch(signInSuccess(result.data.value.access_token));
@@ -141,7 +143,7 @@ export const signUp = function (data, method = NORMAL_SIGN_UP) {
   return (dispatch) => {
     switch (method) {
       case NORMAL_SIGN_UP: {
-        dispatch(requestApi(PUT, ACCOUNT_API_BASE_URL + '/account', data)).then(result => {
+        dispatch(requestApi(PUT, ACCOUNT_API_BASE_URL + '/', data)).then(result => {
           console.log(result);
           if (result.data.success) {
             //set token
@@ -182,11 +184,13 @@ export const signOut = function (method = NORMAL_SIGN_OUT) {
       case NORMAL_SIGN_OUT: {
         dispatch(requesting());
         dispatch(signOutSuccess());
+        dispatch(resetProfile());
         break;
       }
       case FACEBOOK_SIGN_OUT: {
         window.FB.logout();
         dispatch(signOutSuccess());
+        dispatch(resetProfile());
         break;
       }
       case GOOGLE_SIGN_OUT:
@@ -194,6 +198,8 @@ export const signOut = function (method = NORMAL_SIGN_OUT) {
           let auth2 = window.gapi.auth2.getAuthInstance();
           auth2.signOut().then(() => {
             dispatch(signOutSuccess());
+        dispatch(resetProfile());
+        dispatch(resetProfile());
           })
           break;
         }
@@ -201,3 +207,15 @@ export const signOut = function (method = NORMAL_SIGN_OUT) {
     }
   }
 }
+
+//tai code
+export const setSignUpFalse = (payload) => ({
+  type: SET_SIGNUP_FALSE,
+  payload:{
+    isSignUp: payload.isSignUp,
+  }
+})
+
+export const resetProfile = () => ({
+  type: RESET_PROFILE,
+})

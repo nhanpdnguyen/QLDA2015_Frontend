@@ -37,10 +37,10 @@
     border: 0;
 }
 
-button:hover {
+.constainer-button-send>button:hover {
     background-color: #ff6363 !important;
 }
 
-button:active {
+.constainer-button-send>button:active {
     background-color: #df0000 !important;
-}
+} 

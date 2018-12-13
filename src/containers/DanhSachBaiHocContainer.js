@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import DanhSachBaiHoc from "../components/DanhSachBaiHoc";
 import { getLessonListByCategory } from '../actions';
-
-const toanCategoryId = '5bd96e527c4ca705165a719c';
-const tiengVietCategoryId = '5bddc78f5f6c2d92689023e5';
+import { toanCategoryId, tiengVietCategoryId } from '../constants';
 
 const mapStateToProps = function (state, ownProps) {
   const monHoc = ownProps.match.params.monhoc;

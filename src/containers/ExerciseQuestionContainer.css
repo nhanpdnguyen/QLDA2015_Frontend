@@ -15,15 +15,75 @@
   font-size: 1.5vw;
 }
 
+.ket-qua-bai-tap-container {
+  background: white;
+  border-radius: 15px;
+}
+
+.bai-tap-title {
+  font-family: 'UTM_Alexander_0';
+  font-size: 5vw;
+  color: #F15A24;
+}
+
+.ket-qua-bai-tap-container .title {
+  font-family: 'UTM_Alexander_0';
+  font-size: 2.5vw;
+  color: #CC332F;
+}
+
+.ket-qua-bai-tap-container .detail {
+  font-family: 'Tahoma';
+  font-size: 1.5vw;
+}
+
+.exercise-question-container .current-exercise-number {
+  padding-left: 15px;
+  color: darkslategray;
+  font-size: 1.2vw;
+}
+
+.exercise-question-container .answer-btn {
+  font-size: 1.5vw;
+  font-weight: bold;
+  background: #CC332F;
+  color: white;
+}
+
+.exercise-question-container .answer-btn:hover {
+  background: rgb(192, 18, 12);
+}
+
 @media (max-width: 768px) {
 
   .exercise-question-container #multiple-choice-question,
   .exercise-question-container #fill-choice-question {
-    font-size: 1.2em;
+    font-size: 1.1rem;
   }
 
   .exercise-question-container .multiple-choice-answers,
   .exercise-question-container label {
     font-size: initial;
   }
+
+  .bai-tap-title {
+    font-size: 2rem;
+  }
+
+  .ket-qua-bai-tap-container .title {
+    font-size: 1.5rem
+  }
+
+  .ket-qua-bai-tap-container .detail {
+    font-size: 1rem;
+  }
+
+  .exercise-question-container .current-exercise-number {
+    font-size: 0.8rem;
+  }
+
+  .exercise-question-container .answer-btn {
+    font-size: 0.9rem;
+  }
+
 }
