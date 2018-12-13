@@ -1,15 +1,15 @@
-.ds-bai-tap-title {
+.ds-thi-thu-title {
     font-family: 'UTM_Alexander_0', sans-serif;
     font-size: 7vh;
     color: red;
     font-weight: 800;
 }
 
-.ds-bai-tap {
+.ds-thi-thu {
     margin: 0 auto;
 }
 
-.ds-bai-tap-box {
+.ds-thi-thu-box {
     padding-left: 4vh;
     padding-right: 4vh;
     padding-bottom: 4vh;
@@ -19,7 +19,7 @@
     margin-top: 5vh;
 }
 
-.ds-bai-tap-box a {
+.ds-thi-thu-box a {
     text-decoration: none;
     color: unset;
 }
@@ -40,7 +40,7 @@
     padding-top: 2vh;
 }
 
-.ds-bai-tap-branch {
+.ds-thi-thu-branch {
     font-size: 7vh;
     color: orange;
     font-family: 'UTM_Alexander_0', sans-serif;
@@ -48,15 +48,11 @@
 }
 
 @media(max-width: 768px) {
-    .ds-bai-tap {
+    .ds-thi-thu {
         font-size: initial
     }
 
-    .ds-bai-tap-branch {
+    .ds-thi-thu-branch {
         margin-top: 0;
     }
-}
-
-.exam-list {
-    padding-top: 7vh;
 }

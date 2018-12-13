@@ -10,8 +10,8 @@
   border-radius: 15px;
 }
 
-.exam-question-container #multiple-choice-question,
-.exam-question-container #fill-choice-question {
+.exam-question-container .multiple-choice-question,
+.exam-question-container .fill-choice-question {
   border: none;
   font-size: 2vw;
 }
@@ -26,8 +26,8 @@
     font-size: 2rem;
   }
 
-  .exam-question-container #multiple-choice-question,
-  .exam-question-container #fill-choice-question {
+  .exam-question-container .multiple-choice-question,
+  .exam-question-container .fill-choice-question {
     font-size: 1.1rem;
   }
 

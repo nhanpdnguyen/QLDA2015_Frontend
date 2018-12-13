@@ -5,7 +5,7 @@ import './FillChoice.css';
 
 export default class FillChoice extends Component {
   componentDidMount() {
-    this.quill = new Quill('#fill-choice-question', {
+    this.quill = new Quill('.fill-choice-question.id-' + this.props._id, {
       modules: {
         toolbar: false,
       },
@@ -16,6 +16,7 @@ export default class FillChoice extends Component {
     //set question contents
     let rawQuestionContent = this.props.content;
     this.quill.setContents(JSON.parse(rawQuestionContent));
+    
   }
 
   shouldComponentUpdate(nextProps) {
@@ -34,7 +35,8 @@ export default class FillChoice extends Component {
     return (
       <Row className={"justify-content-center " + this.props.className}>
         <Col xs="12">
-          <div id="fill-choice-question"></div>
+          <div className={"fill-choice-question id-" + this.props._id}>
+          </div>
         </Col>
         <Col xs="10" md="7">
           <div className="form-group form-row">

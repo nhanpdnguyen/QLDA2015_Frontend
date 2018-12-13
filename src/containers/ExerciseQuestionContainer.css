@@ -4,8 +4,8 @@
   border-radius: 15px;
 }
 
-.exercise-question-container #multiple-choice-question,
-.exercise-question-container #fill-choice-question {
+.exercise-question-container .multiple-choice-question,
+.exercise-question-container .fill-choice-question {
   border: none;
   font-size: 2vw;
 }
@@ -40,8 +40,8 @@
 
 @media (max-width: 768px) {
 
-  .exercise-question-container #multiple-choice-question,
-  .exercise-question-container #fill-choice-question {
+  .exercise-question-container .multiple-choice-question,
+  .exercise-question-container .fill-choice-question {
     font-size: 1.1rem;
   }
 

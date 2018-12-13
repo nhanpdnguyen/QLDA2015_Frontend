@@ -1,45 +1,95 @@
 import { FILL, CHOICE } from "../constants";
-import { CHANGE_USER_ANSWER_IN_EXAM } from "../actions/actionTypes";
+import { CHANGE_USER_ANSWER_IN_EXAM, RECEIVE_EXAMINATION_LIST, RECEIVE_EXAMINATION_TITLE_LIST,SAVE_EXAM_INFO, RECEIVE_EXAM_RESULT, CLEAR_EXAM_RESULT, SET_EXAM_TIMER, CLEAR_CURRENT_EXAM_LIST } from "../actions/actionTypes";
+
+const initialResult = {
+  numberQuestion: 0,
+  numberAnswerRight: 0,
+  point: 0
+}
 
 const initialState = {
-  currentExamList: [{
-    _id: '5bed57a317a7bc29788fe9d0',
-    type: CHOICE,
-    content: "{\"ops\":[{\"insert\":\"B\u1EA1n T\u00F9ng c\u00F3 \u0111\u1EB9p trai hay kh\u00F4ng? \u0110i\u1EC1u g\u00EC \u0111\u00E3 khi\u1EBFn cho b\u1EA1n T\u00F9ng \u0111\u1EB9p trai nh\u01B0 v\u1EADy?\"},{\"insert\":\"\\n\"}]}",
-    answers: {
-      ansA: "10",
-      ansB: "11",
-      ansC: "8",
-      ansD: "9",
-    },
-    userAnswer: ''
-  },
-  {
-    _id: '5bed588a17a7bc29788fe9d8',
-    type: FILL,
-    content: "{\"ops\":[{\"insert\":\"\u0110i\u1EC1n v\u00E0o ch\u1ED7 tr\u1ED1ng: 1 + 1 = ...\\n\"}]}",
-    userAnswer: ''
-  }],
+  currentExamList: [],
   result: {
+  },
+  examTitleList: [],
+  examInfo: {
+    title: '',
+    type: '',
+    time: '',
+    timeDo: 0,
+    numberQuestion: 0
+  },
+  result: initialResult,
+  timer: 0,
 
-  }
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_USER_ANSWER_IN_EXAM: {
       let changedList = state.currentExamList.map((item, index) => {
-        if (index === action.index) {
+        if (index === action.index) { 
           return {
+            ...state,
             ...item,
             userAnswer: action.data
           }
         } else return item;
       });
-
+      
       return {
         ...state,
         currentExamList: changedList
+      }
+    }
+    case RECEIVE_EXAMINATION_LIST: {
+      var examList = action.data.map(exam => {
+        return {
+          ...exam,
+          userAnswer: ''
+        }
+      })
+      return {
+        ...state,
+        currentExamList: examList,
+      }
+    }
+    case RECEIVE_EXAMINATION_TITLE_LIST: {
+      return {
+        ...state,
+        examTitleList: action.data
+      }
+    }
+    case SAVE_EXAM_INFO: {
+      return {
+        ...state,
+        examInfo: action.data,
+        timer: action.data.timeDo
+      }
+    }
+    case RECEIVE_EXAM_RESULT: {
+      return {
+        ...state,
+        result: action.examResult
+      }
+    }
+    case CLEAR_EXAM_RESULT: {
+      return {
+        ...state,
+        result: initialResult
+      }
+    }
+    case SET_EXAM_TIMER: {
+      console.log("SET_EXAM_TIMER ", action.time);
+      return {
+        ...state,
+        timer: action.time,
+      }
+    }
+    case CLEAR_CURRENT_EXAM_LIST: {
+      return {
+        ...state,
+        currentExamList: []
       }
     }
     default:

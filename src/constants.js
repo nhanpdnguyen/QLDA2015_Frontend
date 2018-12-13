@@ -27,3 +27,8 @@ export const tiengVietCategoryId = '5bddc78f5f6c2d92689023e5';
 export const CHOICE = 'choice';
 export const FILL = 'fill';
 
+
+//examination types
+export const MATH = 'math';
+export const VIETNAMESE = 'vietnamese';
+

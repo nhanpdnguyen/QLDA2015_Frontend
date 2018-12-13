@@ -5,7 +5,7 @@ import './MultipleChoice.css';
 
 export default class MuitipleChoice extends Component {
   componentDidMount() {
-    this.quill = new Quill('#multiple-choice-question', {
+    this.quill = new Quill('.multiple-choice-question.id-' + this.props._id, {
       modules: {
         toolbar: false,
       },
@@ -15,6 +15,7 @@ export default class MuitipleChoice extends Component {
 
     //set question contents
     let rawQuestionContent = this.props.content;
+
     this.quill.setContents(JSON.parse(rawQuestionContent));
   }
 
@@ -34,7 +35,7 @@ export default class MuitipleChoice extends Component {
     return (
       <Row className={"justify-content-center " + this.props.className}>
         <Col xs="12">
-          <div id="multiple-choice-question"></div>
+          <div className={"multiple-choice-question id-" + this.props._id}></div>
         </Col>
         <Col xs="10" md="7">
           <Row className="multiple-choice-answers">
@@ -44,7 +45,7 @@ export default class MuitipleChoice extends Component {
                 <Col key={key} xs="12" md="6">
                   <Row className="align-items-start">
                     <Col xs="1" className="p-0 text-center">
-                      <input type="radio" name="answer"
+                      <input type="radio" name={"answer-" + this.props._id}
                         value={key} checked={isChecked}
                         onChange={this.handleInputChange} />
                     </Col>
