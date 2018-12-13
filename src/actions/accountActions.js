@@ -141,7 +141,7 @@ export const signUp = function (data, method = NORMAL_SIGN_UP) {
   return (dispatch) => {
     switch (method) {
       case NORMAL_SIGN_UP: {
-        dispatch(requestApi(PUT, ACCOUNT_API_BASE_URL + '/account', data)).then(result => {
+        dispatch(requestApi(PUT, ACCOUNT_API_BASE_URL + '/', data)).then(result => {
           console.log(result);
           if (result.data.success) {
             //set token
