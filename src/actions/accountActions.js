@@ -198,8 +198,7 @@ export const signOut = function (method = NORMAL_SIGN_OUT) {
           let auth2 = window.gapi.auth2.getAuthInstance();
           auth2.signOut().then(() => {
             dispatch(signOutSuccess());
-        dispatch(resetProfile());
-        dispatch(resetProfile());
+            dispatch(resetProfile());
           })
           break;
         }
