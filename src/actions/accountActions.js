@@ -7,7 +7,9 @@ import {
   POST, PUT,
   NORMAL_SIGN_IN, FACEBOOK_SIGN_IN, GOOGLE_SIGN_IN,
   NORMAL_SIGN_UP,
-  NORMAL_SIGN_OUT, FACEBOOK_SIGN_OUT, GOOGLE_SIGN_OUT
+  NORMAL_SIGN_OUT, FACEBOOK_SIGN_OUT, GOOGLE_SIGN_OUT,
+  SET_SIGNUP_FALSE,
+  RESET_PROFILE
 } from "../constants";
 
 import config from '../config';
@@ -182,11 +184,13 @@ export const signOut = function (method = NORMAL_SIGN_OUT) {
       case NORMAL_SIGN_OUT: {
         dispatch(requesting());
         dispatch(signOutSuccess());
+        dispatch(resetProfile());
         break;
       }
       case FACEBOOK_SIGN_OUT: {
         window.FB.logout();
         dispatch(signOutSuccess());
+        dispatch(resetProfile());
         break;
       }
       case GOOGLE_SIGN_OUT:
@@ -194,6 +198,8 @@ export const signOut = function (method = NORMAL_SIGN_OUT) {
           let auth2 = window.gapi.auth2.getAuthInstance();
           auth2.signOut().then(() => {
             dispatch(signOutSuccess());
+        dispatch(resetProfile());
+        dispatch(resetProfile());
           })
           break;
         }
@@ -201,3 +207,15 @@ export const signOut = function (method = NORMAL_SIGN_OUT) {
     }
   }
 }
+
+//tai code
+export const setSignUpFalse = (payload) => ({
+  type: SET_SIGNUP_FALSE,
+  payload:{
+    isSignUp: payload.isSignUp,
+  }
+})
+
+export const resetProfile = () => ({
+  type: RESET_PROFILE,
+})

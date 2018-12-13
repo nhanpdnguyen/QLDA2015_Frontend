@@ -34,7 +34,7 @@ const actionGetAllUsers = () => {
     return (dispatch) => {
         var listUsers = new OrderedMap();
 
-        dispatch(requestApi(GET, ACCOUNT_API_BASE_URL + '/account/profiles')).then(result => {   
+        dispatch(requestApi(GET, ACCOUNT_API_BASE_URL + '/profiles')).then(result => {   
             const profiles = result.data.profiles;
             profiles.forEach(element => {
                 const user = {
@@ -84,7 +84,6 @@ const actionGetAllMessageOfChannelTeacher = (payload) => {
             }
 
             dispatch(actionSetListMessagesTeacher(payload));
-            console.log(result);
         }).catch((err) => {
             console.log(err);
         })
@@ -116,9 +115,9 @@ const actionAddUserOnline = (payload) => ({
 const actionAddUserChat = (payload) => ({
     type: messageConstant.ADD_USER_CHAT,
     payload: {
-        id: payload._id,
+        id: payload.id,
         user:{
-            id: payload._id,
+            id: payload.id,
             userName: payload.userName,
             isOnline: payload.isOnline,
         }

@@ -66,31 +66,26 @@ class TeacherChatBoxPage extends React.Component{
     handleMessage = (message) => {
         const msg = this.decodeMessage(message);
         const type = msg.type;
-        // console.log(msg);
-
         switch(type){
             case helpers.TYPE_MESSAGE_CREATE:
-                if(this.props.idChannelActive.length !== 0){
+                var idChannel = msg.idChannel;
+                var listMessagesTmp = this.props.listMessagesTeacher.get(idChannel);
+                if(this.props.idChannelActive.length !== 0 && listMessagesTmp){
                     var messageTmp = {
                         _id: msg._id,
-                        idChannel: msg.idChannel,
+                        idChannel: idChannel,
                         idSender: msg.idSender,
                         data: msg.data,
                         create: msg.create 
                     }
                     
-                    var userId = this.props.userId;
-                    var idChannel = this.props.idChannelActive;
-                    var idChannelTmp = (userId > idChannel) ? userId + idChannel : idChannel + userId;
-                    var listMessagesTmp = this.props.listMessagesTeacher.get(idChannelTmp);
-
                     listMessagesTmp.push(messageTmp);
 
                     var listMessagesTeacher = [];
                     listMessagesTeacher = listMessagesTeacher.concat(listMessagesTmp);
     
                     var payload = {
-                        idChannel: idChannelTmp,
+                        idChannel: idChannel,
                         listMessagesTeacher: listMessagesTeacher
                     }
                     this.props.actionAddNewMessageTeacher(payload);
@@ -116,6 +111,17 @@ class TeacherChatBoxPage extends React.Component{
                     listUsersOnline: listUserOnlineTmp
                 }
                 this.props.actionSetListUsersOnline(payload);
+                break;
+            case helpers.TYPE_MESSAGE_CREATE_USER:
+                console.log("receive new user")
+                var payload = {
+                    id: msg.data.id,
+                    userName: msg.data.userName,
+                    isOnline: msg.data.isOnline
+                }
+                this.props.actionAddUserChat(payload);
+                console.log("receive new user: " + msg.data.userName)
+                break;
             default:
         }
     }
@@ -207,7 +213,8 @@ const mapDispatchToProps = (dispatch) => ({
     actionGetAllUsers: () => dispatch(messageTeacherActions.actionGetAllUsers()),
     actionAddNewMessageTeacher: (payload) => dispatch(messageTeacherActions.actionAddNewMessageTeacher(payload)),
     actionSetListUsersOnline: (payload) => dispatch(messageTeacherActions.actionSetListUsersOnline(payload)),
-    actionAddUserOnline: (payload) => dispatch(messageTeacherActions.actionAddUserOnline(payload))
+    actionAddUserOnline: (payload) => dispatch(messageTeacherActions.actionAddUserOnline(payload)),
+    actionAddUserChat: (payload) => dispatch(messageTeacherActions.actionAddUserChat(payload)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeacherChatBoxPage);

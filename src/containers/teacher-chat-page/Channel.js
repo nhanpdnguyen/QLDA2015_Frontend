@@ -36,15 +36,8 @@ class Channel extends React.Component{
         const {channel} = this.props;
         const idChannelActive = this.props.idChannelActive;
         const listUsersOnline = this.props.listUsersOnline;
-
-        if(listUsersOnline.length > 0){
-            this.props.listUsersOnline.forEach((userId) => {
-                if(channel.id === userId){  
-                    channel.isOnline = true;
-                }else{
-                    channel.isOnline = false;
-                }
-            })
+        if(listUsersOnline.indexOf(channel.id) != -1){
+            channel.isOnline = true;
         }else{
             channel.isOnline = false;
         }

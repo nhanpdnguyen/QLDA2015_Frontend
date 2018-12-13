@@ -20,7 +20,6 @@ class DangKy extends Component {
   }
 
   render() {
-    console.log(this.props.isLoggedIn)
     if (this.props.isLoggedIn) return <Redirect to="/"/>
     return (
       <Row className="flex-md-grow-1 my-4 mx-auto py-2 px-2 justify-content-center bg-white">

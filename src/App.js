@@ -48,17 +48,17 @@ class App extends Component {
 								{/* Row bọc ngoài cùng của 1 view cần phải xài thêm class flex-md-grow-1 */}
 								<Switch>
 									<Route exact path="/" component={Home} />
-                  <Route exact path="/dang-nhap" component={DangNhap} />
-                  <Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
-                  <Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={ChiTietBaiHocContainer} />
-                  <Route exact path="/dang-ky" component={DangKy} />
-                  <Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
-                  <Route path="/tro-choi" component={Game} />
-                  <Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
-                  <Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
-                  <Route exact path="/bai-tap/ket-qua" component={ExerciseResultContainer} />
+									<Route exact path="/dang-nhap" component={DangNhap} />
+									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
+									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={ChiTietBaiHocContainer} />
+									<Route exact path="/dang-ky" component={DangKy} />
+									<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
+									<Route path="/tro-choi" component={Game} />
+									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
+									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
+									<Route exact path="/bai-tap/ket-qua" component={ExerciseResultContainer} />
 									<Route path="/teacher-chat-box" component={TeacherChatBox} />
-                  <Route component={NotFound} />
+									<Route component={NotFound} />
 								</Switch>
 							</Container>
 							<Footer></Footer>

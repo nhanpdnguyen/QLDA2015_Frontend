@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {messageActions} from '../actions/messageActions';
 import helpers from '../helpers/helpers.js';
 import config from '../config';
+import { setSignUpFalse } from '../actions';
 
 const GVTV = 'gvtuvan';
 class ChatBox extends React.Component{
@@ -41,22 +42,38 @@ class ChatBox extends React.Component{
             var payload = {
                 isOpen: false
             }
-            this.props.actionMinitureChatBox(payload);
-            
+            this.props.actionMinitureChatBox(payload);       
             var payload = {
                 listMessages: null
             }
             this.props.actionSetListMessages(payload);
         }
 
-        if(this.props.isLoggedIn && this.props.userName !== GVTV && this.props.userName.length !== 0 && this.props.connection === null){ 
+        if(this.props.isLoggedIn && this.props.userName !== GVTV && this.props.userName && this.props.connection === null){ 
             // console.log("connect server")
             this.connectServer();
             var payload = {
                 isOpen: false
             }
-
             this.props.actionMinitureChatBox(payload); 
+        }
+
+        if(this.props.connection && this.props.isSignUp && this.props.userName){
+            var message = {
+                token: this.props.accessToken,
+                type: helpers.TYPE_MESSAGE_CREATE_USER,
+                data: {
+                    id: this.props.userId,
+                    userName: this.props.userName,
+                    isOnline: true
+                }
+            }
+            this.props.connection.send(JSON.stringify(message));
+            console.log("send user: " + this.props.userName);
+            var payload = {
+                isSignUp: false
+            }
+            this.props.setSignUpFalse(payload);
         }
     }
 
@@ -67,7 +84,6 @@ class ChatBox extends React.Component{
         this.props.actionMinitureChatBox(payload);
 
         if(this.props.isLoggedIn && this.props.listMessages === null){
-            console.log(111111);
             this.handleGetAllMessage();
         }
     }
@@ -104,7 +120,7 @@ class ChatBox extends React.Component{
     connectServer = () => {
         const ws = new WebSocket('ws:' + config.CHAT_SOCKET);
         ws.onopen = () => {
-            // console.log("connect socket");   
+            console.log("connect socket");   
             var payload = {
                 connection: ws
             }
@@ -117,7 +133,7 @@ class ChatBox extends React.Component{
                 data: "authentication"
             }
             this.props.connection.send(JSON.stringify(message));
-            // console.log("send auth")
+            console.log("sign up: " + this.props.isSignUp)
         }
 
         ws.onmessage = (event) => {
@@ -127,7 +143,6 @@ class ChatBox extends React.Component{
         }
 
         ws.onclose = () => {
-
             // console.log("disconnect");
         }
     }
@@ -189,7 +204,8 @@ const mapStateToProps = (state) => ({
     idGVTV: state.messageReducer.idGVTV,
     accessToken: state.auth.accessToken,
     listMessages: state.messageReducer.listMessages,
-    userId: state.profile._id
+    userId: state.profile._id,
+    isSignUp: state.auth.isSignUp,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -199,6 +215,7 @@ const mapDispatchToProps = (dispatch) => ({
     actionGetAllMessageOfChannel: (payload) => dispatch(messageActions.actionGetAllMessageOfChannel(payload)),
     actionsAddNewMessage: (payload) => dispatch(messageActions.actionsAddNewMessage(payload)),
     actionSetListMessages: (payload) => dispatch(messageActions.actionSetListMessages(payload)),
+    setSignUpFalse: (payload) => dispatch(setSignUpFalse(payload)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatBox);

@@ -5,7 +5,7 @@ const TYPE_CLOSE_CONNECT = "close_connect";
 const TYPE_LIST_USER_ONLINE = "list_user_online";
 const TYPE_USERID_ONLINE = "userId_online";
 const TYPE_USERID_OFFLINE = "userId_offline";
-
+const TYPE_MESSAGE_CREATE_USER = "create_user";
 
 export default {
     TYPE_MESSAGE_CREATE,
@@ -14,5 +14,6 @@ export default {
     TYPE_CLOSE_CONNECT,
     TYPE_LIST_USER_ONLINE,
     TYPE_USERID_ONLINE,
-    TYPE_USERID_OFFLINE
+    TYPE_USERID_OFFLINE,
+    TYPE_MESSAGE_CREATE_USER
 }

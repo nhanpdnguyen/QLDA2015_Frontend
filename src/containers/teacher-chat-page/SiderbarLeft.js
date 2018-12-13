@@ -8,7 +8,7 @@ import './SiderbarLeft.css';
 class SiderbarLeft extends React.Component {
     type = "spokes";
     render() {
-        var channels = this.props.listUsers;
+        var channels = this.props.listUsers;        
         const loader =
         <div className="loader" key={0}>
             <ReactLoading type="spokes" color="black" height={25} width={25}/>
@@ -46,6 +46,8 @@ class SiderbarLeft extends React.Component {
 const mapStateToProps = (state) => ({
     listUsers: state.messageTeacherReducer.listUsers,
     userId: state.profile._id,
+    listUsersOnline: state.messageTeacherReducer.listUsersOnline,
+
 })
 
 const mapDispatchToProps = (dispatch) => ({

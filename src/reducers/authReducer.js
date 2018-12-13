@@ -1,8 +1,10 @@
 import { SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS, SIGN_UP_SUCCESS, SIGN_IN_FAIL, SIGN_UP_FAIL } from "../actions/actionTypes";
+import { SET_SIGNUP_FALSE, RESET_PROFILE } from "../constants";
 
 let initialState = {
   isLoggedIn: false,
-  accessToken: null
+  accessToken: null,
+  isSignUp: false,
 }
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -25,7 +27,8 @@ export default function (state = initialState, action) {
       state = {
         ...state,
         isLoggedIn: true,
-        accessToken: action.accessToken
+        accessToken: action.accessToken,
+        isSignUp: true
       }
       return state;
     }
@@ -41,6 +44,12 @@ export default function (state = initialState, action) {
         accessToken: null
       }
       return state;
+    }
+    case SET_SIGNUP_FALSE: {
+      return {
+        ...state,
+        isSignUp: action.payload.isSignUp
+      }
     }
     default: return state;
   }

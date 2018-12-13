@@ -2,7 +2,6 @@ import {messageConstant} from '../constants/messageConstant.js';
 import config from '../config';
 import { requestApi, requestFail } from './requestActions';
 import { GET } from "../constants";
-import { OrderedMap } from 'immutable';
 
 const CHAT_API_BASE_URL = config.CHAT_API_BASE_URL;
 
@@ -49,7 +48,6 @@ const actionGetAllMessageOfChannel = (payload) => {
             var payload = {
                 listMessages: result.data.listMessages
             }
-            console.log(result.data.listMessages)
             dispatch(actionSetListMessages(payload));
         }).catch((err) => {
             dispatch(requestFail(err))
