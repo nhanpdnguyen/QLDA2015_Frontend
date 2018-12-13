@@ -150,8 +150,6 @@ class TeacherChatBoxPage extends React.Component{
                 connection: null
             }
             this.props.actionSetConnection(payload);
-            // console.log("disconnect");
-
         }
     }
 

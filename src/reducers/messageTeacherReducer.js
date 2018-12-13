@@ -59,6 +59,11 @@ export default function messageTeacherReducer(state=initalState, actions){
                 ...state,
                 listUsersOnline: state.listUsersOnline.concat(actions.payload.newUserOnline)
             }
+        case messageConstant.ADD_USER_CHAT:
+            return{
+                ...state,
+                listUsers: state.listUsers.set(actions.payload.id, actions.payload.user)
+            }
         default:
             return state;
     }   

@@ -108,8 +108,20 @@ const actionSetListUsersOnline = (payload) => ({
 
 const actionAddUserOnline = (payload) => ({
     type: messageConstant.ADD_USER_ONLINE,
-    payload:{
+    payload: {
         newUserOnline: payload.newUserOnline
+    }
+})
+
+const actionAddUserChat = (payload) => ({
+    type: messageConstant.ADD_USER_CHAT,
+    payload: {
+        id: payload._id,
+        user:{
+            id: payload._id,
+            userName: payload.userName,
+            isOnline: payload.isOnline,
+        }
     }
 })
 
@@ -123,5 +135,6 @@ export const messageTeacherActions = {
     actionGetAllMessageOfChannelTeacher,
     actionAddNewMessageTeacher,
     actionSetListUsersOnline,
-    actionAddUserOnline
+    actionAddUserOnline,
+    actionAddUserChat
 }
