@@ -21,7 +21,7 @@ export const receiveProfile = function (profile) {
 
 export const getUserProfile = function () {
   return (dispatch) => {
-    dispatch(requestApi(GET, ACCOUNT_API_BASE_URL + '/account/profile')).then(result => {
+    dispatch(requestApi(GET, ACCOUNT_API_BASE_URL + '/profile')).then(result => {
       if (result.data.success) dispatch(receiveProfile(result.data.profile));
       else dispatch(requestFail('Something went wrong, try again'));
     }, err => {
@@ -42,7 +42,7 @@ export const getUserProfile = function () {
 
 export const updateUserProfile = function (profile) {
   return (dispatch) => {
-    dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/account/profile', profile)).then(result => {
+    dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/profile', profile)).then(result => {
       console.log(result);
       if (result.data.success) dispatch(receiveProfile(result.data.profile));
       else dispatch(requestFail('Something went wrong, try again'));

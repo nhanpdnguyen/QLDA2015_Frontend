@@ -33,7 +33,6 @@ export const requestApi = function (method, url, data) {
   return (dispatch, getState) => {
     dispatch(requesting());
     let state = getState();
-    console.log('accesstoken', state.auth.accessToken)
     let axiosConfig = {
       headers: {
         'Authorization': state.auth.accessToken

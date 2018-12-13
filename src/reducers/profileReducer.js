@@ -1,4 +1,5 @@
 import { RECEIVE_PROFILE } from "../actions/actionTypes";
+import { RESET_PROFILE } from "../constants";
 
 let initalState = {
   userId: '',
@@ -22,6 +23,8 @@ export default function (state = initalState, action) {
     case RECEIVE_PROFILE: {
       return action.profile
     }
+    case RESET_PROFILE: 
+      return {}
     default: return state
   }
 }

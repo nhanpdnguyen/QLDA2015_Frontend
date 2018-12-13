@@ -3,10 +3,9 @@ import { Row, Col } from 'reactstrap';
 import Carousel from '../components/Carousel';
 import TitleBox from '../components/TitleBox';
 import './Home.css';
-import TopStudier from '../components/TopStudier';
+import TopStudier from './TopStudier';
 
 class Home extends Component {
-
 	constructor(props) {
 		super(props);
 		this.titleBoxInfo = [{
@@ -38,13 +37,13 @@ class Home extends Component {
 	render() {
 		let titleBoxInfo = this.titleBoxInfo.map((item) => {
 			return (<Col key={item.header} md="6">
-				<TitleBox header={item.header} src={item.src} 
-				color={item.color} baseLink={item.baseLink}>
+				<TitleBox header={item.header} src={item.src}
+					color={item.color} baseLink={item.baseLink}>
 				</TitleBox>
 			</Col>)
 		})
 		return (
-			<Row>
+			<Row className="align-items-center">
 				<Col md="8">
 					<Row id="carousel-container">
 						<Carousel></Carousel>
@@ -54,7 +53,11 @@ class Home extends Component {
 					</Row>
 				</Col>
 				<Col md="4">
-					<TopStudier/>
+					<Row>
+						<Col>
+							<TopStudier />
+						</Col>
+					</Row>
 				</Col>
 			</Row>
 		);
