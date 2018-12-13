@@ -6,6 +6,10 @@ import HeaderContent from './HeaderContent.js';
 import SiderbarLeft from './SiderbarLeft.js';
 import MainMessageContent from './MainMessageContent.js';
 import MessageInput from './MessageInput.js';
+import {messageTeacherActions} from '../../actions/messageTeacherActions.js';
+import { connect } from 'react-redux';
+import helpers from '../../helpers/helpers.js';
+const GVTV = "gvtuvan"
 class TeacherChatBoxPage extends React.Component{
     constructor(props){
         super(props);
@@ -13,6 +17,24 @@ class TeacherChatBoxPage extends React.Component{
             height: window.innerHeight,
         }
     }
+
+    remove = (array, element) => {
+        if(array.length > 0){
+            const index = array.indexOf(element, 0);
+    
+            if (index !== -1) {
+                array.splice(index, 1);
+            }
+        }
+        return array;
+    }
+
+    decodeMessage(message){
+        let msg;
+        msg = JSON.parse(message);
+        return msg;
+    }
+
     onResize = () => {
         this.setState({
             height: window.innerHeight,
@@ -21,6 +43,10 @@ class TeacherChatBoxPage extends React.Component{
     
     componentDidMount() {
         window.addEventListener('resize', this.onresize);
+        if(this.props.isLoggedIn && this.props.userName === GVTV && this.props.userName.length !== 0 
+            && this.props.connection === null){
+            this.connectServer();
+        }
     }
 
     componentWillUnmount() {
@@ -28,6 +54,114 @@ class TeacherChatBoxPage extends React.Component{
     }
 
     componentDidUpdate(){
+        if(this.props.listUsers.size === 0){
+            this.handleGetAllUser();
+        }
+        if(this.props.isLoggedIn && this.props.userName === GVTV && this.props.userName.length !== 0 && this.props.connection === null){
+            this.connectServer();
+        }
+    }
+
+
+    handleMessage = (message) => {
+        const msg = this.decodeMessage(message);
+        const type = msg.type;
+        // console.log(msg);
+
+        switch(type){
+            case helpers.TYPE_MESSAGE_CREATE:
+                if(this.props.idChannelActive.length !== 0){
+                    var messageTmp = {
+                        _id: msg._id,
+                        idChannel: msg.idChannel,
+                        idSender: msg.idSender,
+                        data: msg.data,
+                        create: msg.create 
+                    }
+                    
+                    var userId = this.props.userId;
+                    var idChannel = this.props.idChannelActive;
+                    var idChannelTmp = (userId > idChannel) ? userId + idChannel : idChannel + userId;
+                    var listMessagesTmp = this.props.listMessagesTeacher.get(idChannelTmp);
+
+                    listMessagesTmp.push(messageTmp);
+
+                    var listMessagesTeacher = [];
+                    listMessagesTeacher = listMessagesTeacher.concat(listMessagesTmp);
+    
+                    var payload = {
+                        idChannel: idChannelTmp,
+                        listMessagesTeacher: listMessagesTeacher
+                    }
+                    this.props.actionAddNewMessageTeacher(payload);
+                }
+                break;
+            case helpers.TYPE_LIST_USER_ONLINE:
+                var payload = {
+                    listUsersOnline: msg.listUsersOnline
+                }
+                this.props.actionSetListUsersOnline(payload);
+                break;
+            case helpers.TYPE_USERID_ONLINE:
+                // console.log("receive user online");
+                var payload = {
+                    newUserOnline: msg.idUserOnline
+                }
+                this.props.actionAddUserOnline(payload);
+                break;
+            case helpers.TYPE_USERID_OFFLINE:
+                // console.log("receive user offline");
+                var listUserOnlineTmp = this.remove(this.props.listUsersOnline, msg.idUserOffline);
+                var payload = {
+                    listUsersOnline: listUserOnlineTmp
+                }
+                this.props.actionSetListUsersOnline(payload);
+            default:
+        }
+    }
+
+    connectServer = () => {
+        const ws = new WebSocket('ws://localhost:8002');
+
+        ws.onopen = () => {
+            // console.log("connect socket");   
+            var payload = {
+                connection: ws
+            }
+            this.props.actionSetConnection(payload);
+
+            var message = {
+                token: this.props.accessToken,
+                type: helpers.TYPE_MESSAGE_AUTH,
+                idReceiver: "",
+                data: "authentication"
+            }
+            // console.log("send auth")
+            this.props.connection.send(JSON.stringify(message));
+        }
+
+        ws.onmessage = (event) => {
+            const message = event.data;
+            this.handleMessage(message);
+        }
+
+        ws.onclose = () => {
+            var payload = {
+                connection: null
+            }
+            this.props.actionSetConnection(payload);
+            // console.log("disconnect");
+
+        }
+    }
+
+    disconnectServer = () => {
+
+    }
+
+    //get all channel
+    handleGetAllUser = () => {
+        this.props.actionGetAllUsers();
     }
 
     render(){
@@ -58,4 +192,24 @@ class TeacherChatBoxPage extends React.Component{
     }
 }
 
-export default TeacherChatBoxPage;  
+const mapStateToProps = (state) => ({
+    isLoggedIn: state.auth.isLoggedIn,
+    userName: state.profile.userName,
+    connection: state.messageTeacherReducer.connection,
+    accessToken: state.auth.accessToken,
+    listUsers: state.messageTeacherReducer.listUsers,
+    userId: state.profile._id,
+    idChannelActive: state.messageTeacherReducer.idChannelActive,
+    listMessagesTeacher: state.messageTeacherReducer.listMessagesTeacher,
+    listUsersOnline: state.messageTeacherReducer.listUsersOnline,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    actionSetConnection: (payload) => dispatch(messageTeacherActions.actionSetConnection(payload)),
+    actionGetAllUsers: () => dispatch(messageTeacherActions.actionGetAllUsers()),
+    actionAddNewMessageTeacher: (payload) => dispatch(messageTeacherActions.actionAddNewMessageTeacher(payload)),
+    actionSetListUsersOnline: (payload) => dispatch(messageTeacherActions.actionSetListUsersOnline(payload)),
+    actionAddUserOnline: (payload) => dispatch(messageTeacherActions.actionAddUserOnline(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TeacherChatBoxPage);

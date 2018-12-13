@@ -8,7 +8,7 @@ import './SiderbarLeft.css';
 class SiderbarLeft extends React.Component {
     type = "spokes";
     render() {
-        var channels = [{}, {}, {}];
+        var channels = this.props.listUsers;
         const loader =
         <div className="loader" key={0}>
             <ReactLoading type="spokes" color="black" height={25} width={25}/>
@@ -20,10 +20,13 @@ class SiderbarLeft extends React.Component {
                     <div className="title-member">Messenger </div>
                     <div className="channels">
                         {
-                            channels.map((channel, index) => {
-                                return (
-                                    <Channel key={index} channel={channel}></Channel>
-                                );
+                            channels.valueSeq().map((channel, index) => {
+                                if(channel.id !== this.props.userId){
+                                    return (
+                                        <Channel channel={channel}  key={index} ></Channel>
+                                    )
+                                }
+                                
                             })
                         }
                     </div>
@@ -41,7 +44,8 @@ class SiderbarLeft extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    listUsers: state.messageTeacherReducer.listUsers,
+    userId: state.profile._id,
 })
 
 const mapDispatchToProps = (dispatch) => ({

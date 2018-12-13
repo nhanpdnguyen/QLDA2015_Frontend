@@ -61,11 +61,14 @@
     flex-grow: 1;
     white-space: nowrap;
     margin: 3px 5px 0px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .channel-info>div{
     font-family: 'IBM+Plex+Sans+Condensed', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     text-align: left;
     color: black;
     overflow: hidden;
@@ -73,7 +76,7 @@
     white-space: nowrap;
 }
 
-.channel-info>p{
+/* .channel-info>p{
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
     text-align: left ;
@@ -83,9 +86,9 @@
     white-space: nowrap ;
     margin: 7px 0 0 0;
 
-}
+} */
 
-.number-messagewait>p{
+/* .number-messagewait>p{
     background: rgb(255, 0, 0);
     width: 35px;
     height: 35px;
@@ -96,7 +99,7 @@
     font-size: 17px;
     font-family: 'Exo', sans-serif;
     justify-content: flex-end;
-}
+} */
 
 .title-member{
     font-family: 'IBM+Plex+Sans+Condensed', sans-serif;

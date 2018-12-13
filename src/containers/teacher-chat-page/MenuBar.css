@@ -4,7 +4,7 @@
     width: 70px;
     background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
     flex-shrink: 0;
-    height: 100%;
+    height: 100vh;
 }
 
 .menus{
@@ -28,7 +28,7 @@
     width:55px;
     height: 55px;
     border-radius: 50%;
-    margin: 780px 6px 0 6px;
+    margin: 83vh 6px 0 6px;
 }
 
 .action-logout>img:hover{
