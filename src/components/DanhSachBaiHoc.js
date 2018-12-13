@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import './DanhSachBaiHoc.css';
+import TopStudier from '../containers/TopStudier';
 
 const createDsBaiHoc = function (monHoc, dsBaiHoc) {
   if (!dsBaiHoc) return null;
@@ -84,9 +85,13 @@ export default class DanhSachBaiHoc extends Component {
     return (
       <Row className="flex-md-grow-1 align-self-start p-3">
         {createDsBaiHoc(monHoc, dsBaiHoc)}
-        <Col md="4">
-          BẢNG VÀNG
-				</Col>
+        <Col md="4" className="align-self-center">
+          <Row>
+            <Col>
+              <TopStudier />
+            </Col>
+          </Row>
+        </Col>
       </Row>
     )
   }

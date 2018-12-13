@@ -22,6 +22,7 @@ export const requestSuccess = function (result) {
 }
 
 export const requestFail = function (err) {
+  //alert('Có lỗi xảy ra, hãy thử tải lại trang T_T');
   return ({
     type: REQUEST_FAIL,
     err: err
@@ -32,7 +33,6 @@ export const requestApi = function (method, url, data) {
   return (dispatch, getState) => {
     dispatch(requesting());
     let state = getState();
-    console.log('accesstoken', state.auth.accessToken)
     let axiosConfig = {
       headers: {
         'Authorization': state.auth.accessToken

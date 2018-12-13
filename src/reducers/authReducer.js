@@ -7,7 +7,6 @@ let initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case SIGN_IN_SUCCESS: {
-      console.log('reducer: sign in successfully');
       console.log('accessToken: ', action.accessToken);
       state = {
         ...state,

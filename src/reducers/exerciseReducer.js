@@ -1,56 +1,50 @@
-import { RECEIVE_EXERCISE_LIST, RECEIVE_EXERCISE, CHANGE_USER_ANSWER_IN_EXERCISE } from "../actions/actionTypes";
-import { CHOICE, FILL } from "../constants";
+import { RECEIVE_EXERCISE_LIST, CHANGE_USER_ANSWER_IN_EXERCISE, GO_TO_NEXT_QUESTION, CLOSE_EXERCISE_MODAL, NO_USER_ANSWER_FOUND_IN_EXCERCISE, OPEN_EXERCISE_MODAL, USER_HAD_CORRECT_ANSWER, RECEIVE_TOPIC_NAME, RECEIVE_EXERCISE_RESULT, CLEAR_EXERCISE_RESULT } from "../actions/actionTypes";
+
+const initialResult = {
+  numberQuestion: 0,
+  numberAnswerRight: 0,
+  point: 0
+}
 
 const initialState = {
-  currentExerciseList: [{
-    _id: '12345',
-    type: CHOICE,
-    content: "{\"ops\":[{\"insert\":\"B\u1EA1n T\u00F9ng c\u00F3 \u0111\u1EB9p trai hay kh\u00F4ng? \u0110i\u1EC1u g\u00EC \u0111\u00E3 khi\u1EBFn cho b\u1EA1n T\u00F9ng \u0111\u1EB9p trai nh\u01B0 v\u1EADy?\"},{\"insert\":\"\\n\"}]}",
-    answers: {
-      ansA: "câu 1",
-      ansB: "câu 2",
-      ansC: "câu 3",
-      ansD: "câu 4",
-    },
-    userAnswer: ''
+  session: '',
+  topicId: '',
+  topicName: '',
+  currentExerciseList: [{}],
+  currentQuestionIndex: 0,
+  answerTryCount: 0, //number of answer tries in 1 question
+  userHadCorrectAnswer: false,
+  modal: {
+    isOpen: false,
+    content: '',
+    buttonContent: 'Tiếp tục'
   },
-  {
-    _id: '12346',
-    type: CHOICE,
-    content: "{\"ops\":[{\"insert\":\"B\u1EA1n T\u00F9ng c\u00F3 \u0111\u1EB9p trai hay kh\u00F4ng? \u0110i\u1EC1u g\u00EC \u0111\u00E3 khi\u1EBFn cho b\u1EA1n T\u00F9ng \u0111\u1EB9p trai nh\u01B0 v\u1EADy?\"},{\"insert\":\"\\n\"}]}",
-    answers: {
-      ansA: "câu A",
-      ansB: "câu B",
-      ansC: "câu C",
-      ansD: "câu D",
-    },
-    userAnswer: ''
+  error: {
+    hasNotAnswer: false
   },
-  {
-    _id: '12347',
-    type: FILL,
-    content: "{\"ops\":[{\"insert\":\"\u0110i\u1EC1n v\u00E0o ch\u1ED7 tr\u1ED1ng: 1 + 1 = ...\\n\"}]}",
-    userAnswer: ''
-  }],
-  currentExerciseIndex: 2
+  result: initialResult
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case RECEIVE_TOPIC_NAME: {
+      return {
+        ...state,
+        topicName: action.topicName
+      }
+    }
     case RECEIVE_EXERCISE_LIST:
       return {
         ...state,
-        currentExerciseList: action.exerciseList
+        session: action.data.session,
+        currentExerciseList: action.data.listQuestions,
+        currentQuestionIndex: 0
       }
-    case RECEIVE_EXERCISE:
-      return {
-        ...state,
-        currentExercise: action.exercise
-      }
+
     case CHANGE_USER_ANSWER_IN_EXERCISE: {
       //change userAnswer at current exercise
       let changedList = state.currentExerciseList.map((item, index) => {
-        if (index === state.currentExerciseIndex) {
+        if (index === state.currentQuestionIndex) {
           return {
             ...item,
             userAnswer: action.userAnswer
@@ -61,9 +55,77 @@ export default function (state = initialState, action) {
 
       return {
         ...state,
-        currentExerciseList: changedList
+        currentExerciseList: changedList,
+        error: {
+          ...state.error,
+          hasNotAnswer: false
+        }
       }
     }
+
+    case NO_USER_ANSWER_FOUND_IN_EXCERCISE: {
+      return {
+        ...state,
+        error: {
+          ...state.error,
+          hasNotAnswer: true
+        }
+      }
+    }
+
+    case USER_HAD_CORRECT_ANSWER: {
+      return {
+        ...state,
+        answerTryCount: ++state.answerTryCount,
+        userHadCorrectAnswer: action.data
+      }
+    }
+
+    case OPEN_EXERCISE_MODAL: {
+      return {
+        ...state,
+        modal: {
+          ...action.modalData,
+          isOpen: true
+        }
+      }
+    }
+
+    case CLOSE_EXERCISE_MODAL: {
+      return {
+        ...state,
+        modal: {
+          ...state.modal,
+          isOpen: false
+        }
+      }
+    }
+
+    case GO_TO_NEXT_QUESTION: {
+      let newQuestionIndex = state.currentQuestionIndex;
+      return {
+        ...state,
+        currentQuestionIndex: ++newQuestionIndex,
+        //reset the try times and userHadCorrectAnswer
+        answerTryCount: 0,
+        userHadCorrectAnswer: false
+      }
+    }
+
+    case RECEIVE_EXERCISE_RESULT: {
+      return {
+        ...state,
+        result: action.exerciseResult
+      }
+    }
+
+    case CLEAR_EXERCISE_RESULT: {
+      return {
+        ...state,
+        result: initialResult
+      }
+    }
+
     default: return state;
   }
 }

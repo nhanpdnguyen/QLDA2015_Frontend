@@ -59,8 +59,47 @@ html {
   min-height: 80vh;
 }
 
+/* Modal */
+.modal {
+  background: #ffffff7d;
+  font-size: 1.5vw;
+}
+
+.modal-dialog {
+  max-width: 50vw;
+}
+
+.modal-btn {
+  background: #CC332F;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5vw;
+}
+
+.modal-header {
+  background: #CC332F;
+  color: white;
+}
+
+.modal-btn:hover {
+  background: rgb(192, 18, 12);
+}
+
+
 @media(max-width: 768px) {
   /* * {
     font-size: initial;
   } */
+
+  .modal {
+    font-size: initial;
+  }
+
+  .modal-btn {
+    font-size: initial;
+  }
+
+  .modal-dialog {
+    max-width: initial;
+  }
 }

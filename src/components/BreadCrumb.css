@@ -1,0 +1,17 @@
+.breadcrumb-container {
+  font-family: 'UTM_Alexander_0';
+  font-size: 2vw;
+}
+
+.breadcrumb-container a {
+  text-decoration: none;
+  color: inherit
+}
+
+@media(max-width: 768px) {
+
+  .breadcrumb-container {
+    font-size: 1.2rem;
+  }
+
+}
