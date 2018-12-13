@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
-
+import Timer from '../containers/Timer'
 import './BreadCrumb.css';
 
 export default class BreadCrumb extends Component {
@@ -12,6 +12,7 @@ export default class BreadCrumb extends Component {
           <Link to={this.props.baseUrl}>{this.props.baseText}</Link>
           <span> → </span>
           <span>{this.props.currentText}</span>
+          {this.props.timer ? <Timer /> : ""}
         </Col>
       </Row>
     )

@@ -1,0 +1,28 @@
+.ket-qua-bai-tap-container-box {
+    padding-left: 4vh;
+    padding-right: 4vh;
+    padding-bottom: 4vh;
+    border-radius: 15px;
+    background-color: white;
+    opacity: 0.7;
+    margin-top: 5vh;
+}
+.title-result-exam {
+    font-family: 'UTM_Alexander_0';
+    font-size: 2vw;
+}
+.title-result-exam p {
+    color: #1ba7c6;
+}
+.detail {
+    font-size: 1.6vw;
+}
+@media (max-width: 768px) {
+    .title-result-exam {
+        font-family: 'UTM_Alexander_0';
+        font-size: 1.8rem;
+    }
+    .detail {
+        font-size: 1.1rem;
+    }
+}

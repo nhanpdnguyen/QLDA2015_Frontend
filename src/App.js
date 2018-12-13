@@ -17,11 +17,15 @@ import CheckAuthenticated from "./containers/CheckAuthenticated";
 import ExerciseListContainer from './containers/ExerciseListContainer';
 import Game from './components/Game';
 import ExerciseQuestionContainer from './containers/ExerciseQuestionContainer';
+import ExaminationListContainer from './containers/ExaminationListContainer';
+import ExamResultContainer from './containers/ExamResultContainer';
 import TeacherChatBox from './containers/teacher-chat-page/TeacherChatBoxPage.js'
+
 // css
 import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
 import ChatBox from './containers/ChatBox';
+import ThiThuContainer from './containers/ThiThuContainer';
 import helpers from './helpers/helpers';
 import ExerciseResultContainer from './containers/ExerciseResultContainer';
 import NotFound from './components/NotFound';
@@ -38,6 +42,7 @@ class App extends Component {
 							<div className="spinner"></div>
 						</div> : null
 					}
+      
 					{(this.props.userName === GVTV && this.props.isLoggedIn) ?
 						<TeacherChatBox></TeacherChatBox>
 						:
@@ -57,6 +62,9 @@ class App extends Component {
 									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
 									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
 									<Route exact path="/bai-tap/ket-qua" component={ExerciseResultContainer} />
+                  <Route exact path="/thi-thu/:monhoc(toan|tieng-viet)/:examId" component={ThiThuContainer} />
+                  <Route exact path="/thi-thu/:monhoc(toan|tieng-viet)" component={ExaminationListContainer} />
+                  <Route exact path="/thi-thu/ketqua/:monhoc(toan|tieng-viet)/:examId" component={ExamResultContainer} />
 									<Route path="/teacher-chat-box" component={TeacherChatBox} />
 									<Route component={NotFound} />
 								</Switch>
