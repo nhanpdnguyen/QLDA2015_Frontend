@@ -1,26 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {messageActions} from '../actions/messageActions.js';
+import { messageTeacherActions} from '../../actions/messageTeacherActions';
 import './MessageInput.css';
-import helpers from '../helpers/helpers.js';
-
-const GVTV = 'gvtuvan';
+import helpers from '../../helpers/helpers.js';
+import { instanceOf } from 'prop-types';
 
 class MessageInput extends React.Component{
 
     handleChange = (event) => {
         var payload = {};
         payload.message = event.target.value;
-        this.props.actionSetMessage(payload);
+        this.props.actionSetMessageTeacher(payload);
     }
 
-
     handleSend = () => {
-        if(this.props.message.trim().length !== 0){
+        if(this.props.idChannelActive.length !== 0 && this.props.message.trim().length !== 0){
             let message = {
                 token: this.props.accessToken,
                 type: helpers.TYPE_MESSAGE_CREATE,
-                idReceiver: this.props.idGVTV,
+                idReceiver: this.props.idChannelActive,
                 data: this.props.message.trim()
             }
     
@@ -29,11 +27,11 @@ class MessageInput extends React.Component{
                 this.props.connection.send(packageSend);
             }
         }
-        
+
         var payload ={
             message: ""
         }
-        this.props.actionSetMessage(payload);
+        this.props.actionSetMessageTeacher(payload);
     }
 
     render(){
@@ -56,14 +54,14 @@ class MessageInput extends React.Component{
 }
 
 const mapStateToProps = (state) => ({
-    message: state.messageReducer.message,
+    message: state.messageTeacherReducer.message,
     accessToken: state.auth.accessToken,
-    connection: state.messageReducer.connection,
-    idGVTV: state.messageReducer.idGVTV,
+    connection: state.messageTeacherReducer.connection,
+    idChannelActive: state.messageTeacherReducer.idChannelActive,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    actionSetMessage: (payload) => dispatch(messageActions.actionSetMessage(payload)),
+    actionSetMessageTeacher: (payload) => dispatch(messageTeacherActions.actionSetMessageTeacher(payload)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps) (MessageInput);

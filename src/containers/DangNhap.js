@@ -3,7 +3,6 @@ import { Row, Col } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 import { signIn } from '../actions';
-
 import './DangNhap.css';
 
 import GoogleLoginButton from '../components/GoogleLoginButton';
@@ -39,7 +38,8 @@ class DangNhap extends Component {
   }
 
   render() {
-    if (this.props.isLoggedIn && this.props.userName === 'gvtuvan') return <Redirect to='/teacher-chat-box' />
+    // if(this.)
+    // if (this.props.isLoggedIn && this.props.userName === 'gvtuvan') return <Redirect to='/teacher-chat-box'/>
     if (this.props.isLoggedIn) return <Redirect to='/'></Redirect>
     return (
       <Row className="flex-md-grow-1 my-4 justify-content-center">

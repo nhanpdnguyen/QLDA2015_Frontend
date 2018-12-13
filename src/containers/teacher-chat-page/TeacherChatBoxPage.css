@@ -1,0 +1,35 @@
+.page-message{
+    display: flex;
+    flex-direction: row;
+}
+
+.page-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: white;
+    flex-grow: 1;
+}
+
+.header-message{
+    display: flex;
+    flex-direction: row;
+    height: 90px;
+    overflow: hidden;
+}
+
+.main-message{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    flex-grow: 1;  
+    background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+    background-blend-mode: screen;
+}
+
+.main-content{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}

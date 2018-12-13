@@ -1,0 +1,101 @@
+.header-content{
+    flex-grow: 1;
+    width: 1215px;
+    overflow: hidden;
+    border-bottom: 0.5px solid rgb(200, 200, 200);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-content-active{
+    flex-grow: 1;
+    overflow: hidden;
+    border-bottom: 0.5px solid rgb(200, 200, 200);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-userchat-image>img{
+    width:65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    border-style: solid;
+    border-width: 1px;
+    
+}
+
+.profile-userchat-image-active>img{
+    width:65px;
+    height: 65px;
+    border-radius: 50%;
+    margin-left: 10px;
+    object-fit: cover;
+    position: relative;
+}
+
+.profile-username{
+    overflow: hidden;
+    display: block;
+    margin-left: 10px;
+    display: block;
+}
+
+.profile-username-active{
+    overflow: hidden;
+    flex-grow: 1;
+    margin-left: 10px;
+    display: block;
+    position: relative;
+}
+
+.profile-username>div{
+    font-family: 'IBM+Plex+Sans+Condensed', sans-serif;
+    font-size: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: black;
+}
+
+.profile-username-active>div{
+    font-family: 'IBM+Plex+Sans+Condensed', sans-serif; 
+    font-size: 26px;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-online{
+    width: 18px;
+    height: 18px;
+    display: block;
+    position: absolute;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    background: rgb(25, 255, 17);
+    border-radius: 50%;
+    right: -3px;
+    bottom: 5px;
+}
+
+.user-offline{
+    width: 18px;
+    height: 18px;
+    display: block;
+    position: absolute;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    background: rgb(121, 121, 121);
+    border-radius: 50%;
+    right: -3px;
+    bottom: 3px;
+}

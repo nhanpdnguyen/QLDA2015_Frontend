@@ -2,6 +2,7 @@
     display: flex !important;
     flex-direction: row !important;
     justify-content: flex-end !important;
+    margin: 5px;
 }
 
 .message-me{
@@ -20,6 +21,7 @@
     display: flex !important;
     flex-direction: row !important;
     justify-content: flex-start !important;
+    margin: 5px
 }
 
 .message-admin{
