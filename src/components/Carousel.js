@@ -15,7 +15,7 @@ const items = [
     caption: ''
   },
   {
-    src: '/images/Footer-background-01.png',
+    src: '/images/Carousel-02.png',
     altText: 'carousel2',
     caption: ''
   }

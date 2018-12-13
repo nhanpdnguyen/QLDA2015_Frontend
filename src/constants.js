@@ -19,6 +19,10 @@ export const NORMAL_SIGN_OUT = 'NORMAL_SIGN_OUT';
 export const FACEBOOK_SIGN_OUT = 'FACEBOOK_SIGN_OUT';
 export const GOOGLE_SIGN_OUT = 'GOOGLE_SIGN_OUT';
 
+//categoryId
+export const toanCategoryId = '5bd96e527c4ca705165a719c';
+export const tiengVietCategoryId = '5bddc78f5f6c2d92689023e5';
+
 //exercise types
 export const CHOICE = 'choice';
 export const FILL = 'fill';

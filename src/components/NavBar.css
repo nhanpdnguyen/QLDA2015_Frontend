@@ -9,6 +9,20 @@
     color: white;
 }
 
+.dropdown-menu button.dropdown-item {
+    font-size: 1.1vw;
+    text-decoration: none
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+}
+
+.dropdown-menu button.dropdown-item:hover {
+    background: #14497a;
+    color: white;
+}
+
 nav {
     background-color: #cc332f;
     font-size: 1.2vw;
@@ -20,6 +34,10 @@ nav {
 
 .navbar-brand a {
     text-decoration: none;
+}
+
+.navbar-expand-md .navbar-nav {
+    width: 88%;
 }
 
 .navbar-brand .my-logo-text div:nth-of-type(1) {
@@ -42,6 +60,15 @@ nav {
 
 @media(max-width: 768px) {
     nav {
-        font-size: initial;
+        font-size: 1rem;
+    }
+
+
+    .navbar-expand-md .navbar-nav {
+        width: 95%;
+    }
+
+    .dropdown-menu button.dropdown-item {
+        font-size: 1rem;
     }
 }
