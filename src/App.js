@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 // components
 import Footer from './components/Footer';
@@ -13,7 +13,6 @@ import DanhSachBaiHocContainer from './containers/DanhSachBaiHocContainer';
 import ChiTietBaiHocContainer from './containers/ChiTietBaiHocContainer';
 import DangKy from './containers/DangKy';
 import UpdateProfileContainer from './containers/UpdateProfileContainer';
-import CheckAuthenticated from "./containers/CheckAuthenticated";
 import ExerciseListContainer from './containers/ExerciseListContainer';
 import Game from './components/Game';
 import ExerciseQuestionContainer from './containers/ExerciseQuestionContainer';
@@ -29,6 +28,7 @@ import ThiThuContainer from './containers/ThiThuContainer';
 import helpers from './helpers/helpers';
 import ExerciseResultContainer from './containers/ExerciseResultContainer';
 import NotFound from './components/NotFound';
+import RedirectLogIn from './components/RedirectLogIn';
 
 const GVTV = 'gvtuvan';
 
@@ -42,7 +42,7 @@ class App extends Component {
 							<div className="spinner"></div>
 						</div> : null
 					}
-      
+
 					{(this.props.userName === GVTV && this.props.isLoggedIn) ?
 						<TeacherChatBox></TeacherChatBox>
 						:
@@ -55,25 +55,25 @@ class App extends Component {
 									<Route exact path="/" component={Home} />
 									<Route exact path="/dang-nhap" component={DangNhap} />
 									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
-									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={CheckAuthenticated(ChiTietBaiHocContainer)} />
+									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={this.props.isLoggedIn ? ChiTietBaiHocContainer : RedirectLogIn } />
 									<Route exact path="/dang-ky" component={DangKy} />
-									<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
+									<Route exact path="/cap-nhat-tai-khoan" component={UpdateProfileContainer} />
 									<Route path="/tro-choi" component={Game} />
 									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
-									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={CheckAuthenticated(ExerciseQuestionContainer)} />
-									<Route exact path="/bai-tap/ket-qua" component={CheckAuthenticated(ExerciseResultContainer)} />
-                  <Route exact path="/thi-thu/:monhoc(toan|tieng-viet)/:examId" component={CheckAuthenticated(ThiThuContainer)} />
-                  <Route exact path="/thi-thu/:monhoc(toan|tieng-viet)" component={ExaminationListContainer} />
-                  <Route exact path="/thi-thu/ketqua/:monhoc(toan|tieng-viet)/:examId" component={CheckAuthenticated(ExamResultContainer)} />
+									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={this.props.isLoggedIn ? ExerciseQuestionContainer : RedirectLogIn} />
+									<Route exact path="/bai-tap/ket-qua" component={this.props.isLoggedIn ? ExerciseResultContainer : RedirectLogIn} />
+									<Route exact path="/thi-thu/:monhoc(toan|tieng-viet)/:examId" component={this.props.isLoggedIn ? ThiThuContainer : RedirectLogIn} />
+									<Route exact path="/thi-thu/:monhoc(toan|tieng-viet)" component={ExaminationListContainer} />
+									<Route exact path="/thi-thu/ketqua/:monhoc(toan|tieng-viet)/:examId" component={this.props.isLoggedIn ? ExamResultContainer : RedirectLogIn} />
 									<Route path="/teacher-chat-box" component={TeacherChatBox} />
 									<Route component={NotFound} />
 								</Switch>
 							</Container>
 							<Footer></Footer>
-							<ChatBox className="chatbox"></ChatBox>		
+							<ChatBox className="chatbox"></ChatBox>
 						</div>
-					} 	
-				</div>		
+					}
+				</div>
 			</Router>
 		);
 	}
@@ -84,7 +84,7 @@ function mapStateToProps(state) {
 		isRequesting: state.isRequesting,
 		userName: state.profile.userName,
 		isLoggedIn: state.auth.isLoggedIn,
-		connection: state.messageReducer.connection, 
+		connection: state.messageReducer.connection,
 		userId: state.profile._id,
 		accessToken: state.auth.accessToken,
 	}
