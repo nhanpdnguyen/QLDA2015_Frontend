@@ -68,7 +68,7 @@ export default class NavBar extends Component {
 
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  <img className="nav-item-image" alt="Trang chủ" src="/images/Nav-icon2-01.png" />
+                  <img className="nav-item-image" alt="Bài học" src="/images/Nav-icon2-01.png" />
                   <div className="nav-item-text ml-2 mt-2">Bài học</div>
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -83,7 +83,7 @@ export default class NavBar extends Component {
 
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  <img className="nav-item-image" alt="Trang chủ" src="/images/Nav-icon3-01.png" />
+                  <img className="nav-item-image" alt="Bài tập" src="/images/Nav-icon3-01.png" />
                   <div className="nav-item-text ml-2 mt-2">Bài tập</div>
                 </DropdownToggle>
                 <DropdownMenu right>
@@ -98,25 +98,29 @@ export default class NavBar extends Component {
 
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  <img className="nav-item-image" alt="Trang chủ" src="/images/Nav-icon4-01.png" />
+                  <img className="nav-item-image" alt="Thi thử" src="/images/Nav-icon4-01.png" />
                   <div className="nav-item-text ml-2 mt-2">Thi thử</div>
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>Toán</DropdownItem>
-                  <DropdownItem>Tiếng Việt</DropdownItem>
+                  <Link to="/thi-thu/toan">
+                    <DropdownItem>Toán</DropdownItem>
+                  </Link>
+                  <Link to="/thi-thu/tieng-viet">
+                    <DropdownItem>Tiếng Việt</DropdownItem>
+                  </Link>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              
+
               <NavItem>
-                <NavLink href="/">
-                  <img className="nav-item-image" alt="Trang chủ" src="/images/Nav-icon7.png" />
+                <NavLink href="/doi-thuong">
+                  <img className="nav-item-image" alt="Đổi thưởng" src="/images/Nav-icon7.png" />
                   <div className="nav-item-text ml-2 mt-2">Đổi thưởng</div>
                 </NavLink>
               </NavItem>
-              
+
               <NavItem>
-                <NavLink href="/">
-                  <img className="nav-item-image" alt="Trang chủ" src="/images/Nav-icon5-01.png" />
+                <NavLink href="/gioi-thieu">
+                  <img className="nav-item-image" alt="Giới thiệu" src="/images/Nav-icon5-01.png" />
                   <div className="nav-item-text ml-2 mt-2">Giới thiệu</div>
                 </NavLink>
               </NavItem>
@@ -125,7 +129,7 @@ export default class NavBar extends Component {
                 this.props.isLoggedIn ?
                   <NavItem className="d-md-none">
                     <NavLink href="#" onClick={this.props.signOut}>
-                      <img className="nav-item-image" alt="Đăng xuất" src="" />
+                      <img className="nav-item-image" alt="Đăng xuất" src="/images/Nav-icon6-01.png" />
                       <div className="nav-item-text ml-2 mt-2">Đăng xuất</div>
                     </NavLink>
                   </NavItem>

@@ -23,18 +23,18 @@ export const getUserProfile = function () {
   return (dispatch) => {
     dispatch(requestApi(GET, ACCOUNT_API_BASE_URL + '/profile')).then(result => {
       if (result.data.success) dispatch(receiveProfile(result.data.profile));
-      else dispatch(requestFail('Something went wrong, try again'));
+      else dispatch(requestFail('Xảy ra lỗi, vui lòng thử lại'));
     }, err => {
       console.log(err.response)
       let status = err.response && err.response.status;
       switch (status) {
         case 401: 
         case 403: {
-          dispatch(requestFail('Not authorized'));
+          dispatch(requestFail('Hết hạn truy cập, vui lòng đăng nhập và thử lại'));
           dispatch(signOut());
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng thử lại'))
       }
     })
   }
@@ -43,18 +43,18 @@ export const getUserProfile = function () {
 export const updateUserProfile = function (profile) {
   return (dispatch) => {
     dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/profile', profile)).then(result => {
-      console.log(result);
       if (result.data.success) dispatch(receiveProfile(result.data.profile));
-      else dispatch(requestFail('Something went wrong, try again'));
+      else dispatch(requestFail('Xảy ra lỗi, vui lòng thử lại'));
     }, err => {
       console.log(err);
       let status = err.response && err.response.status;
       switch (status) {
         case 401: {
-          dispatch(requestFail('Not authorized'));
+          dispatch(requestFail('Hết hạn truy cập, vui lòng đăng nhập và thử lại'));
+          dispatch(signOut());
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng thử lại'))
       }
     })
   }

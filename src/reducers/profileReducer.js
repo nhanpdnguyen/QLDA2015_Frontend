@@ -18,13 +18,12 @@ let initalState = {
 }
 
 export default function (state = initalState, action) {
-  //console.log(action.profile)
   switch (action.type) {
     case RECEIVE_PROFILE: {
       return action.profile
     }
-    case RESET_PROFILE: 
-      return {}
+    case RESET_PROFILE:
+      return initalState;
     default: return state
   }
 }

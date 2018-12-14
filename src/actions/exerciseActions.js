@@ -30,7 +30,6 @@ export const getTopicName = function (topicId) {
 }
 
 export const receiveTopicName = function (data) {
-  console.log(data)
   return {
     type: RECEIVE_TOPIC_NAME,
     topicName: data.name
