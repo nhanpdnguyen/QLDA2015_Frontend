@@ -8,7 +8,7 @@ import './ChiTietBaiHoc.css';
 export default class ChiTietBaiHoc extends Component {
   constructor(props) {
     super(props);
-    this.props.getLesson(this.props.idBaiHoc)
+    this.props.getLesson(this.props.idBaiHoc);
   }
 
   componentDidMount() {
@@ -19,6 +19,7 @@ export default class ChiTietBaiHoc extends Component {
       readOnly: true,
       theme: 'snow'
     });
+    this.props.openChatBox();
   }
 
   shouldComponentUpdate(nextProps) {
