@@ -37,7 +37,7 @@ class TopStudier extends Component {
                     {this.props.list.map(item => {
                       return (
                         <li key={item.userId}>
-                          <mark>{item.userId}</mark>
+                          <mark>{item.fullName}</mark>
                           <small>{item.sumPoint}</small>
                         </li>
                       )

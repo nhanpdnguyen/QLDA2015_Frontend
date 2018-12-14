@@ -55,16 +55,16 @@ class App extends Component {
 									<Route exact path="/" component={Home} />
 									<Route exact path="/dang-nhap" component={DangNhap} />
 									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
-									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={ChiTietBaiHocContainer} />
+									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={CheckAuthenticated(ChiTietBaiHocContainer)} />
 									<Route exact path="/dang-ky" component={DangKy} />
 									<Route exact path="/cap-nhat-tai-khoan" component={CheckAuthenticated(UpdateProfileContainer)} />
 									<Route path="/tro-choi" component={Game} />
 									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)" component={ExerciseListContainer} />
-									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={ExerciseQuestionContainer} />
-									<Route exact path="/bai-tap/ket-qua" component={ExerciseResultContainer} />
-                  <Route exact path="/thi-thu/:monhoc(toan|tieng-viet)/:examId" component={ThiThuContainer} />
+									<Route exact path="/bai-tap/:monhoc(toan|tieng-viet)/:topicId" component={CheckAuthenticated(ExerciseQuestionContainer)} />
+									<Route exact path="/bai-tap/ket-qua" component={CheckAuthenticated(ExerciseResultContainer)} />
+                  <Route exact path="/thi-thu/:monhoc(toan|tieng-viet)/:examId" component={CheckAuthenticated(ThiThuContainer)} />
                   <Route exact path="/thi-thu/:monhoc(toan|tieng-viet)" component={ExaminationListContainer} />
-                  <Route exact path="/thi-thu/ketqua/:monhoc(toan|tieng-viet)/:examId" component={ExamResultContainer} />
+                  <Route exact path="/thi-thu/ketqua/:monhoc(toan|tieng-viet)/:examId" component={CheckAuthenticated(ExamResultContainer)} />
 									<Route path="/teacher-chat-box" component={TeacherChatBox} />
 									<Route component={NotFound} />
 								</Switch>

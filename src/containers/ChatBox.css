@@ -13,6 +13,7 @@
     position: fixed;
     bottom: 2vh;
     font-size: 1vw; 
+    z-index: 100
 }
 
 .box-shadow{

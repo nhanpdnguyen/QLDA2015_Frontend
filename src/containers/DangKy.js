@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { signUp } from '../actions';
 
@@ -16,7 +16,7 @@ class DangKy extends Component {
   }
 
   handleSignUp(data) {
-    this.props.dispatch(signUp(data, NORMAL_SIGN_UP));
+    this.props.dispatch(signUp(data, NORMAL_SIGN_UP, this.props.history));
   }
 
   render() {
@@ -49,10 +49,11 @@ class DangKy extends Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps (state, ownProps) {
   return {
-    isLoggedIn: state.auth.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn,
+    history: ownProps.history
   }
 } 
 
-export default connect(mapStateToProps)(DangKy);
+export default withRouter(connect(mapStateToProps)(DangKy));

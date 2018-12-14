@@ -1,5 +1,5 @@
 import { SIGN_IN_SUCCESS, SIGN_OUT_SUCCESS, SIGN_UP_SUCCESS, SIGN_IN_FAIL, SIGN_UP_FAIL } from "../actions/actionTypes";
-import { SET_SIGNUP_FALSE, RESET_PROFILE } from "../constants";
+import { SET_SIGNUP_FALSE } from "../constants";
 
 let initialState = {
   isLoggedIn: false,
@@ -18,11 +18,9 @@ export default function (state = initialState, action) {
       return state;
     }
     case SIGN_IN_FAIL: {
-      console.log('reducer: sign in fail ' + action.errMessage);
       return state;
     }
     case SIGN_UP_SUCCESS: {
-      console.log('reducer: sign up successfully');
       console.log('accessToken: ', action.accessToken);
       state = {
         ...state,
@@ -33,11 +31,9 @@ export default function (state = initialState, action) {
       return state;
     }
     case SIGN_UP_FAIL: {
-      console.log('reducer: sign up fail ' + action.errMessage);
       return state;
     }
     case SIGN_OUT_SUCCESS: {
-      console.log('reducer: sign out success');
       state = {
         ...state,
         isLoggedIn: false,

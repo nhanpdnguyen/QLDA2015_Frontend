@@ -14,7 +14,6 @@ const mapStateToProps = function (state, ownProps) {
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
     getLesson: (idBaiHoc) => {
-      console.log(idBaiHoc);
       dispatch(getLessonById(idBaiHoc));
     }
   }

@@ -65,8 +65,7 @@ export const receiveExaminationList = (data) => ({
 
 export const sendResultExam = (examId, type, title, data) => {
   return (dispatch) => {
-    console.log(data);
-    dispatch(requestApi(POST, EXAMINATION_API_BASE_URL + `/answer/${type}/${title}/${examId}`, data)).then(result => {
+    dispatch(requestApi(POST, EXAMINATION_API_BASE_URL + `/answer/${type}/${examId}`, data)).then(result => {
       dispatch(receiveExamResult(result.data));
     })
   }

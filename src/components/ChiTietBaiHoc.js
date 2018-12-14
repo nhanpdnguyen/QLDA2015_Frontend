@@ -53,7 +53,7 @@ export default class ChiTietBaiHoc extends Component {
           </Row>
         </Col>
         <Col md="4">
-          CHAT BOX HỖ TRỢ
+
 				</Col>
       </Row>
     )
