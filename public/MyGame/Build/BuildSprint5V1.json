@@ -1,9 +1,9 @@
 {
 "companyName": "TranThachKHTN",
 "productName": "LuyenThiLop6",
-"dataUrl": "BuildSprint4V1.data.unityweb",
-"wasmCodeUrl": "BuildSprint4V1.wasm.code.unityweb",
-"wasmFrameworkUrl": "BuildSprint4V1.wasm.framework.unityweb",
+"dataUrl": "BuildSprint5V1.data.unityweb",
+"wasmCodeUrl": "BuildSprint5V1.wasm.code.unityweb",
+"wasmFrameworkUrl": "BuildSprint5V1.wasm.framework.unityweb",
 "TOTAL_MEMORY": 268435456,
 "graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},

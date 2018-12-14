@@ -7,7 +7,8 @@ import { NORMAL_SIGN_OUT } from "../constants";
 const mapStateToProps = (state) => ({
   isLoggedIn: state.auth.isLoggedIn,
   firstName: state.profile.firstName,
-  lastName: state.profile.lastName
+  lastName: state.profile.lastName,
+  point: state.profile.pointReward
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

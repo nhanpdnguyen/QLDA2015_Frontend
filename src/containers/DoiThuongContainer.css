@@ -1,0 +1,65 @@
+.doi-thuong-container .title {
+  font-family: 'UVN_ChimBienNang';
+  text-transform: uppercase;
+  font-size: 2.5vw;
+  color: #cc332f;
+}
+
+.doi-thuong-container .huy-hieu-container,
+.doi-thuong-container .user-info {
+  background: #ffffffad;
+  border-radius: 15px;
+}
+
+.doi-thuong-container .huy-hieu-container .title {
+  color: #0F69BA;
+  font-size: 2.5vw;
+}
+
+.doi-thuong-container .ten-huy-hieu {
+  font-family: 'UVN_ChimBienNang';
+  color: #0F69BA;
+  font-size: 1.5vw
+}
+
+.doi-thuong-container .thong-tin-huy-hieu {
+  font-weight: bold;
+  font-size: 1vw;
+}
+
+.doi-thuong-container .ten {
+  font-family: 'UTM Guanine';
+  text-transform: uppercase;
+  font-size: 1.5vw;
+  color: #C9A853;
+}
+
+.doi-thuong-container .diem {
+  font-weight: bold;
+  font-size: 1.5vw;
+}
+
+.doi-thuong-container .diem span {
+  color: #cc332f;
+}
+
+@media(max-width: 768px) {
+
+  .doi-thuong-container .title,
+  .doi-thuong-container .huy-hieu-container .title {
+    font-size: 1.5rem;
+  }
+
+  .doi-thuong-container .ten-huy-hieu {
+    font-size: 0.8rem;
+  }
+
+  .doi-thuong-container .thong-tin-huy-hieu {
+    font-size: 0.5rem;
+  }
+
+  .doi-thuong-container .ten, .doi-thuong-container .diem {
+    font-size: 1rem;
+  }
+
+}
