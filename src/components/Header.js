@@ -13,7 +13,7 @@ export default class Header extends Component {
 						<img className="w-75 rounded" alt="" src="/images/avatar.png" />
 					</Col>
 					<Col md="5" className="d-flex justify-content-start pl-0">
-						<div className="mt-1" alt="">{this.props.firstName + ' ' + this.props.lastName}</div>
+						<div className="mt-1" alt="">{this.props.firstName + ' ' + this.props.lastName} <br/> {`Điểm tích lũy: ${this.props.point}`}</div>
 						<div className="tai-khoan-dropdown mt-1 ml-2">
 							<UncontrolledDropdown>
 								<DropdownToggle caret color="info"></DropdownToggle>

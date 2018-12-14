@@ -9,6 +9,8 @@ import MessageInput from './MessageInput.js';
 import {messageTeacherActions} from '../../actions/messageTeacherActions.js';
 import { connect } from 'react-redux';
 import helpers from '../../helpers/helpers.js';
+import config from '../../config';
+
 const GVTV = "gvtuvan"
 class TeacherChatBoxPage extends React.Component{
     constructor(props){
@@ -127,7 +129,7 @@ class TeacherChatBoxPage extends React.Component{
     }
 
     connectServer = () => {
-        const ws = new WebSocket('ws://localhost:8002');
+        const ws = new WebSocket('ws:' + config.CHAT_SOCKET);
 
         ws.onopen = () => {
             // console.log("connect socket");   

@@ -28,6 +28,7 @@ export const signInSuccess = function (accessToken) {
 }
 
 export const signInFail = function (errMessage) {
+  alert(errMessage);
   return ({
     type: SIGN_IN_FAIL,
     errMessage: errMessage
@@ -43,7 +44,6 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           passWord: password
         }
         dispatch(requestApi(POST, ACCOUNT_API_BASE_URL + '/', data)).then(result => {
-          console.log(result.data.success);
           if (result.data.success) {
             //set token
             dispatch(signInSuccess(result.data.value.access_token));
@@ -56,10 +56,10 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
           let status = err.response && err.response.status;
           switch (status) {
             case 401: {
-              dispatch(signInFail('Sai tên hoặc mật khẩu'));
+              dispatch(signInFail('Tên hoặc mật khẩu không hợp lệ'));
               break;
             }
-            default: dispatch(signInFail('Something went wrong, try again'))
+            default: dispatch(signInFail('Xảy ra lỗi, vui lòng thử lại'))
           }
         });
         break;
@@ -76,19 +76,19 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
               //get profile
               dispatch(getUserProfile());
             }
-            else dispatch(signInFail('Something went wrong, try again'));
+            else dispatch(signInFail('Tên hoặc mật khẩu không hợp lệ'));
           }, err => {
             console.log(err.response)
             let status = err.response && err.response.status;
             switch (status) {
               case 401: {
-                dispatch(signInFail('Sai tên hoặc mật khẩu'));
+                dispatch(signInFail('Tên hoặc mật khẩu không hợp lệ'));
                 break;
               }
-              default: dispatch(signInFail('Something went wrong, try again'))
+              default: dispatch(signInFail('Xảy ra lỗi, vui lòng thử lại'))
             }
           })
-        } else dispatch(signInFail('Access token from FB is in valid'))
+        } else dispatch(signInFail('Tên hoặc mật khẩu không hợp lệ'))
         break;
       }
       case GOOGLE_SIGN_IN: {
@@ -103,19 +103,19 @@ export const signIn = function (userName, password, accessToken, method = NORMAL
               //get profile
               dispatch(getUserProfile());
             }
-            else dispatch(signInFail('Something went wrong, try again'));
+            else dispatch(signInFail('Tên hoặc mật khẩu không hợp lệ'));
           }, err => {
             console.log(err.response)
             let status = err.response && err.response.status;
             switch (status) {
               case 401: {
-                dispatch(signInFail('Sai tên hoặc mật khẩu'));
+                dispatch(signInFail('Tên hoặc mật khẩu không hợp lệ'));
                 break;
               }
-              default: dispatch(signInFail('Something went wrong, try again'))
+              default: dispatch(signInFail('Xảy ra lỗi, vui lòng thử lại'))
             }
           })
-        } else dispatch(signInFail('Access token from GG is in valid'))
+        } else dispatch(signInFail('Xảy ra lỗi, vui lòng thử lại'))
         break;
       }
       default: throw new Error('Unknown sign in method');
@@ -133,34 +133,36 @@ export const signUpSuccess = function (accessToken) {
 }
 
 export const signUpFail = function (errMessage) {
+  alert(errMessage);
   return ({
     type: SIGN_UP_FAIL,
     errMessage: errMessage
   })
 }
 
-export const signUp = function (data, method = NORMAL_SIGN_UP) {
+export const signUp = function (data, method = NORMAL_SIGN_UP, history) {
   return (dispatch) => {
     switch (method) {
       case NORMAL_SIGN_UP: {
         dispatch(requestApi(PUT, ACCOUNT_API_BASE_URL + '/', data)).then(result => {
-          console.log(result);
           if (result.data.success) {
             //set token
             dispatch(signUpSuccess(result.data.value.access_token));
             //get profile
             dispatch(getUserProfile());
+            //switch route
+            history.push('/cap-nhat-tai-khoan');
           }
-          else dispatch(signUpFail(result.data.message));
+          else dispatch(signUpFail('Xảy ra lỗi, vui lòng thử lại'));
         }, err => {
           console.log(err.response)
           let status = err.response && err.response.status;
           switch (status) {
             case 401: {
-              dispatch(signUpFail('Tên đăng nhập đã tồn tại'));
+              dispatch(signUpFail('Tên đăng nhập hoặc email đã tồn tại'));
               break;
             }
-            default: dispatch(signUpFail('Something went wrong, try again'))
+            default: dispatch(signUpFail('Xảy ra lỗi, vui lòng thử lại'))
           }
         });
         break;
@@ -198,8 +200,7 @@ export const signOut = function (method = NORMAL_SIGN_OUT) {
           let auth2 = window.gapi.auth2.getAuthInstance();
           auth2.signOut().then(() => {
             dispatch(signOutSuccess());
-        dispatch(resetProfile());
-        dispatch(resetProfile());
+            dispatch(resetProfile());
           })
           break;
         }

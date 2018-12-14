@@ -3,6 +3,7 @@ import FillChoice from "../components/FillChoice";
 import BreadCrumb from "../components/BreadCrumb";
 import React, { Component } from 'react'
 import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom';
 import { Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 import './ExerciseQuestionContainer.css';
@@ -51,6 +52,9 @@ class ExerciseQuestionContainer extends Component {
     let totalQuestion = this.props.currentExerciseList.length;
     let currentExercise = this.props.currentExerciseList[questionIndex];
 
+    //redirect to result page if has result
+    if (this.props.result.numberQuestion !== 0) return <Redirect to="/bai-tap/ket-qua" />;
+
     switch (currentExercise.type) {
       case CHOICE: {
         exerciseToDisplay = <MultipleChoice {...currentExercise} changeUserAnswer={this.props.changeUserAnswer} />;
@@ -62,8 +66,6 @@ class ExerciseQuestionContainer extends Component {
       }
       default: return <NotFound />;
     }
-
-    console.log(this.props.monHoc);
 
     const breadCrumbProps = {
       baseText: this.props.monHoc === 'toan' ? 'Bài tập Toán' : 'Bài tập Tiếng Việt',

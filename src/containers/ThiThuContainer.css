@@ -1,0 +1,42 @@
+.thi-thu-title {
+  font-family: 'UTM_Alexander_0';
+  font-size: 5vw;
+  color: #F15A24;
+}
+
+.exam-question-container {
+  background-image: linear-gradient(#ecf2c5db, #c4e8e575, #c4e8e5cc);
+  border: none;
+  border-radius: 15px;
+}
+
+.exam-question-container .multiple-choice-question,
+.exam-question-container .fill-choice-question {
+  border: none;
+  font-size: 2vw;
+}
+
+.exam-question-container .multiple-choice-answers,
+.exam-question-container label {
+  font-size: 1.5vw;
+}
+
+@media (max-width: 768px) {
+  .thi-thu-title {
+    font-size: 2rem;
+  }
+
+  .exam-question-container .multiple-choice-question,
+  .exam-question-container .fill-choice-question {
+    font-size: 1.1rem;
+  }
+
+  .exam-question-container .multiple-choice-answers,
+  .exam-question-container label {
+    font-size: initial;
+  }
+
+  .exam-question-container .answer-btn {
+    font-size: 0.9rem;
+  }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
+import validator from 'validator';
 
 import './UpdateProfile.css';
 
@@ -44,7 +45,16 @@ export default class UpdateProfile extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+
+    //validation
+    let errors = [];
+    let data = this.state;
+    if (data.emailParent && !validator.isEmail(data.emailParent)) errors.push('Email không hợp lệ, vui lòng kiểm tra lại');
+    if (errors.length != 0) {
+      alert(errors[0]);
+      return;
+    }
+
     this.props.updateProfile(this.state);
   }
 
@@ -75,7 +85,7 @@ export default class UpdateProfile extends Component {
                 <div className="form-group row justify-content-center ">
                   <label className="col-sm-4 col-form-label">Tên:</label>
                   <div className="form-group col-sm-8">
-                    <input name="firstName" value={this.state.firstName} onChange={this.handleInputChange} type="text" className="form-control form-field" />
+                    <input name="firstName" required value={this.state.firstName} onChange={this.handleInputChange} type="text" className="form-control form-field" />
                   </div>
                 </div>
                 <div className="form-group row justify-content-center ">

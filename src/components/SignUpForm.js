@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import validator from 'validator';
 
 import './SignUpForm.css'
 
@@ -17,7 +18,7 @@ export default class SignUpForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInputChange (e) {
+  handleInputChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -25,8 +26,19 @@ export default class SignUpForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     let data = this.state;
+    
+    //validation
+    let errors = [];
+    data.userName = data.userName.trim();
+    if (!validator.isAlphanumeric(data.userName)) errors.push('Tên đăng nhập không hợp lệ, vui lòng kiểm tra lại');
+    if (!validator.isEmail(data.email)) errors.push('Email không hợp lệ, vui lòng kiểm tra lại');
+    if (data.passWord !== data.rePassWord) errors.push('Mật khẩu không hợp lệ, vui lòng kiểm tra lại');
+    if (errors.length != 0) {
+      alert(errors[0]);
+      return;
+    }
+
     this.props.signUp(data);
   }
 
@@ -37,35 +49,35 @@ export default class SignUpForm extends Component {
           <label htmlFor="firstName" className="col-sm-4 col-form-label">Tên:</label>
           <div className="form-group col-sm-8">
             <input name="firstName" type="text" required
-            className="form-control form-field" onChange={this.handleInputChange}/>
+              className="form-control form-field" onChange={this.handleInputChange} />
           </div>
         </div>
         <div className="form-group row justify-content-center ">
           <label htmlFor="userName" className="col-sm-4 col-form-label">Tên đăng nhập:</label>
           <div className="form-group col-sm-8">
-            <input name="userName" type="text" required 
-            className="form-control form-field" onChange={this.handleInputChange}/>
+            <input name="userName" type="text" required
+              className="form-control form-field" onChange={this.handleInputChange} />
           </div>
         </div>
         <div className="form-group row justify-content-center ">
           <label htmlFor="email" className="col-sm-4 col-form-label">Email:</label>
           <div className="form-group col-sm-8">
-            <input name="email" type="text" required 
-            className="form-control form-field" onChange={this.handleInputChange}/>
+            <input name="email" type="text" required
+              className="form-control form-field" onChange={this.handleInputChange} />
           </div>
         </div>
         <div className="form-group row justify-content-center ">
           <label htmlFor="passWord" className="col-sm-4 col-form-label">Mật khẩu:</label>
           <div className="form-group col-sm-8">
             <input name="passWord" type="password" required
-            className="form-control form-field" onChange={this.handleInputChange}/>
+              className="form-control form-field" onChange={this.handleInputChange} />
           </div>
         </div>
         <div className="form-group row justify-content-center ">
           <label htmlFor="rePassWord" className="col-sm-4 col-form-label">Nhập lại mật khẩu:</label>
           <div className="form-group col-sm-8">
             <input name="rePassWord" type="password" required
-            className="form-control form-field" onChange={this.handleInputChange}/>
+              className="form-control form-field" onChange={this.handleInputChange} />
           </div>
         </div>
         <div className="form-row justify-content-center mt-md-3 mt-sm-1 mt-lg-4">

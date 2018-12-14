@@ -1,0 +1,58 @@
+.ds-thi-thu-title {
+    font-family: 'UTM_Alexander_0', sans-serif;
+    font-size: 7vh;
+    color: red;
+    font-weight: 800;
+}
+
+.ds-thi-thu {
+    margin: 0 auto;
+}
+
+.ds-thi-thu-box {
+    padding-left: 4vh;
+    padding-right: 4vh;
+    padding-bottom: 4vh;
+    border-radius: 15px;
+    background-color: white;
+    opacity: 0.7;
+    margin-top: 5vh;
+}
+
+.ds-thi-thu-box a {
+    text-decoration: none;
+    color: unset;
+}
+
+.chuong:hover .chuong-number {
+    color: darkblue;
+}
+
+.chuong-number {
+    font-family: 'UTM_Alexander_0', sans-serif;
+    color: blue;
+    font-weight: 500;
+    font-size: 4vh;
+}
+
+.list-bai-tap ul {
+    font-size: 3vh;
+    padding-top: 2vh;
+}
+
+.ds-thi-thu-branch {
+    font-size: 7vh;
+    color: orange;
+    font-family: 'UTM_Alexander_0', sans-serif;
+    font-weight: 500;
+}
+
+@media(max-width: 768px) {
+    .ds-thi-thu {
+        font-size: initial
+    }
+
+    .ds-thi-thu-branch {
+        margin-top: 0;
+    }
+}

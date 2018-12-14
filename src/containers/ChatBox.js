@@ -35,10 +35,7 @@ class ChatBox extends React.Component{
             if(this.props.connection){
                 this.props.connection.close()   
             }
-            var payload = {
-                connection: null
-            }
-            this.props.actionSetConnection(payload);
+
             var payload = {
                 isOpen: false
             }
@@ -69,7 +66,7 @@ class ChatBox extends React.Component{
                 }
             }
             this.props.connection.send(JSON.stringify(message));
-            console.log("send user: " + this.props.userName);
+            // console.log("send user: " + this.props.userName);
             var payload = {
                 isSignUp: false
             }
@@ -83,9 +80,9 @@ class ChatBox extends React.Component{
         }
         this.props.actionMinitureChatBox(payload);
 
-        if(this.props.isLoggedIn && this.props.listMessages === null){
-            this.handleGetAllMessage();
-        }
+        // if(this.props.isLoggedIn && this.props.listMessages === null){
+        //     this.handleGetAllMessage();
+        // }
     }
 
     handleMessage = (message) => {
@@ -98,6 +95,10 @@ class ChatBox extends React.Component{
                     idGVTV: msg.idGVTV
                 }
                 this.props.actionSetIdGVTV(payload);
+                if(this.props.isLoggedIn && this.props.listMessages === null){
+                    console.log("get all message");
+                    this.handleGetAllMessage();
+                }
                 break;
             case helpers.TYPE_MESSAGE_CREATE:
                 var messageTmp = {
@@ -133,7 +134,7 @@ class ChatBox extends React.Component{
                 data: "authentication"
             }
             this.props.connection.send(JSON.stringify(message));
-            console.log("sign up: " + this.props.isSignUp)
+            console.log("send auth")
         }
 
         ws.onmessage = (event) => {
@@ -143,8 +144,12 @@ class ChatBox extends React.Component{
         }
 
         ws.onclose = () => {
-            // console.log("disconnect");
-        }
+            var payload = {
+                connection: null
+            }
+            this.props.actionSetConnection(payload);
+            console.log("disconnect socket");
+        } 
     }
 
     disconnectServer = () => {
@@ -157,11 +162,13 @@ class ChatBox extends React.Component{
         var payload = {
             idChannel: idChannel
         }
+        console.log("id channel: " + idChannel);
         this.props.actionGetAllMessageOfChannel(payload);
     }
 
     render(){
         const isOpen = this.props.isOpen; 
+
         return(
             <div className="container-fluid">
                 <div className="row justify-content-end">

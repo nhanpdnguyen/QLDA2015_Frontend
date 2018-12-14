@@ -1,4 +1,4 @@
-import { RECEIVE_PROFILE } from "../actions/actionTypes";
+import { RECEIVE_PROFILE, RECEIVE_MEDAL_LIST } from "../actions/actionTypes";
 import { RESET_PROFILE } from "../constants";
 
 let initalState = {
@@ -14,17 +14,21 @@ let initalState = {
   lastNameParent: '',
   emailParent: '',
   phoneParent: '',
-  regionParent: ''
+  regionParent: '',
+  medals: [],
+  medalList: []
 }
 
 export default function (state = initalState, action) {
-  //console.log(action.profile)
   switch (action.type) {
     case RECEIVE_PROFILE: {
       return action.profile
     }
-    case RESET_PROFILE: 
-      return {}
+
+    case RESET_PROFILE: {
+      return initalState;
+    }
+
     default: return state
   }
 }
