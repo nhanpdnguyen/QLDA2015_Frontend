@@ -29,6 +29,7 @@ import helpers from './helpers/helpers';
 import ExerciseResultContainer from './containers/ExerciseResultContainer';
 import NotFound from './components/NotFound';
 import RedirectLogIn from './components/RedirectLogIn';
+import DoiThuongContainer from './containers/DoiThuongContainer';
 
 const GVTV = 'gvtuvan';
 
@@ -55,7 +56,7 @@ class App extends Component {
 									<Route exact path="/" component={Home} />
 									<Route exact path="/dang-nhap" component={DangNhap} />
 									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)" component={DanhSachBaiHocContainer} />
-									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={this.props.isLoggedIn ? ChiTietBaiHocContainer : RedirectLogIn } />
+									<Route exact path="/bai-hoc/:monhoc(toan|tieng-viet)/:idbaihoc" component={this.props.isLoggedIn ? ChiTietBaiHocContainer : RedirectLogIn} />
 									<Route exact path="/dang-ky" component={DangKy} />
 									<Route exact path="/cap-nhat-tai-khoan" component={UpdateProfileContainer} />
 									<Route path="/tro-choi" component={Game} />
@@ -65,6 +66,7 @@ class App extends Component {
 									<Route exact path="/thi-thu/:monhoc(toan|tieng-viet)/:examId" component={this.props.isLoggedIn ? ThiThuContainer : RedirectLogIn} />
 									<Route exact path="/thi-thu/:monhoc(toan|tieng-viet)" component={ExaminationListContainer} />
 									<Route exact path="/thi-thu/ketqua/:monhoc(toan|tieng-viet)/:examId" component={this.props.isLoggedIn ? ExamResultContainer : RedirectLogIn} />
+									<Route exact path="/doi-thuong" component={DoiThuongContainer} />
 									<Route path="/teacher-chat-box" component={TeacherChatBox} />
 									<Route component={NotFound} />
 								</Switch>
