@@ -14,7 +14,7 @@ export const getTopicName = function (topicId) {
   return (dispatch) => {
     dispatch(requestApi(GET, LEARNING_API_BASE_URL + '/topics/' + topicId)).then(result => {
       if (result.data.success) dispatch(receiveTopicName(result.data.value));
-      else dispatch(requestFail('Something went wrong, try again'));
+      else dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'));
     }, err => {
       console.log(err.response)
       let status = err.response && err.response.status;
@@ -23,7 +23,7 @@ export const getTopicName = function (topicId) {
           dispatch(requestFail('Not authorized'));
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }
@@ -47,7 +47,7 @@ export const getExerciseListByTopicId = function (topicId) {
   return (dispatch) => {
     dispatch(requestApi(GET, EXERCISE_API_BASE_URL + `/topic/${topicId}/number_question?numberQuestion=10`)).then(result => {
       if (result.data) dispatch(receiveExerciseList(result.data));
-      else dispatch(requestFail('Something went wrong, try again'));
+      else dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'));
     }, err => {
       console.log(err.response)
       let status = err.response && err.response.status;
@@ -56,7 +56,7 @@ export const getExerciseListByTopicId = function (topicId) {
           dispatch(requestFail('Not authorized'));
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }
@@ -98,7 +98,7 @@ export const answerExerciseQuestion = function () {
           dispatch(requestFail('Not authorized'));
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }
@@ -195,7 +195,7 @@ export const getExerciseResult = function () {
           dispatch(requestFail('Not authorized'));
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }

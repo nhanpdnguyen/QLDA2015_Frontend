@@ -16,7 +16,7 @@ export const getLessonListByCategory = function (categoryId) {
   return (dispatch) => {
     dispatch(requestApi(GET, LEARNING_API_BASE_URL + '/categories/' + categoryId)).then(result => {
       if (result.data.success) dispatch(receiveLessonList(result.data.value));
-      else dispatch(requestFail('Something went wrong, try again'));
+      else dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'));
     }, err => {
       console.log(err.response)
       let status = err.response && err.response.status;
@@ -25,7 +25,7 @@ export const getLessonListByCategory = function (categoryId) {
           dispatch(requestFail('Not authorized'));
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }
@@ -51,7 +51,7 @@ export const getLessonById = function (lessonId) {
           dispatch(requestFail('Not authorized'));
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }
