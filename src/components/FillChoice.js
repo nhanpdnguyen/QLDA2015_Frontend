@@ -43,7 +43,7 @@ export default class FillChoice extends Component {
             <label className="col-5 col-md-3 col-form-label text-dark">Câu trả lời: </label>
             <div className="col-7">
               <input type="text" className="form-control h-100"
-                value={this.props.userAnswer} onChange={this.handleInputChange} />
+                value={this.props.userAnswer || ''} onChange={this.handleInputChange} />
             </div>
           </div>
         </Col>
