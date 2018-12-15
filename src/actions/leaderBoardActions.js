@@ -17,11 +17,7 @@ export const getLeaderBoard = function () {
       console.log(err.response)
       let status = err.response && err.response.status;
       switch (status) {
-        case 401: {
-          dispatch(requestFail('Not authorized'));
-          break;
-        }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }

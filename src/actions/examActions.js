@@ -15,16 +15,16 @@ export const getExaminationById = function (examId) {
       if (result.data.listQuestion) 
         dispatch(receiveExaminationList(result.data.listQuestion));
       else 
-        dispatch(requestFail('Something went wrong, try again'));
+        dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'));
     }, err => {
       console.log(err.response)
       let status = err.response && err.response.status;
       switch (status) {
         case 401: {
-          dispatch(requestFail('Not authorized'));
+          dispatch(requestFail('Hết hạn truy cập, vui lòng đăng nhập lại'));
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }
@@ -38,7 +38,7 @@ export const getExamListByCategory = function (categoryName, time) {
         dispatch(receiveExaminationTitleList(result.data.listExam));
 
       }
-      else dispatch(requestFail('Something went wrong, try again'));
+      else dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'));
     }, err => {
       console.log(err.response)
       let status = err.response && err.response.status;
@@ -47,7 +47,7 @@ export const getExamListByCategory = function (categoryName, time) {
           dispatch(requestFail('Not authorized'));
           break;
         }
-        default: dispatch(requestFail('Something went wrong, try again'))
+        default: dispatch(requestFail('Xảy ra lỗi, vui lòng tải lại trang'))
       }
     })
   }
