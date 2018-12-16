@@ -37,7 +37,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         session: action.data.session,
-        currentExerciseList: action.data.listQuestions,
+        currentExerciseList: action.data.listQuestion,
         currentQuestionIndex: 0
       }
 

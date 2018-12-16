@@ -22,7 +22,7 @@ export const requestSuccess = function (result) {
 }
 
 export const requestFail = function (err) {
-  alert(err);
+  // alert(err);
   return ({
     type: REQUEST_FAIL,
     err: err
