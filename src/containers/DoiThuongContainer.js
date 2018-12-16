@@ -20,7 +20,6 @@ const mapDispatchToProps = function (dispatch) {
       dispatch(getMedalList())
     },
     buyMedal: (id) => {
-
       dispatch(buyMedal(id));
     }
   }
@@ -37,11 +36,28 @@ class DoiThuongContainer extends Component {
       alert('Bạn đã có huy hiệu này rồi');
       return;
     }
-    this.props.buyMedal(id);
+
+    if (!this.userHasEnoughPoint(id)) {
+      alert('Bạn không đủ điểm để mua huy hiệu');
+      return;
+    }
+
+    let buy = window.confirm('Bạn có muốn mua huy hiệu ' + id + '?');
+    if (buy) this.props.buyMedal(id);
+    else return;
+  }
+
+  userHasEnoughPoint = (id) => {
+    let { medalList, point } = this.props;
+    for (let i = 0; i < medalList.length; i++) {
+      console.log(medalList[i] == id);
+      if (medalList[i]._id == id && point >= medalList[i].point) return true;
+    }
+    return false;
   }
 
   userHasMedal = (id) => {
-    let { myMedalList, medalList } = this.props;
+    let { myMedalList } = this.props;
     for (let i = 0; i < myMedalList.length; i++) {
       if (myMedalList[i] == id) return true;
     }
@@ -60,7 +76,7 @@ class DoiThuongContainer extends Component {
           </div>
         </Col>
         <Col xs="12" md="9" className="order-md-2">
-          <Row className="huy-hieu-container my-1">
+          <Row className="huy-hieu-container my-1 pb-2">
             <Col xs="12" className="text-center my-2 title">HUY HIỆU</Col>
 
             {this.props.medalList.map((medal) => {
@@ -74,7 +90,7 @@ class DoiThuongContainer extends Component {
                     <Col xs="8" className="pr-0">
                       <div className="ten-huy-hieu">{`Huy hiệu ${medal._id}`}</div>
                       <div className="thong-tin-huy-hieu">{`Điểm đổi: ${medal.point} điểm`}</div>
-                      <div className="thong-tin-huy-hieu">{`Tình trạng: ${this.userHasMedal(medal._id) ? "Đã có" : "Chưa có"}`}</div>
+                      <div className="thong-tin-huy-hieu">Tình trạng: {this.userHasMedal(medal._id) ? <span style={{ color: '#17a2b8' }}>Đã có</span> : <span>Chưa có</span>}</div>
                     </Col>
                   </Row>
                 </Col>

@@ -4,6 +4,7 @@ import {
 
 import config from '../config';
 import { requestApi, requestFail } from './requestActions';
+import { getUserProfile } from "./profileActions";
 import { GET, POST } from '../constants';
 
 const EXERCISE_API_BASE_URL = config.EXERCISE_API_BASE_URL;
@@ -187,6 +188,8 @@ export const getExerciseResult = function () {
     let state = getState().exercise;
     dispatch(requestApi(GET, EXERCISE_API_BASE_URL + `/result_exercise/${state.session}`)).then(result => {
       dispatch(receiveExerciseResult(result.data));
+      //update điểm tích lũy
+      dispatch(getUserProfile())
     }, err => {
       console.log(err.response)
       let status = err.response && err.response.status;
