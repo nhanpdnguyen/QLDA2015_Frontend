@@ -1,18 +1,17 @@
 import React from 'react';
 import Channel from './Channel.js';
 import { connect } from 'react-redux';
-import lodash from 'lodash';
 import ReactLoading from "react-loading";
 import './SiderbarLeft.css';
 
 class SiderbarLeft extends React.Component {
     type = "spokes";
     render() {
-        var channels = this.props.listUsers;        
+        var channels = this.props.listUsers;
         const loader =
-        <div className="loader" key={0}>
-            <ReactLoading type="spokes" color="black" height={25} width={25}/>
-        </div>
+            <div className="loader" key={0}>
+                <ReactLoading type="spokes" color="black" height={25} width={25} />
+            </div>
 
         return (
             ((true) ?
@@ -21,12 +20,12 @@ class SiderbarLeft extends React.Component {
                     <div className="channels">
                         {
                             channels.valueSeq().map((channel, index) => {
-                                if(channel.id !== this.props.userId){
+                                if (channel.id !== this.props.userId) {
                                     return (
-                                        <Channel channel={channel}  key={index} ></Channel>
+                                        <Channel channel={channel} key={index} ></Channel>
                                     )
                                 }
-                                
+                                return null;
                             })
                         }
                     </div>

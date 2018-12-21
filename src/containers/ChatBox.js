@@ -3,25 +3,21 @@ import './ChatBox.css';
 import MessageInput from './MessageInput.js';
 import MessageContainer from './MessageContainer.js';
 import { connect } from 'react-redux';
-import {messageActions} from '../actions/messageActions';
+import { messageActions } from '../actions/messageActions';
 import helpers from '../helpers/helpers.js';
 import config from '../config';
 import { setSignUpFalse } from '../actions';
 
 const GVTV = 'gvtuvan';
-class ChatBox extends React.Component{
-    constructor(props){
-        super(props);
-    }
-    
-    decodeMessage(message){
+class ChatBox extends React.Component {
+    decodeMessage(message) {
         let msg;
         msg = JSON.parse(message);
         return msg;
     }
 
     componentDidMount = () => {
-        if(this.props.isLoggedIn && this.props.userName !== GVTV && this.props.userName.length !== 0 && this.props.connection === null){
+        if (this.props.isLoggedIn && this.props.userName !== GVTV && this.props.userName.length !== 0 && this.props.connection === null) {
             this.connectServer();
             var payload = {
                 isOpen: false
@@ -31,31 +27,31 @@ class ChatBox extends React.Component{
     }
 
     componentDidUpdate = () => {
-        if(!this.props.isLoggedIn && this.props.connection !== null){
-            if(this.props.connection){
-                this.props.connection.close()   
+        if (!this.props.isLoggedIn && this.props.connection !== null) {
+            if (this.props.connection) {
+                this.props.connection.close()
             }
 
-            var payload = {
+            let payload = {
                 isOpen: false
             }
-            this.props.actionMinitureChatBox(payload);       
-            var payload = {
+            this.props.actionMinitureChatBox(payload);
+            payload = {
                 listMessages: null
             }
             this.props.actionSetListMessages(payload);
         }
 
-        if(this.props.isLoggedIn && this.props.userName !== GVTV && this.props.userName && this.props.connection === null){ 
+        if (this.props.isLoggedIn && this.props.userName !== GVTV && this.props.userName && this.props.connection === null) {
             // console.log("connect server")
             this.connectServer();
-            var payload = {
+            let payload = {
                 isOpen: false
             }
-            this.props.actionMinitureChatBox(payload); 
+            this.props.actionMinitureChatBox(payload);
         }
 
-        if(this.props.connection && this.props.isSignUp && this.props.userName){
+        if (this.props.connection && this.props.isSignUp && this.props.userName) {
             var message = {
                 token: this.props.accessToken,
                 type: helpers.TYPE_MESSAGE_CREATE_USER,
@@ -67,7 +63,7 @@ class ChatBox extends React.Component{
             }
             this.props.connection.send(JSON.stringify(message));
             // console.log("send user: " + this.props.userName);
-            var payload = {
+            let payload = {
                 isSignUp: false
             }
             this.props.setSignUpFalse(payload);
@@ -75,7 +71,7 @@ class ChatBox extends React.Component{
     }
 
     handleMiniatueChatBox = () => {
-        var payload = {
+        let payload = {
             isOpen: !this.props.isOpen
         }
         this.props.actionMinitureChatBox(payload);
@@ -88,14 +84,15 @@ class ChatBox extends React.Component{
     handleMessage = (message) => {
         const msg = this.decodeMessage(message);
         const type = msg.type;
+        var payload;
 
-        switch(type){
+        switch (type) {
             case helpers.TYPE_MESSAGE_ID_GV:
-                var payload = {
+                payload = {
                     idGVTV: msg.idGVTV
                 }
                 this.props.actionSetIdGVTV(payload);
-                if(this.props.isLoggedIn && this.props.listMessages === null){
+                if (this.props.isLoggedIn && this.props.listMessages === null) {
                     console.log("get all message");
                     this.handleGetAllMessage();
                 }
@@ -106,23 +103,24 @@ class ChatBox extends React.Component{
                     idChannel: msg.idChannel,
                     idSender: msg.idSender,
                     data: msg.data,
-                    create: msg.create 
+                    create: msg.create
                 }
-                var payload = {
+                payload = {
                     newMessage: messageTmp
                 }
-                if(this.props.listMessages !== null){
+                if (this.props.listMessages !== null) {
                     this.props.actionsAddNewMessage(payload);
                 }
                 break;
+            default: console.log('arg');
         }
     }
 
     connectServer = () => {
         const ws = new WebSocket('ws:' + config.CHAT_SOCKET);
         ws.onopen = () => {
-            console.log("connect socket");   
-            var payload = {
+            console.log("connect socket");
+            let payload = {
                 connection: ws
             }
             this.props.actionSetConnection(payload);
@@ -144,12 +142,12 @@ class ChatBox extends React.Component{
         }
 
         ws.onclose = () => {
-            var payload = {
+            let payload = {
                 connection: null
             }
             this.props.actionSetConnection(payload);
             console.log("disconnect socket");
-        } 
+        }
     }
 
     disconnectServer = () => {
@@ -158,7 +156,7 @@ class ChatBox extends React.Component{
 
     handleGetAllMessage = () => {
         var idChannel = (this.props.idGVTV > this.props.userId) ? this.props.idGVTV + this.props.userId :
-        this.props.userId + this.props.idGVTV;
+            this.props.userId + this.props.idGVTV;
         var payload = {
             idChannel: idChannel
         }
@@ -166,19 +164,19 @@ class ChatBox extends React.Component{
         this.props.actionGetAllMessageOfChannel(payload);
     }
 
-    render(){
-        const isOpen = this.props.isOpen; 
+    render() {
+        const isOpen = this.props.isOpen;
 
-        return(
+        return (
             <div className="container-fluid">
                 <div className="row justify-content-end">
-                    {isOpen?
+                    {isOpen ?
                         <div className="col-3 container-chatbox">
                             <div className="box-shadow">
                                 <div className="title-chatbox">
                                     <div className="name-title">Chat box</div>
-                                    <div className ="icon-min">
-                                        <img src="/images/icons8-horizontal-line-26.png" onClick={this.handleMiniatueChatBox}></img>
+                                    <div className="icon-min">
+                                        <img alt="" src="/images/icons8-horizontal-line-26.png" onClick={this.handleMiniatueChatBox}></img>
                                     </div>
                                 </div>
                                 <div className="content-message">
@@ -191,12 +189,12 @@ class ChatBox extends React.Component{
                         <div className="col-3 container-chatbox-mini">
                             <div className="title-chatbox">
                                 <div className="name-title">Chat box</div>
-                                <div className ="icon-min">
-                                    <img src="/images/icons8-horizontal-line-26.png" onClick={this.handleMiniatueChatBox}></img>
+                                <div className="icon-min">
+                                    <img alt="" src="/images/icons8-horizontal-line-26.png" onClick={this.handleMiniatueChatBox}></img>
                                 </div>
                             </div>
                         </div>
-                    }                  
+                    }
                 </div>
             </div>
         )
@@ -207,7 +205,7 @@ const mapStateToProps = (state) => ({
     isOpen: state.messageReducer.isOpen,
     isLoggedIn: state.auth.isLoggedIn,
     userName: state.profile.userName,
-    connection: state.messageReducer.connection, 
+    connection: state.messageReducer.connection,
     idGVTV: state.messageReducer.idGVTV,
     accessToken: state.auth.accessToken,
     listMessages: state.messageReducer.listMessages,

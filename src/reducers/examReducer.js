@@ -1,4 +1,3 @@
-import { FILL, CHOICE } from "../constants";
 import { CHANGE_USER_ANSWER_IN_EXAM, RECEIVE_EXAMINATION_LIST, RECEIVE_EXAMINATION_TITLE_LIST,SAVE_EXAM_INFO, RECEIVE_EXAM_RESULT, CLEAR_EXAM_RESULT, SET_EXAM_TIMER, CLEAR_CURRENT_EXAM_LIST } from "../actions/actionTypes";
 
 const initialResult = {
@@ -9,8 +8,6 @@ const initialResult = {
 
 const initialState = {
   currentExamList: [],
-  result: {
-  },
   examTitleList: [],
   examInfo: {
     title: '',

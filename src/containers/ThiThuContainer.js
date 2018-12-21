@@ -8,7 +8,7 @@ import { Redirect } from 'react-router'
 
 import './ThiThuContainer.css';
 import { CHOICE, FILL } from '../constants';
-import { changeUserAnswerInExam, getExaminationById, sendResultExam, setExamTimer, clearCurrentExamList } from '../actions/examActions';
+import { changeUserAnswerInExam, getExaminationById, sendResultExam, clearCurrentExamList } from '../actions/examActions';
 
 
 const mapStateToProps = (state) => {
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     getResult: (examList, examInfo) => {
       var listAnswer = { listAnswer: [] };
-      examList.map(exam => {
+      examList.forEach(exam => {
         listAnswer.listAnswer.push(exam.userAnswer);
       })
       console.log("listAnswer", examInfo);

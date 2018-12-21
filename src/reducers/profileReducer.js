@@ -1,4 +1,4 @@
-import { RECEIVE_PROFILE, RECEIVE_MEDAL_LIST } from "../actions/actionTypes";
+import { RECEIVE_PROFILE } from "../actions/actionTypes";
 import { RESET_PROFILE } from "../constants";
 
 let initalState = {

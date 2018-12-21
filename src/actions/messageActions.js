@@ -69,6 +69,5 @@ export const messageActions = {
     actionSetConnection,
     actionSetIdGVTV,
     actionGetAllMessageOfChannel,
-    actionSetListMessages,
     actionsAddNewMessage
 }

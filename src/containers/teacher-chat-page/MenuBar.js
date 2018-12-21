@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './MenuBar.css'
 import {withRouter} from "react-router-dom";
-import { NORMAL_SIGN_OUT } from "../../constants";
 import {messageTeacherActions} from '../../actions/messageTeacherActions.js';
 import {signOut} from '../../actions/accountActions.js';
 import helpers from '../../helpers/helpers';
@@ -29,7 +28,7 @@ class MenuBar extends React.Component {
         }
 
         this.props.actionSetConnection(payload);
-        var payload = {
+        payload = {
             idChannel: '',
             listMessagesTeacher: null
         }

@@ -50,8 +50,8 @@ class DoiThuongContainer extends Component {
   userHasEnoughPoint = (id) => {
     let { medalList, point } = this.props;
     for (let i = 0; i < medalList.length; i++) {
-      console.log(medalList[i] == id);
-      if (medalList[i]._id == id && point >= medalList[i].point) return true;
+      console.log(medalList[i] === id);
+      if (medalList[i]._id === id && point >= medalList[i].point) return true;
     }
     return false;
   }
@@ -59,7 +59,7 @@ class DoiThuongContainer extends Component {
   userHasMedal = (id) => {
     let { myMedalList } = this.props;
     for (let i = 0; i < myMedalList.length; i++) {
-      if (myMedalList[i] == id) return true;
+      if (myMedalList[i] === id) return true;
     }
     return false;
   }

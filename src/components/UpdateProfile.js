@@ -50,7 +50,7 @@ export default class UpdateProfile extends Component {
     let errors = [];
     let data = this.state;
     if (data.emailParent && !validator.isEmail(data.emailParent)) errors.push('Email không hợp lệ, vui lòng kiểm tra lại');
-    if (errors.length != 0) {
+    if (errors.length !== 0) {
       alert(errors[0]);
       return;
     }

@@ -2,11 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import './SiderbarLeft.css';
 import { connect } from 'react-redux';
-import moment from 'moment';
-import {messageTeacherActions} from '../../actions/messageTeacherActions.js';
+import { messageTeacherActions } from '../../actions/messageTeacherActions.js';
 
-class Channel extends React.Component{
-    constructor(props){
+class Channel extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             lastMessage: ''
@@ -24,29 +23,29 @@ class Channel extends React.Component{
         var userId = this.props.userId;
         var idChannelTmp = (userId > idChannel) ? userId + idChannel : idChannel + userId;
 
-        if(!listMessagesTeacher.get(idChannelTmp)){
-            var payload = {
+        if (!listMessagesTeacher.get(idChannelTmp)) {
+            payload = {
                 idChannel: idChannelTmp
             }
             this.props.actionGetAllMessageOfChannelTeacher(payload);
         }
     }
 
-    render(){
-        const {channel} = this.props;
+    render() {
+        const { channel } = this.props;
         const idChannelActive = this.props.idChannelActive;
         const listUsersOnline = this.props.listUsersOnline;
-        if(listUsersOnline.indexOf(channel.id) != -1){
+        if (listUsersOnline.indexOf(channel.id) !== -1) {
             channel.isOnline = true;
-        }else{
+        } else {
             channel.isOnline = false;
         }
 
         const isOnline = channel.isOnline;
-        return(
+        return (
             <div onClick={() => {
                 this.setActiveChannel(channel.id)
-            }} key={channel.id} className={classNames('channel', { 'channel-active': channel.id === idChannelActive})}>
+            }} key={channel.id} className={classNames('channel', { 'channel-active': channel.id === idChannelActive })}>
                 <div className="user-image">
                     <img src="./images/avatar.png" alt="avatar" />
                     {
