@@ -34,7 +34,7 @@ export default class SignUpForm extends Component {
     if (!validator.isAlphanumeric(data.userName)) errors.push('Tên đăng nhập không hợp lệ, vui lòng kiểm tra lại');
     if (!validator.isEmail(data.email)) errors.push('Email không hợp lệ, vui lòng kiểm tra lại');
     if (data.passWord !== data.rePassWord) errors.push('Mật khẩu không hợp lệ, vui lòng kiểm tra lại');
-    if (errors.length != 0) {
+    if (errors.length !== 0) {
       alert(errors[0]);
       return;
     }

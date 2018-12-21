@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 
 import './ExaminationResult.css'
-import { clearExamResult, receiveExamResult } from '../actions/examActions';
+import { clearExamResult } from '../actions/examActions';
 
 const mapStateToProps = function (state) {
   return {

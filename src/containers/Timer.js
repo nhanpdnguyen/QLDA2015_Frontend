@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
-import { Link } from "react-router-dom";
 import Countdown from 'react-countdown-now';
-import { sendResultExam } from '../actions/examActions';
 import { connect } from "react-redux";
 import TimerCompletedContainer from "../containers/TimerCompletedContainer"
 import {  setExamTimer } from '../actions/examActions';
@@ -13,7 +10,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     setTimer: (time) => {
       dispatch(setExamTimer(time))
@@ -32,9 +29,6 @@ const onTick = (setTimer,value) => {
   setTimer(value / 1000)
 }
  class Timer extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
   
     return (

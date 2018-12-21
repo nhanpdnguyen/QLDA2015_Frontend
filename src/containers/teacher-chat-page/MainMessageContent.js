@@ -1,7 +1,6 @@
 import React from 'react';
 import './MainMessageContent.css';
 import MessageItem from '../MessageItem.js';
-import {messageTeacherActions} from '../../actions/messageTeacherActions.js';
 import { connect } from 'react-redux';
 
 class MainMessageContent extends React.Component{

@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
-import { Link } from "react-router-dom";
-import Countdown from 'react-countdown-now';
 import { sendResultExam } from '../actions/examActions';
 import { connect } from "react-redux";
 const mapStateToProps = (state) => {
@@ -11,11 +8,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getResult: (examList, examInfo) => {
       var listAnswer = { listAnswer: [] };
-      examList.map(exam => {
+      examList.forEach(exam => {
         listAnswer.listAnswer.push(exam.userAnswer);
       })
       dispatch(sendResultExam(examInfo._id, examInfo.type, examInfo.title, listAnswer));

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { messageTeacherActions} from '../../actions/messageTeacherActions';
 import './MessageInput.css';
 import helpers from '../../helpers/helpers.js';
-import { instanceOf } from 'prop-types';
 
 class MessageInput extends React.Component{
 

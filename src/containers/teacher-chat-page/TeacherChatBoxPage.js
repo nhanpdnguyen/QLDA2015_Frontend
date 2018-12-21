@@ -6,14 +6,14 @@ import HeaderContent from './HeaderContent.js';
 import SiderbarLeft from './SiderbarLeft.js';
 import MainMessageContent from './MainMessageContent.js';
 import MessageInput from './MessageInput.js';
-import {messageTeacherActions} from '../../actions/messageTeacherActions.js';
+import { messageTeacherActions } from '../../actions/messageTeacherActions.js';
 import { connect } from 'react-redux';
 import helpers from '../../helpers/helpers.js';
 import config from '../../config';
 
 const GVTV = "gvtuvan"
-class TeacherChatBoxPage extends React.Component{
-    constructor(props){
+class TeacherChatBoxPage extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             height: window.innerHeight,
@@ -21,9 +21,9 @@ class TeacherChatBoxPage extends React.Component{
     }
 
     remove = (array, element) => {
-        if(array.length > 0){
+        if (array.length > 0) {
             const index = array.indexOf(element, 0);
-    
+
             if (index !== -1) {
                 array.splice(index, 1);
             }
@@ -31,7 +31,7 @@ class TeacherChatBoxPage extends React.Component{
         return array;
     }
 
-    decodeMessage(message){
+    decodeMessage(message) {
         let msg;
         msg = JSON.parse(message);
         return msg;
@@ -42,11 +42,11 @@ class TeacherChatBoxPage extends React.Component{
             height: window.innerHeight,
         })
     }
-    
+
     componentDidMount() {
         window.addEventListener('resize', this.onresize);
-        if(this.props.isLoggedIn && this.props.userName === GVTV && this.props.userName.length !== 0 
-            && this.props.connection === null){
+        if (this.props.isLoggedIn && this.props.userName === GVTV && this.props.userName.length !== 0
+            && this.props.connection === null) {
             this.connectServer();
         }
     }
@@ -55,11 +55,11 @@ class TeacherChatBoxPage extends React.Component{
         window.removeEventListener('resize', this.onResize);
     }
 
-    componentDidUpdate(){
-        if(this.props.listUsers.size === 0){
+    componentDidUpdate() {
+        if (this.props.listUsers.size === 0) {
             this.handleGetAllUser();
         }
-        if(this.props.isLoggedIn && this.props.userName === GVTV && this.props.userName.length !== 0 && this.props.connection === null){
+        if (this.props.isLoggedIn && this.props.userName === GVTV && this.props.userName.length !== 0 && this.props.connection === null) {
             this.connectServer();
         }
     }
@@ -68,25 +68,26 @@ class TeacherChatBoxPage extends React.Component{
     handleMessage = (message) => {
         const msg = this.decodeMessage(message);
         const type = msg.type;
-        switch(type){
+        var payload;
+        switch (type) {
             case helpers.TYPE_MESSAGE_CREATE:
                 var idChannel = msg.idChannel;
                 var listMessagesTmp = this.props.listMessagesTeacher.get(idChannel);
-                if(this.props.idChannelActive.length !== 0 && listMessagesTmp){
+                if (this.props.idChannelActive.length !== 0 && listMessagesTmp) {
                     var messageTmp = {
                         _id: msg._id,
                         idChannel: idChannel,
                         idSender: msg.idSender,
                         data: msg.data,
-                        create: msg.create 
+                        create: msg.create
                     }
-                    
+
                     listMessagesTmp.push(messageTmp);
 
                     var listMessagesTeacher = [];
                     listMessagesTeacher = listMessagesTeacher.concat(listMessagesTmp);
-    
-                    var payload = {
+
+                    payload = {
                         idChannel: idChannel,
                         listMessagesTeacher: listMessagesTeacher
                     }
@@ -94,14 +95,14 @@ class TeacherChatBoxPage extends React.Component{
                 }
                 break;
             case helpers.TYPE_LIST_USER_ONLINE:
-                var payload = {
+                payload = {
                     listUsersOnline: msg.listUsersOnline
                 }
                 this.props.actionSetListUsersOnline(payload);
                 break;
             case helpers.TYPE_USERID_ONLINE:
                 // console.log("receive user online");
-                var payload = {
+                payload = {
                     newUserOnline: msg.idUserOnline
                 }
                 this.props.actionAddUserOnline(payload);
@@ -109,14 +110,14 @@ class TeacherChatBoxPage extends React.Component{
             case helpers.TYPE_USERID_OFFLINE:
                 // console.log("receive user offline");
                 var listUserOnlineTmp = this.remove(this.props.listUsersOnline, msg.idUserOffline);
-                var payload = {
+                payload = {
                     listUsersOnline: listUserOnlineTmp
                 }
                 this.props.actionSetListUsersOnline(payload);
                 break;
             case helpers.TYPE_MESSAGE_CREATE_USER:
                 console.log("receive new user")
-                var payload = {
+                payload = {
                     id: msg.data.id,
                     userName: msg.data.userName,
                     isOnline: msg.data.isOnline
@@ -170,13 +171,13 @@ class TeacherChatBoxPage extends React.Component{
         this.props.actionGetAllUsers();
     }
 
-    render(){
+    render() {
         const { height } = this.state;
         const style = {
-            height:height,
+            height: height,
         }
 
-        return(
+        return (
             <div style={style} className="page-message">
                 <MenuBar></MenuBar>
                 <div className="page-wrapper">

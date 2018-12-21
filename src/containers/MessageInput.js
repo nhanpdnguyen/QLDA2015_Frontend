@@ -4,7 +4,7 @@ import {messageActions} from '../actions/messageActions.js';
 import './MessageInput.css';
 import helpers from '../helpers/helpers.js';
 
-const GVTV = 'gvtuvan';
+// const GVTV = 'gvtuvan';
 
 class MessageInput extends React.Component{
 

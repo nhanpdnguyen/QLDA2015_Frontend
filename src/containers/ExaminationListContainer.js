@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ExaminationList from "../components/ExaminationList";
 import { getExamListByCategory, saveExamInfo } from '../actions';
-import { toanCategoryId, tiengVietCategoryId, MATH, VIETNAMESE } from '../constants';
+import { MATH, VIETNAMESE } from '../constants';
 
 const mapStateToProps = function (state, ownProps) {
   const monHoc = ownProps.match.params.monhoc;

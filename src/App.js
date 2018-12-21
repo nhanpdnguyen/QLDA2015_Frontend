@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 // components
 import Footer from './components/Footer';
@@ -25,7 +25,6 @@ import './App.css';
 import NavBarContainer from './containers/NavBarContainer';
 import ChatBox from './containers/ChatBox';
 import ThiThuContainer from './containers/ThiThuContainer';
-import helpers from './helpers/helpers';
 import ExerciseResultContainer from './containers/ExerciseResultContainer';
 import NotFound from './components/NotFound';
 import RedirectLogIn from './components/RedirectLogIn';
